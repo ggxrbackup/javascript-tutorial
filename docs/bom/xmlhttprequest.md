@@ -9,9 +9,9 @@
 具体来说，AJAX 包括以下几个步骤。
 
 1. 创建 XMLHttpRequest 实例
-1. 发出 HTTP 请求
-1. 接收服务器传回的数据
-1. 更新网页数据
+2. 发出 HTTP 请求
+3. 接收服务器传回的数据
+4. 更新网页数据
 
 概括起来，就是一句话，AJAX 通过原生的`XMLHttpRequest`对象发出 HTTP 请求，得到服务器返回的数据后，再进行处理。现在，服务器返回的都是 JSON 格式的数据，XML 格式已经过时了，但是 AJAX 这个名字已经成了一个通用名词，字面含义已经消失了。
 
@@ -85,11 +85,11 @@ xhr.send(null);
 
 `XMLHttpRequest.readyState`返回一个整数，表示实例对象的当前状态。该属性只读。它可能返回以下值。
 
-- 0，表示 XMLHttpRequest 实例已经生成，但是实例的`open()`方法还没有被调用。
-- 1，表示`open()`方法已经调用，但是实例的`send()`方法还没有调用，仍然可以使用实例的`setRequestHeader()`方法，设定 HTTP 请求的头信息。
-- 2，表示实例的`send()`方法已经调用，并且服务器返回的头信息和状态码已经收到。
-- 3，表示正在接收服务器传来的数据体（body 部分）。这时，如果实例的`responseType`属性等于`text`或者空字符串，`responseText`属性就会包含已经收到的部分信息。
-- 4，表示服务器返回的数据已经完全接收，或者本次接收已经失败。
+* 0，表示 XMLHttpRequest 实例已经生成，但是实例的`open()`方法还没有被调用。
+* 1，表示`open()`方法已经调用，但是实例的`send()`方法还没有调用，仍然可以使用实例的`setRequestHeader()`方法，设定 HTTP 请求的头信息。
+* 2，表示实例的`send()`方法已经调用，并且服务器返回的头信息和状态码已经收到。
+* 3，表示正在接收服务器传来的数据体（body 部分）。这时，如果实例的`responseType`属性等于`text`或者空字符串，`responseText`属性就会包含已经收到的部分信息。
+* 4，表示服务器返回的数据已经完全接收，或者本次接收已经失败。
 
 通信过程中，每当实例对象发生状态变化，它的`readyState`属性的值就会改变。这个值每一次变化，都会触发`readyStateChange`事件。
 
@@ -97,9 +97,9 @@ xhr.send(null);
 var xhr = new XMLHttpRequest();
 
 if (xhr.readyState === 4) {
-  // 请求结束，处理服务器返回的数据
+  // 请求结束，处理服务器返回的数据
 } else {
-  // 显示提示“加载中……”
+  // 显示提示“加载中……”
 }
 ```
 
@@ -147,12 +147,12 @@ xhr.onreadystatechange = function () {
 
 `XMLHttpRequest.responseType`属性可以等于以下值。
 
-- ""（空字符串）：等同于`text`，表示服务器返回文本数据。
-- "arraybuffer"：ArrayBuffer 对象，表示服务器返回二进制数组。
-- "blob"：Blob 对象，表示服务器返回二进制对象。
-- "document"：Document 对象，表示服务器返回一个文档对象。
-- "json"：JSON 对象。
-- "text"：字符串。
+* ""（空字符串）：等同于`text`，表示服务器返回文本数据。
+* "arraybuffer"：ArrayBuffer 对象，表示服务器返回二进制数组。
+* "blob"：Blob 对象，表示服务器返回二进制对象。
+* "document"：Document 对象，表示服务器返回一个文档对象。
+* "json"：JSON 对象。
+* "text"：字符串。
 
 上面几种类型之中，`text`类型适合大多数情况，而且直接处理文本也比较方便。`document`类型适合返回 HTML / XML 文档的情况，这意味着，对于那些打开 CORS 的网站，可以直接用 Ajax 抓取网页，然后不用解析 HTML 字符串，直接对抓取回来的数据进行 DOM 操作。`blob`类型适合读取二进制数据，比如图片文件。
 
@@ -253,26 +253,26 @@ xhr.send(null);
 
 `XMLHttpRequest.status`属性返回一个整数，表示服务器回应的 HTTP 状态码。一般来说，如果通信成功的话，这个状态码是200；如果服务器没有返回状态码，那么这个属性默认是200。请求发出之前，该属性为`0`。该属性只读。
 
-- 200, OK，访问正常
-- 301, Moved Permanently，永久移动
-- 302, Moved temporarily，暂时移动
-- 304, Not Modified，未修改
-- 307, Temporary Redirect，暂时重定向
-- 401, Unauthorized，未授权
-- 403, Forbidden，禁止访问
-- 404, Not Found，未发现指定网址
-- 500, Internal Server Error，服务器发生错误
+* 200, OK，访问正常
+* 301, Moved Permanently，永久移动
+* 302, Moved temporarily，暂时移动
+* 304, Not Modified，未修改
+* 307, Temporary Redirect，暂时重定向
+* 401, Unauthorized，未授权
+* 403, Forbidden，禁止访问
+* 404, Not Found，未发现指定网址
+* 500, Internal Server Error，服务器发生错误
 
 基本上，只有2xx和304的状态码，表示服务器返回是正常状态。
 
 ```javascript
 if (xhr.readyState === 4) {
-  if ( (xhr.status >= 200 && xhr.status < 300)
-    || (xhr.status === 304) ) {
-    // 处理服务器的返回数据
-  } else {
-    // 出错
-  }
+  if ( (xhr.status >= 200 && xhr.status < 300)
+    || (xhr.status === 304) ) {
+    // 处理服务器的返回数据
+  } else {
+    // 出错
+  }
 }
 ```
 
@@ -314,13 +314,13 @@ xhr.send(null);
 
 XMLHttpRequest 对象可以对以下事件指定监听函数。
 
-- XMLHttpRequest.onloadstart：loadstart 事件（HTTP 请求发出）的监听函数
-- XMLHttpRequest.onprogress：progress事件（正在发送和加载数据）的监听函数
-- XMLHttpRequest.onabort：abort 事件（请求中止，比如用户调用了`abort()`方法）的监听函数
-- XMLHttpRequest.onerror：error 事件（请求失败）的监听函数
-- XMLHttpRequest.onload：load 事件（请求成功完成）的监听函数
-- XMLHttpRequest.ontimeout：timeout 事件（用户指定的时限超过了，请求还未完成）的监听函数
-- XMLHttpRequest.onloadend：loadend 事件（请求完成，不管成功或失败）的监听函数
+* XMLHttpRequest.onloadstart：loadstart 事件（HTTP 请求发出）的监听函数
+* XMLHttpRequest.onprogress：progress事件（正在发送和加载数据）的监听函数
+* XMLHttpRequest.onabort：abort 事件（请求中止，比如用户调用了`abort()`方法）的监听函数
+* XMLHttpRequest.onerror：error 事件（请求失败）的监听函数
+* XMLHttpRequest.onload：load 事件（请求成功完成）的监听函数
+* XMLHttpRequest.ontimeout：timeout 事件（用户指定的时限超过了，请求还未完成）的监听函数
+* XMLHttpRequest.onloadend：loadend 事件（请求完成，不管成功或失败）的监听函数
 
 下面是一个例子。
 
@@ -407,7 +407,7 @@ upload(new Blob(['hello world'], {type: 'text/plain'}));
 
 ## XMLHttpRequest 的实例方法
 
-### XMLHttpRequest.open()
+### XMLHttpRequest.open\(\)
 
 `XMLHttpRequest.open()`方法用于指定 HTTP 请求的参数，或者说初始化 XMLHttpRequest 实例对象。它一共可以接受五个参数。
 
@@ -421,11 +421,11 @@ void open(
 );
 ```
 
-- `method`：表示 HTTP 动词方法，比如`GET`、`POST`、`PUT`、`DELETE`、`HEAD`等。
-- `url`: 表示请求发送目标 URL。
-- `async`: 布尔值，表示请求是否为异步，默认为`true`。如果设为`false`，则`send()`方法只有等到收到服务器返回了结果，才会进行下一步操作。该参数可选。由于同步 AJAX 请求会造成浏览器失去响应，许多浏览器已经禁止在主线程使用，只允许 Worker 里面使用。所以，这个参数轻易不应该设为`false`。
-- `user`：表示用于认证的用户名，默认为空字符串。该参数可选。
-- `password`：表示用于认证的密码，默认为空字符串。该参数可选。
+* `method`：表示 HTTP 动词方法，比如`GET`、`POST`、`PUT`、`DELETE`、`HEAD`等。
+* `url`: 表示请求发送目标 URL。
+* `async`: 布尔值，表示请求是否为异步，默认为`true`。如果设为`false`，则`send()`方法只有等到收到服务器返回了结果，才会进行下一步操作。该参数可选。由于同步 AJAX 请求会造成浏览器失去响应，许多浏览器已经禁止在主线程使用，只允许 Worker 里面使用。所以，这个参数轻易不应该设为`false`。
+* `user`：表示用于认证的用户名，默认为空字符串。该参数可选。
+* `password`：表示用于认证的密码，默认为空字符串。该参数可选。
 
 注意，如果对使用过`open()`方法的 AJAX 请求，再次使用这个方法，等同于调用`abort()`，即终止请求。
 
@@ -436,7 +436,7 @@ var xhr = new XMLHttpRequest();
 xhr.open('POST', encodeURI('someURL'));
 ```
 
-### XMLHttpRequest.send()
+### XMLHttpRequest.send\(\)
 
 `XMLHttpRequest.send()`方法用于实际发出 HTTP 请求。它的参数是可选的，如果不带参数，就表示 HTTP 请求只有一个 URL，没有数据体，典型例子就是 GET 请求；如果带有参数，就表示除了头信息，还带有包含具体数据的信息体，典型例子就是 POST 请求。
 
@@ -498,7 +498,7 @@ xhr.send(formData);
 
 上面代码中，`FormData`对象构造了表单数据，然后使用`send()`方法发送。它的效果与发送下面的表单数据是一样的。
 
-```html
+```markup
 <form id='registration' name='registration' action='/register'>
   <input type='text' name='username' value='张三'>
   <input type='email' name='email' value='zhangsan@example.com'>
@@ -528,7 +528,7 @@ var form = document.querySelector('#registration');
 sendForm(form);
 ```
 
-### XMLHttpRequest.setRequestHeader()
+### XMLHttpRequest.setRequestHeader\(\)
 
 `XMLHttpRequest.setRequestHeader()`方法用于设置浏览器发送的 HTTP 请求的头信息。该方法必须在`open()`之后、`send()`之前调用。如果该方法多次调用，设定同一个字段，则每一次调用的值会被合并成一个单一的值发送。
 
@@ -542,7 +542,7 @@ xhr.send(JSON.stringify(data));
 
 上面代码首先设置头信息`Content-Type`，表示发送 JSON 格式的数据；然后设置`Content-Length`，表示数据长度；最后发送 JSON 数据。
 
-### XMLHttpRequest.overrideMimeType()
+### XMLHttpRequest.overrideMimeType\(\)
 
 `XMLHttpRequest.overrideMimeType()`方法用来指定 MIME 类型，覆盖服务器返回的真正的 MIME 类型，从而让浏览器进行不一样的处理。举例来说，服务器返回的数据类型是`text/xml`，由于种种原因浏览器解析不成功报错，这时就拿不到数据了。为了拿到原始数据，我们可以把 MIME 类型改成`text/plain`，这样浏览器就不会去自动解析，从而我们就可以拿到原始文本了。
 
@@ -565,7 +565,7 @@ xhr.responseType = 'arraybuffer';
 xhr.send();
 ```
 
-### XMLHttpRequest.getResponseHeader()
+### XMLHttpRequest.getResponseHeader\(\)
 
 `XMLHttpRequest.getResponseHeader()`方法返回 HTTP 头信息指定字段的值，如果还没有收到服务器回应或者指定字段不存在，返回`null`。该方法的参数不区分大小写。
 
@@ -582,7 +582,7 @@ xhr.send();
 
 如果有多个字段同名，它们的值会被连接为一个字符串，每个字段之间使用“逗号+空格”分隔。
 
-### XMLHttpRequest.getAllResponseHeaders()
+### XMLHttpRequest.getAllResponseHeaders\(\)
 
 `XMLHttpRequest.getAllResponseHeaders()`方法返回一个字符串，表示服务器发来的所有 HTTP 头信息。格式为字符串，每个头信息之间使用`CRLF`分隔（回车+换行），如果没有收到服务器回应，该属性为`null`。如果发生网络错误，该属性为空字符串。
 
@@ -630,7 +630,7 @@ arr.forEach(function (line) {
 headerMap['content-length'] // "6502"
 ```
 
-### XMLHttpRequest.abort()
+### XMLHttpRequest.abort\(\)
 
 `XMLHttpRequest.abort()`方法用来终止已经发出的 HTTP 请求。调用这个方法以后，`readyState`属性变为`4`，`status`属性变为`0`。
 
@@ -638,10 +638,10 @@ headerMap['content-length'] // "6502"
 var xhr = new XMLHttpRequest();
 xhr.open('GET', 'http://www.example.com/page.php', true);
 setTimeout(function () {
-  if (xhr) {
-    xhr.abort();
-    xhr = null;
-  }
+  if (xhr) {
+    xhr.abort();
+    xhr = null;
+  }
 }, 5000);
 ```
 
@@ -717,7 +717,7 @@ function loadEnd(e) {
 
 服务器超过指定时间还没有返回结果，就会触发 timeout 事件，具体的例子参见`timeout`属性一节。
 
-## Navigator.sendBeacon()
+## Navigator.sendBeacon\(\)
 
 用户卸载网页的时候，有时需要向服务器发一些数据。很自然的做法是在`unload`事件或`beforeunload`事件的监听函数里面，使用`XMLHttpRequest`对象发送数据。但是，这样做不是很可靠，因为`XMLHttpRequest`对象是异步发送，很可能在它即将发送的时候，页面已经卸载了，从而导致发送取消或者发送失败。
 
@@ -806,3 +806,4 @@ function analytics(state) {
   navigator.sendBeacon(URL, data);
 }
 ```
+

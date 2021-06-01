@@ -389,8 +389,8 @@ for (var i in obj) {
 
 `for...in`循环有两个使用注意点。
 
-- 它遍历的是对象所有可遍历（enumerable）的属性，会跳过不可遍历的属性。
-- 它不仅遍历对象自身的属性，还遍历继承的属性。
+* 它遍历的是对象所有可遍历（enumerable）的属性，会跳过不可遍历的属性。
+* 它不仅遍历对象自身的属性，还遍历继承的属性。
 
 举例来说，对象都继承了`toString`属性，但是`for...in`循环不会遍历到这个属性。
 
@@ -495,7 +495,8 @@ console.log(temp.p1 + temp.p2);
 
 ## 参考链接
 
-- Dr. Axel Rauschmayer，[Object properties in JavaScript](http://www.2ality.com/2012/10/javascript-properties.html)
-- Lakshan Perera, [Revisiting JavaScript Objects](http://www.laktek.com/2012/12/29/revisiting-javascript-objects/)
-- Angus Croll, [The Secret Life of JavaScript Primitives](http://javascriptweblog.wordpress.com/2010/09/27/the-secret-life-of-javascript-primitives/)i
-- Dr. Axel Rauschmayer, [JavaScript’s with statement and why it’s deprecated](http://www.2ality.com/2011/06/with-statement.html)
+* Dr. Axel Rauschmayer，[Object properties in JavaScript](http://www.2ality.com/2012/10/javascript-properties.html)
+* Lakshan Perera, [Revisiting JavaScript Objects](http://www.laktek.com/2012/12/29/revisiting-javascript-objects/)
+* Angus Croll, [The Secret Life of JavaScript Primitives](http://javascriptweblog.wordpress.com/2010/09/27/the-secret-life-of-javascript-primitives/)i
+* Dr. Axel Rauschmayer, [JavaScript’s with statement and why it’s deprecated](http://www.2ality.com/2011/06/with-statement.html)
+

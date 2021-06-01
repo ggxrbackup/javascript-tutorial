@@ -4,13 +4,13 @@
 
 二进制位运算符用于直接对二进制位进行计算，一共有7个。
 
-- **二进制或运算符**（or）：符号为`|`，表示若两个二进制位都为`0`，则结果为`0`，否则为`1`。
-- **二进制与运算符**（and）：符号为`&`，表示若两个二进制位都为1，则结果为1，否则为0。
-- **二进制否运算符**（not）：符号为`~`，表示对一个二进制位取反。
-- **异或运算符**（xor）：符号为`^`，表示若两个二进制位不相同，则结果为1，否则为0。
-- **左移运算符**（left shift）：符号为`<<`，详见下文解释。
-- **右移运算符**（right shift）：符号为`>>`，详见下文解释。
-- **头部补零的右移运算符**（zero filled right shift）：符号为`>>>`，详见下文解释。
+* **二进制或运算符**（or）：符号为`|`，表示若两个二进制位都为`0`，则结果为`0`，否则为`1`。
+* **二进制与运算符**（and）：符号为`&`，表示若两个二进制位都为1，则结果为1，否则为0。
+* **二进制否运算符**（not）：符号为`~`，表示对一个二进制位取反。
+* **异或运算符**（xor）：符号为`^`，表示若两个二进制位不相同，则结果为1，否则为0。
+* **左移运算符**（left shift）：符号为`<<`，详见下文解释。
+* **右移运算符**（right shift）：符号为`>>`，详见下文解释。
+* **头部补零的右移运算符**（zero filled right shift）：符号为`>>>`，详见下文解释。
 
 这些位运算符直接处理每一个比特位（bit），所以是非常底层的运算，好处是速度极快，缺点是很不直观，许多场合不能使用它们，否则会使代码难以理解和查错。
 
@@ -353,6 +353,7 @@ flags = ~flags;
 
 ## 参考链接
 
-- Michal Budzynski, [JavaScript: The less known parts. Bitwise Operators](http://michalbe.blogspot.co.uk/2013/03/javascript-less-known-parts-bitwise.html)
-- Axel Rauschmayer, [Basic JavaScript for the impatient programmer](http://www.2ality.com/2013/06/basic-javascript.html)
-- Mozilla Developer Network, [Bitwise Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators)
+* Michal Budzynski, [JavaScript: The less known parts. Bitwise Operators](http://michalbe.blogspot.co.uk/2013/03/javascript-less-known-parts-bitwise.html)
+* Axel Rauschmayer, [Basic JavaScript for the impatient programmer](http://www.2ality.com/2013/06/basic-javascript.html)
+* Mozilla Developer Network, [Bitwise Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators)
+

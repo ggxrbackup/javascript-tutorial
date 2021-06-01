@@ -16,17 +16,17 @@ CORS 请求分成两类：简单请求（simple request）和非简单请求（n
 
 （1）请求方法是以下三种方法之一。
 
-> - HEAD
-> - GET
-> - POST
+> * HEAD
+> * GET
+> * POST
 
 （2）HTTP 的头信息不超出以下几种字段。
 
-> - Accept
-> - Accept-Language
-> - Content-Language
-> - Last-Event-ID
-> - Content-Type：只限于三个值`application/x-www-form-urlencoded`、`multipart/form-data`、`text/plain`
+> * Accept
+> * Accept-Language
+> * Content-Language
+> * Last-Event-ID
+> * Content-Type：只限于三个值`application/x-www-form-urlencoded`、`multipart/form-data`、`text/plain`
 
 凡是不同时满足上面两个条件，就属于非简单请求。一句话，简单请求就是简单的 HTTP 方法与简单的 HTTP 头信息的结合。
 
@@ -247,7 +247,8 @@ CORS 与 JSONP 的使用目的相同，但是比 JSONP 更强大。JSONP 只支�
 
 ## 参考链接
 
-- [Using CORS](http://www.html5rocks.com/en/tutorials/cors/), Monsur Hossain
-- [HTTP access control (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS), MDN
-- [CORS](https://frontendian.co/cors), Ryan Miller
-- [Do You Really Know CORS?](http://performantcode.com/web/do-you-really-know-cors), Grzegorz Mirek
+* [Using CORS](http://www.html5rocks.com/en/tutorials/cors/), Monsur Hossain
+* [HTTP access control \(CORS\)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS), MDN
+* [CORS](https://frontendian.co/cors), Ryan Miller
+* [Do You Really Know CORS?](http://performantcode.com/web/do-you-really-know-cors), Grzegorz Mirek
+

@@ -4,13 +4,13 @@
 
 进度事件用来描述资源加载的进度，主要由 AJAX 请求、`<img>`、`<audio>`、`<video>`、`<style>`、`<link>`等外部资源的加载触发，继承了`ProgressEvent`接口。它主要包含以下几种事件。
 
-- `abort`：外部资源中止加载时（比如用户取消）触发。如果发生错误导致中止，不会触发该事件。
-- `error`：由于错误导致外部资源无法加载时触发。
-- `load`：外部资源加载成功时触发。
-- `loadstart`：外部资源开始加载时触发。
-- `loadend`：外部资源停止加载时触发，发生顺序排在`error`、`abort`、`load`等事件的后面。
-- `progress`：外部资源加载过程中不断触发。
-- `timeout`：加载超时时触发。
+* `abort`：外部资源中止加载时（比如用户取消）触发。如果发生错误导致中止，不会触发该事件。
+* `error`：由于错误导致外部资源无法加载时触发。
+* `load`：外部资源加载成功时触发。
+* `loadstart`：外部资源开始加载时触发。
+* `loadend`：外部资源停止加载时触发，发生顺序排在`error`、`abort`、`load`等事件的后面。
+* `progress`：外部资源加载过程中不断触发。
+* `timeout`：加载超时时触发。
 
 注意，除了资源下载，文件上传也存在这些事件。
 
@@ -44,7 +44,7 @@ if (image.complete) {
 
 由于 DOM 的元素节点没有提供是否加载错误的属性，所以`error`事件的监听函数最好放在`<img>`元素的 HTML 代码中，这样才能保证发生加载错误时百分之百会执行。
 
-```html
+```markup
 <img src="/wrong/url" onerror="this.style.display='none';" />
 ```
 
@@ -74,15 +74,15 @@ new ProgressEvent(type, options)
 
 `ProgressEvent()`构造函数接受两个参数。第一个参数是字符串，表示事件的类型，这个参数是必须的。第二个参数是一个配置对象，表示事件的属性，该参数可选。配置对象除了可以使用`Event`接口的配置属性，还可以使用下面的属性，所有这些属性都是可选的。
 
-- `lengthComputable`：布尔值，表示加载的总量是否可以计算，默认是`false`。
-- `loaded`：整数，表示已经加载的量，默认是`0`。
-- `total`：整数，表示需要加载的总量，默认是`0`。
+* `lengthComputable`：布尔值，表示加载的总量是否可以计算，默认是`false`。
+* `loaded`：整数，表示已经加载的量，默认是`0`。
+* `total`：整数，表示需要加载的总量，默认是`0`。
 
 `ProgressEvent`具有对应的实例属性。
 
-- `ProgressEvent.lengthComputable`
-- `ProgressEvent.loaded`
-- `ProgressEvent.total`
+* `ProgressEvent.lengthComputable`
+* `ProgressEvent.loaded`
+* `ProgressEvent.total`
 
 如果`ProgressEvent.lengthComputable`为`false`，`ProgressEvent.total`实际上是没有意义的。
 
@@ -150,3 +150,4 @@ xhr.upload.addEventListener('abort', transferCanceled, false);
 
 xhr.open();
 ```
+

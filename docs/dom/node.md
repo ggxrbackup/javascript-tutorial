@@ -24,13 +24,13 @@ document.nodeType === Node.DOCUMENT_NODE // true
 
 不同节点的`nodeType`属性值和对应的常量如下。
 
-- 文档节点（document）：9，对应常量`Node.DOCUMENT_NODE`
-- 元素节点（element）：1，对应常量`Node.ELEMENT_NODE`
-- 属性节点（attr）：2，对应常量`Node.ATTRIBUTE_NODE`
-- 文本节点（text）：3，对应常量`Node.TEXT_NODE`
-- 文档片断节点（DocumentFragment）：11，对应常量`Node.DOCUMENT_FRAGMENT_NODE`
-- 文档类型节点（DocumentType）：10，对应常量`Node.DOCUMENT_TYPE_NODE`
-- 注释节点（Comment）：8，对应常量`Node.COMMENT_NODE`
+* 文档节点（document）：9，对应常量`Node.DOCUMENT_NODE`
+* 元素节点（element）：1，对应常量`Node.ELEMENT_NODE`
+* 属性节点（attr）：2，对应常量`Node.ATTRIBUTE_NODE`
+* 文本节点（text）：3，对应常量`Node.TEXT_NODE`
+* 文档片断节点（DocumentFragment）：11，对应常量`Node.DOCUMENT_FRAGMENT_NODE`
+* 文档类型节点（DocumentType）：10，对应常量`Node.DOCUMENT_TYPE_NODE`
+* 注释节点（Comment）：8，对应常量`Node.COMMENT_NODE`
 
 确定节点类型时，使用`nodeType`属性是常用方法。
 
@@ -56,13 +56,13 @@ div.nodeName // "DIV"
 
 不同节点的`nodeName`属性值如下。
 
-- 文档节点（document）：`#document`
-- 元素节点（element）：大写的标签名
-- 属性节点（attr）：属性的名称
-- 文本节点（text）：`#text`
-- 文档片断节点（DocumentFragment）：`#document-fragment`
-- 文档类型节点（DocumentType）：文档的类型
-- 注释节点（Comment）：`#comment`
+* 文档节点（document）：`#document`
+* 元素节点（element）：大写的标签名
+* 属性节点（attr）：属性的名称
+* 文本节点（text）：`#text`
+* 文档片断节点（DocumentFragment）：`#document-fragment`
+* 文档类型节点（DocumentType）：文档的类型
+* 注释节点（Comment）：`#comment`
 
 ### Node.prototype.nodeValue
 
@@ -121,7 +121,7 @@ document.baseURI
 
 该属性的值一般由当前网址的 URL（即`window.location`属性）决定，但是可以使用 HTML 的`<base>`标签，改变该属性的值。
 
-```html
+```markup
 <base href="http://www.example.com/page.html">
 ```
 
@@ -293,7 +293,7 @@ test.isConnected // true
 
 ## 方法
 
-### Node.prototype.appendChild()
+### Node.prototype.appendChild\(\)
 
 `appendChild()`方法接受一个节点对象作为参数，将其作为最后一个子节点，插入当前节点。该方法的返回值就是插入文档的子节点。
 
@@ -315,7 +315,7 @@ document.body.appendChild(div);
 
 如果`appendChild()`方法的参数是`DocumentFragment`节点，那么插入的是`DocumentFragment`的所有子节点，而不是`DocumentFragment`节点本身。返回值是一个空的`DocumentFragment`节点。
 
-### Node.prototype.hasChildNodes()
+### Node.prototype.hasChildNodes\(\)
 
 `hasChildNodes`方法返回一个布尔值，表示当前节点是否有子节点。
 
@@ -333,9 +333,9 @@ if (foo.hasChildNodes()) {
 
 判断一个节点有没有子节点，有许多种方法，下面是其中的三种。
 
-- `node.hasChildNodes()`
-- `node.firstChild !== null`
-- `node.childNodes && node.childNodes.length > 0`
+* `node.hasChildNodes()`
+* `node.firstChild !== null`
+* `node.childNodes && node.childNodes.length > 0`
 
 `hasChildNodes`方法结合`firstChild`属性和`nextSibling`属性，可以遍历当前节点的所有后代节点。
 
@@ -355,7 +355,7 @@ DOMComb(document.body, console.log)
 
 上面代码中，`DOMComb`函数的第一个参数是某个指定的节点，第二个参数是回调函数。这个回调函数会依次作用于指定节点，以及指定节点的所有后代节点。
 
-### Node.prototype.cloneNode()
+### Node.prototype.cloneNode\(\)
 
 `cloneNode`方法用于克隆一个节点。它接受一个布尔值作为参数，表示是否同时克隆子节点。它的返回值是一个克隆出来的新节点。
 
@@ -371,7 +371,7 @@ var cloneUL = document.querySelector('ul').cloneNode(true);
 
 （3）克隆一个节点之后，DOM 有可能出现两个有相同`id`属性（即`id="xxx"`）的网页元素，这时应该修改其中一个元素的`id`属性。如果原节点有`name`属性，可能也需要修改。
 
-### Node.prototype.insertBefore()
+### Node.prototype.insertBefore\(\)
 
 `insertBefore`方法用于将某个节点插入父节点内部的指定位置。
 
@@ -409,7 +409,7 @@ parent.insertBefore(s1, s2.nextSibling);
 
 如果要插入的节点是`DocumentFragment`类型，那么插入的将是`DocumentFragment`的所有子节点，而不是`DocumentFragment`节点本身。返回值将是一个空的`DocumentFragment`节点。
 
-### Node.prototype.removeChild()
+### Node.prototype.removeChild\(\)
 
 `removeChild`方法接受一个子节点作为参数，用于从当前节点移除该子节点。返回值是移除的子节点。
 
@@ -433,7 +433,7 @@ while (element.firstChild) {
 
 如果参数节点不是当前节点的子节点，`removeChild`方法将报错。
 
-### Node.prototype.replaceChild()
+### Node.prototype.replaceChild\(\)
 
 `replaceChild`方法用于将一个新的节点，替换当前节点的某一个子节点。
 
@@ -452,13 +452,13 @@ divA.parentNode.replaceChild(newSpan, divA);
 
 上面代码是如何将指定节点`divA`替换走。
 
-### Node.prototype.contains()
+### Node.prototype.contains\(\)
 
 `contains`方法返回一个布尔值，表示参数节点是否满足以下三个条件之一。
 
-- 参数节点为当前节点。
-- 参数节点为当前节点的子节点。
-- 参数节点为当前节点的后代节点。
+* 参数节点为当前节点。
+* 参数节点为当前节点的子节点。
+* 参数节点为当前节点的后代节点。
 
 ```javascript
 document.body.contains(node)
@@ -472,19 +472,19 @@ document.body.contains(node)
 nodeA.contains(nodeA) // true
 ```
 
-### Node.prototype.compareDocumentPosition()
+### Node.prototype.compareDocumentPosition\(\)
 
 `compareDocumentPosition`方法的用法，与`contains`方法完全一致，返回一个六个比特位的二进制值，表示参数节点与当前节点的关系。
 
-二进制值 | 十进制值 | 含义
----------|------|-----
-000000 | 0 | 两个节点相同
-000001 | 1 | 两个节点不在同一个文档（即有一个节点不在当前文档）
-000010 | 2 | 参数节点在当前节点的前面
-000100 | 4 | 参数节点在当前节点的后面
-001000 | 8 | 参数节点包含当前节点
-010000 | 16 | 当前节点包含参数节点
-100000 | 32 | 浏览器内部使用
+| 二进制值 | 十进制值 | 含义 |
+| :--- | :--- | :--- |
+| 000000 | 0 | 两个节点相同 |
+| 000001 | 1 | 两个节点不在同一个文档（即有一个节点不在当前文档） |
+| 000010 | 2 | 参数节点在当前节点的前面 |
+| 000100 | 4 | 参数节点在当前节点的后面 |
+| 001000 | 8 | 参数节点包含当前节点 |
+| 010000 | 16 | 当前节点包含参数节点 |
+| 100000 | 32 | 浏览器内部使用 |
 
 ```javascript
 // HTML 代码如下
@@ -515,7 +515,7 @@ if (head.compareDocumentPosition(body) & 4) {
 
 上面代码中，`compareDocumentPosition`的返回值与`4`（又称掩码）进行与运算（`&`），得到一个布尔值，表示`<head>`是否在`<body>`前面。
 
-### Node.prototype.isEqualNode()，Node.prototype.isSameNode()
+### Node.prototype.isEqualNode\(\)，Node.prototype.isSameNode\(\)
 
 `isEqualNode`方法返回一个布尔值，用于检查两个节点是否相等。所谓相等的节点，指的是两个节点的类型相同、属性相同、子节点相同。
 
@@ -536,7 +536,7 @@ p1.isSameNode(p2) // false
 p1.isSameNode(p1) // true
 ```
 
-### Node.prototype.normalize()
+### Node.prototype.normalize\(\)
 
 `normalize`方法用于清理当前节点内部的所有文本节点（text）。它会去除空的文本节点，并且将毗邻的文本节点合并成一个，也就是说不存在空的文本节点，以及毗邻的文本节点。
 
@@ -555,7 +555,7 @@ wrapper.childNodes.length // 1
 
 该方法是`Text.splitText`的逆方法，可以查看《Text 节点对象》一章，了解更多内容。
 
-### Node.prototype.getRootNode()
+### Node.prototype.getRootNode\(\)
 
 `getRootNode()`方法返回当前节点所在文档的根节点`document`，与`ownerDocument`属性的作用相同。
 
@@ -572,3 +572,4 @@ document.body.firstChild.getRootNode() === document.body.firstChild.ownerDocumen
 document.getRootNode() // document
 document.ownerDocument // null
 ```
+

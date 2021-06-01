@@ -6,14 +6,14 @@
 
 `Math`对象的静态属性，提供以下一些数学常数。
 
-- `Math.E`：常数`e`。
-- `Math.LN2`：2 的自然对数。
-- `Math.LN10`：10 的自然对数。
-- `Math.LOG2E`：以 2 为底的`e`的对数。
-- `Math.LOG10E`：以 10 为底的`e`的对数。
-- `Math.PI`：常数`π`。
-- `Math.SQRT1_2`：0.5 的平方根。
-- `Math.SQRT2`：2 的平方根。
+* `Math.E`：常数`e`。
+* `Math.LN2`：2 的自然对数。
+* `Math.LN10`：10 的自然对数。
+* `Math.LOG2E`：以 2 为底的`e`的对数。
+* `Math.LOG10E`：以 10 为底的`e`的对数。
+* `Math.PI`：常数`π`。
+* `Math.SQRT1_2`：0.5 的平方根。
+* `Math.SQRT2`：2 的平方根。
 
 ```javascript
 Math.E // 2.718281828459045
@@ -32,19 +32,19 @@ Math.SQRT2 // 1.4142135623730951
 
 `Math`对象提供以下一些静态方法。
 
-- `Math.abs()`：绝对值
-- `Math.ceil()`：向上取整
-- `Math.floor()`：向下取整
-- `Math.max()`：最大值
-- `Math.min()`：最小值
-- `Math.pow()`：幂运算
-- `Math.sqrt()`：平方根
-- `Math.log()`：自然对数
-- `Math.exp()`：`e`的指数
-- `Math.round()`：四舍五入
-- `Math.random()`：随机数
+* `Math.abs()`：绝对值
+* `Math.ceil()`：向上取整
+* `Math.floor()`：向下取整
+* `Math.max()`：最大值
+* `Math.min()`：最小值
+* `Math.pow()`：幂运算
+* `Math.sqrt()`：平方根
+* `Math.log()`：自然对数
+* `Math.exp()`：`e`的指数
+* `Math.round()`：四舍五入
+* `Math.random()`：随机数
 
-### Math.abs()
+### Math.abs\(\)
 
 `Math.abs`方法返回参数值的绝对值。
 
@@ -53,7 +53,7 @@ Math.abs(1) // 1
 Math.abs(-1) // 1
 ```
 
-### Math.max()，Math.min()
+### Math.max\(\)，Math.min\(\)
 
 `Math.max`方法返回参数之中最大的那个值，`Math.min`返回最小的那个值。如果参数为空, `Math.min`返回`Infinity`, `Math.max`返回`-Infinity`。
 
@@ -64,7 +64,7 @@ Math.min() // Infinity
 Math.max() // -Infinity
 ```
 
-### Math.floor()，Math.ceil()
+### Math.floor\(\)，Math.ceil\(\)
 
 `Math.floor`方法返回小于参数值的最大整数（地板值）。
 
@@ -98,7 +98,7 @@ ToInteger(-3.8) // -3
 
 上面代码中，不管正数或负数，`ToInteger`函数总是返回一个数值的整数部分。
 
-### Math.round()
+### Math.round\(\)
 
 `Math.round`方法用于四舍五入。
 
@@ -119,7 +119,7 @@ Math.round(-1.5) // -1
 Math.round(-1.6) // -2
 ```
 
-### Math.pow()
+### Math.pow\(\)
 
 `Math.pow`方法返回以第一个参数为底数、第二个参数为指数的幂运算值。
 
@@ -137,7 +137,7 @@ var radius = 20;
 var area = Math.PI * Math.pow(radius, 2);
 ```
 
-### Math.sqrt()
+### Math.sqrt\(\)
 
 `Math.sqrt`方法返回参数值的平方根。如果参数是一个负值，则返回`NaN`。
 
@@ -146,7 +146,7 @@ Math.sqrt(4) // 2
 Math.sqrt(-4) // NaN
 ```
 
-### Math.log()
+### Math.log\(\)
 
 `Math.log`方法返回以`e`为底的自然对数值。
 
@@ -162,7 +162,7 @@ Math.log(100)/Math.LN10 // 2
 Math.log(8)/Math.LN2 // 3
 ```
 
-### Math.exp()
+### Math.exp\(\)
 
 `Math.exp`方法返回常数`e`的参数次方。
 
@@ -171,7 +171,7 @@ Math.exp(1) // 2.718281828459045
 Math.exp(3) // 20.085536923187668
 ```
 
-### Math.random()
+### Math.random\(\)
 
 `Math.random()`返回0到1之间的一个伪随机数，可能等于0，但是一定小于1。
 
@@ -224,12 +224,12 @@ random_str(6) // "NdQKOr"
 
 `Math`对象还提供一系列三角函数方法。
 
-- `Math.sin()`：返回参数的正弦（参数为弧度值）
-- `Math.cos()`：返回参数的余弦（参数为弧度值）
-- `Math.tan()`：返回参数的正切（参数为弧度值）
-- `Math.asin()`：返回参数的反正弦（返回值为弧度值）
-- `Math.acos()`：返回参数的反余弦（返回值为弧度值）
-- `Math.atan()`：返回参数的反正切（返回值为弧度值）
+* `Math.sin()`：返回参数的正弦（参数为弧度值）
+* `Math.cos()`：返回参数的余弦（参数为弧度值）
+* `Math.tan()`：返回参数的正切（参数为弧度值）
+* `Math.asin()`：返回参数的反正弦（返回值为弧度值）
+* `Math.acos()`：返回参数的反余弦（返回值为弧度值）
+* `Math.atan()`：返回参数的反正切（返回值为弧度值）
 
 ```javascript
 Math.sin(0) // 0
@@ -242,3 +242,4 @@ Math.asin(1) // 1.5707963267948966
 Math.acos(1) // 0
 Math.atan(1) // 0.7853981633974483
 ```
+

@@ -53,9 +53,9 @@ elem.addEventListener('select', function (e) {
 
 `change`事件当`<input>`、`<select>`、`<textarea>`的值发生变化时触发。它与`input`事件的最大不同，就是不会连续触发，只有当全部修改完成时才会触发，另一方面`input`事件必然伴随`change`事件。具体来说，分成以下几种情况。
 
-- 激活单选框（radio）或复选框（checkbox）时触发。
-- 用户提交时触发。比如，从下列列表（select）完成选择，在日期或文件输入框完成选择。
-- 当文本框或`<textarea>`元素的值发生改变，并且丧失焦点时触发。
+* 激活单选框（radio）或复选框（checkbox）时触发。
+* 用户提交时触发。比如，从下列列表（select）完成选择，在日期或文件输入框完成选择。
+* 当文本框或`<textarea>`元素的值发生改变，并且丧失焦点时触发。
 
 下面是一个例子。
 
@@ -78,7 +78,7 @@ function changeEventHandler(event) {
 
 用户提交表单时，如果表单元素的值不满足校验条件，就会触发`invalid`事件。
 
-```html
+```markup
 <form>
   <input type="text" required oninvalid="console.log('invalid input')" />
   <button type="submit">提交</button>
@@ -107,9 +107,9 @@ new InputEvent(type, options)
 
 `InputEvent`构造函数可以接受两个参数。第一个参数是字符串，表示事件名称，该参数是必需的。第二个参数是一个配置对象，用来设置事件实例的属性，该参数是可选的。配置对象的字段除了`Event`构造函数的配置属性，还可以设置下面的字段，这些字段都是可选的。
 
-- `inputType`：字符串，表示发生变更的类型（详见下文）。
-- `data`：字符串，表示插入的字符串。如果没有插入的字符串（比如删除操作），则返回`null`或空字符串。
-- `dataTransfer`：返回一个 DataTransfer 对象实例，该属性通常只在输入框接受富文本输入时有效。
+* `inputType`：字符串，表示发生变更的类型（详见下文）。
+* `data`：字符串，表示插入的字符串。如果没有插入的字符串（比如删除操作），则返回`null`或空字符串。
+* `dataTransfer`：返回一个 DataTransfer 对象实例，该属性通常只在输入框接受富文本输入时有效。
 
 `InputEvent`的实例属性主要就是上面三个属性，这三个实例属性都是只读的。
 
@@ -136,11 +136,12 @@ function myFunction(e) {
 
 对于常见情况，Chrome 浏览器的返回值如下。完整列表可以参考[文档](https://w3c.github.io/input-events/index.html#dom-inputevent-inputtype)。
 
-- 手动插入文本：`insertText`
-- 粘贴插入文本：`insertFromPaste`
-- 向后删除：`deleteContentBackward`
-- 向前删除：`deleteContentForward`
+* 手动插入文本：`insertText`
+* 粘贴插入文本：`insertFromPaste`
+* 向后删除：`deleteContentBackward`
+* 向前删除：`deleteContentForward`
 
 **（3）InputEvent.dataTransfer**
 
 `InputEvent.dataTransfer`属性返回一个 DataTransfer 实例。该属性只在文本框接受粘贴内容（insertFromPaste）或拖拽内容（`insertFromDrop`）时才有效。
+

@@ -2,7 +2,7 @@
 
 JavaScript 在`Object`对象上面，提供了很多相关方法，处理面向对象编程的相关操作。本章介绍这些方法。
 
-## Object.getPrototypeOf()
+## Object.getPrototypeOf\(\)
 
 `Object.getPrototypeOf`方法返回参数对象的原型。这是获取原型对象的标准方法。
 
@@ -28,7 +28,7 @@ function f() {}
 Object.getPrototypeOf(f) === Function.prototype // true
 ```
 
-## Object.setPrototypeOf()
+## Object.setPrototypeOf\(\)
 
 `Object.setPrototypeOf`方法为参数对象设置原型，返回该参数对象。它接受两个参数，第一个是现有对象，第二个是原型对象。
 
@@ -58,7 +58,7 @@ F.call(f);
 
 上面代码中，`new`命令新建实例对象，其实可以分成两步。第一步，将一个空对象的原型设为构造函数的`prototype`属性（上例是`F.prototype`）；第二步，将构造函数内部的`this`绑定这个空对象，然后执行构造函数，使得定义在`this`上面的方法和属性（上例是`this.foo`），都转移到这个空对象上。
 
-## Object.create()
+## Object.create\(\)
 
 生成实例对象的常用方法是，使用`new`命令让构造函数返回一个实例。但是很多时候，只能拿到一个实例对象，它可能根本不是由构建函数生成的，那么能不能从一个实例对象，生成另一个实例对象呢？
 
@@ -173,7 +173,7 @@ b instanceof A // true
 
 上面代码中，`b`对象的原型是`a`对象，因此继承了`a`对象的构造函数`A`。
 
-## Object.prototype.isPrototypeOf()
+## Object.prototype.isPrototypeOf\(\)
 
 实例对象的`isPrototypeOf`方法，用来判断该对象是否为参数对象的原型。
 
@@ -259,9 +259,9 @@ obj.__proto__ === obj.constructor.prototype
 
 因此，获取实例对象`obj`的原型对象，有三种方法。
 
-- `obj.__proto__`
-- `obj.constructor.prototype`
-- `Object.getPrototypeOf(obj)`
+* `obj.__proto__`
+* `obj.constructor.prototype`
+* `Object.getPrototypeOf(obj)`
 
 上面三种方法之中，前两种都不是很可靠。`__proto__`属性只有浏览器才需要部署，其他环境可以不部署。而`obj.constructor.prototype`在手动改变原型对象时，可能会失效。
 
@@ -288,7 +288,7 @@ c.constructor.prototype === p // true
 
 因此，推荐使用第三种`Object.getPrototypeOf`方法，获取原型对象。
 
-## Object.getOwnPropertyNames()
+## Object.getOwnPropertyNames\(\)
 
 `Object.getOwnPropertyNames`方法返回一个数组，成员是参数对象本身的所有属性的键名，不包含继承的属性键名。
 
@@ -307,7 +307,7 @@ Object.keys(Date) // []
 
 上面代码表明，`Date`对象所有自身的属性，都是不可以遍历的。
 
-## Object.prototype.hasOwnProperty()
+## Object.prototype.hasOwnProperty\(\)
 
 对象实例的`hasOwnProperty`方法返回一个布尔值，用于判断某个属性定义在对象自身，还是定义在原型链上。
 
@@ -393,8 +393,8 @@ inheritedPropertyNames(Date)
 
 如果要拷贝一个对象，需要做到下面两件事情。
 
-- 确保拷贝后的对象，与原对象具有同样的原型。
-- 确保拷贝后的对象，与原对象具有同样的实例属性。
+* 确保拷贝后的对象，与原对象具有同样的原型。
+* 确保拷贝后的对象，与原对象具有同样的实例属性。
 
 下面就是根据上面两点，实现的对象拷贝函数。
 
@@ -429,4 +429,5 @@ function copyObject(orig) {
 
 ## 参考链接
 
-- Dr. Axel Rauschmayer, [JavaScript properties: inheritance and enumerability](http://www.2ality.com/2011/07/js-properties.html)
+* Dr. Axel Rauschmayer, [JavaScript properties: inheritance and enumerability](http://www.2ality.com/2011/07/js-properties.html)
+

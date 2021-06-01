@@ -1,4 +1,6 @@
- Array 对象
+# array
+
+Array 对象
 
 ## 构造函数
 
@@ -76,7 +78,7 @@ b[0] // undefined
 
 ## 静态方法
 
-### Array.isArray()
+### Array.isArray\(\)
 
 `Array.isArray`方法返回一个布尔值，表示参数是否为数组。它可以弥补`typeof`运算符的不足。
 
@@ -91,7 +93,7 @@ Array.isArray(arr) // true
 
 ## 实例方法
 
-### valueOf()，toString()
+### valueOf\(\)，toString\(\)
 
 `valueOf`方法是一个所有对象都拥有的方法，表示对该对象求值。不同对象的`valueOf`方法不尽一致，数组的`valueOf`方法返回数组本身。
 
@@ -110,7 +112,7 @@ var arr = [1, 2, 3, [4, 5, 6]];
 arr.toString() // "1,2,3,4,5,6"
 ```
 
-### push()，pop()
+### push\(\)，pop\(\)
 
 `push`方法用于在数组的末端添加一个或多个元素，并返回添加新元素后的数组长度。注意，该方法会改变原数组。
 
@@ -152,7 +154,7 @@ arr // [1, 2]
 
 上面代码中，`3`是最后进入数组的，但是最早离开数组。
 
-### shift()，unshift()
+### shift\(\)，unshift\(\)
 
 `shift()`方法用于删除数组的第一个元素，并返回该元素。注意，该方法会改变原数组。
 
@@ -199,7 +201,7 @@ arr.unshift('a', 'b') // 4
 arr // [ 'a', 'b', 'c', 'd' ]
 ```
 
-### join()
+### join\(\)
 
 `join()`方法以指定参数作为分隔符，将所有数组成员连接为一个字符串返回。如果不提供参数，默认用逗号分隔。
 
@@ -232,7 +234,7 @@ Array.prototype.join.call(obj, '-')
 // 'a-b'
 ```
 
-### concat()
+### concat\(\)
 
 `concat`方法用于多个数组的合并。它将新数组的成员，添加到原数组成员的后部，然后返回一个新数组，原数组不变。
 
@@ -271,7 +273,7 @@ newArray[0].a // 2
 
 上面代码中，原数组包含一个对象，`concat`方法生成的新数组包含这个对象的引用。所以，改变原对象以后，新数组跟着改变。
 
-### reverse()
+### reverse\(\)
 
 `reverse`方法用于颠倒排列数组元素，返回改变后的数组。注意，该方法将改变原数组。
 
@@ -282,7 +284,7 @@ a.reverse() // ["c", "b", "a"]
 a // ["c", "b", "a"]
 ```
 
-### slice()
+### slice\(\)
 
 `slice()`方法用于提取目标数组的一部分，返回一个新数组，原数组不变。
 
@@ -334,7 +336,7 @@ Array.prototype.slice.call(arguments);
 
 上面代码的参数都不是数组，但是通过`call`方法，在它们上面调用`slice()`方法，就可以把它们转为真正的数组。
 
-### splice()
+### splice\(\)
 
 `splice()`方法用于删除原数组的一部分成员，并可以在删除的位置添加新的数组成员，返回值是被删除的元素。注意，该方法会改变原数组。
 
@@ -386,7 +388,7 @@ a.splice(2) // [3, 4]
 a // [1, 2]
 ```
 
-### sort()
+### sort\(\)
 
 `sort`方法对数组成员进行排序，默认是按照字典顺序排序。排序后，原数组将被改变。
 
@@ -444,7 +446,7 @@ a // [1, 2]
 
 上面代码中，前一种排序算法返回的是布尔值，这是不推荐使用的。后一种是数值，才是更好的写法。
 
-### map()
+### map\(\)
 
 `map`方法将数组的所有成员依次传入参数函数，然后把每一次的执行结果组成一个新数组返回。
 
@@ -498,7 +500,7 @@ var f = function (n) { return 'a' };
 
 上面代码中，`map`方法不会跳过`undefined`和`null`，但是会跳过空位。
 
-### forEach()
+### forEach\(\)
 
 `forEach`方法与`map`方法很相似，也是对数组的所有成员依次执行参数函数。但是，`forEach`方法不返回值，只用来操作数据。这就是说，如果数组遍历的目的是为了得到返回值，那么使用`map`方法，否则使用`forEach`方法。
 
@@ -569,7 +571,7 @@ var log = function (n) {
 
 上面代码中，`forEach`方法不会跳过`undefined`和`null`，但会跳过空位。
 
-### filter()
+### filter\(\)
 
 `filter`方法用于过滤数组成员，满足条件的成员组成一个新数组返回。
 
@@ -618,7 +620,7 @@ arr.filter(myFilter, obj) // [8, 4, 9]
 
 上面代码中，过滤器`myFilter`内部有`this`变量，它可以被`filter`方法的第二个参数`obj`绑定，返回大于`3`的成员。
 
-### some()，every()
+### some\(\)，every\(\)
 
 这两个方法类似“断言”（assert），返回一个布尔值，表示判断数组成员是否符合某种条件。
 
@@ -659,7 +661,7 @@ function isEven(x) { return x % 2 === 0 }
 
 `some`和`every`方法还可以接受第二个参数，用来绑定参数函数内部的`this`变量。
 
-### reduce()，reduceRight()
+### reduce\(\)，reduceRight\(\)
 
 `reduce`方法和`reduceRight`方法依次处理数组的每个成员，最终累计为一个值。它们的差别是，`reduce`是从左到右处理（从第一个成员到最后一个成员），`reduceRight`则是从右到左（从最后一个成员到第一个成员），其他完全一样。
 
@@ -739,7 +741,7 @@ findLongest(['aaa', 'bb', 'c']) // "aaa"
 
 上面代码中，`reduce`的参数函数会将字符长度较长的那个数组成员，作为累积值。这导致遍历所有成员之后，累积值就是字符长度最长的那个成员。
 
-### indexOf()，lastIndexOf()
+### indexOf\(\)，lastIndexOf\(\)
 
 `indexOf`方法返回给定元素在数组中第一次出现的位置，如果没有出现则返回`-1`。
 
@@ -802,4 +804,5 @@ users
 
 ## 参考链接
 
-- Nicolas Bevacqua, [Fun with JavaScript Native Array Functions](http://flippinawesome.org/2013/11/25/fun-with-javascript-native-array-functions/)
+* Nicolas Bevacqua, [Fun with JavaScript Native Array Functions](http://flippinawesome.org/2013/11/25/fun-with-javascript-native-array-functions/)
+

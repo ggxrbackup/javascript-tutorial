@@ -51,7 +51,7 @@ document.querySelector('p').firstChild.data = 'Hello World';
 
 举例来说，HTML 代码如下。
 
-```html
+```markup
 <p id="para">A <em>B</em> C</p>
 ```
 
@@ -95,15 +95,15 @@ tn.nextElementSibling
 
 ## Text 节点的方法
 
-### appendData()，deleteData()，insertData()，replaceData()，subStringData()
+### appendData\(\)，deleteData\(\)，insertData\(\)，replaceData\(\)，subStringData\(\)
 
 以下5个方法都是编辑`Text`节点文本内容的方法。
 
-- `appendData()`：在`Text`节点尾部追加字符串。
-- `deleteData()`：删除`Text`节点内部的子字符串，第一个参数为子字符串开始位置，第二个参数为子字符串长度。
-- `insertData()`：在`Text`节点插入字符串，第一个参数为插入位置，第二个参数为插入的子字符串。
-- `replaceData()`：用于替换文本，第一个参数为替换开始位置，第二个参数为需要被替换掉的长度，第三个参数为新加入的字符串。
-- `subStringData()`：用于获取子字符串，第一个参数为子字符串在`Text`节点中的开始位置，第二个参数为子字符串长度。
+* `appendData()`：在`Text`节点尾部追加字符串。
+* `deleteData()`：删除`Text`节点内部的子字符串，第一个参数为子字符串开始位置，第二个参数为子字符串长度。
+* `insertData()`：在`Text`节点插入字符串，第一个参数为插入位置，第二个参数为插入的子字符串。
+* `replaceData()`：用于替换文本，第一个参数为替换开始位置，第二个参数为需要被替换掉的长度，第三个参数为新加入的字符串。
+* `subStringData()`：用于获取子字符串，第一个参数为子字符串在`Text`节点中的开始位置，第二个参数为子字符串长度。
 
 ```javascript
 // HTML 代码为
@@ -122,7 +122,7 @@ pElementText.substringData(7, 10);
 // 页面显示不变，返回"World "
 ```
 
-### remove()
+### remove\(\)
 
 `remove`方法用于移除当前`Text`节点。
 
@@ -134,7 +134,7 @@ document.querySelector('p').firstChild.remove()
 // <p></p>
 ```
 
-### splitText()
+### splitText\(\)
 
 `splitText`方法将`Text`节点一分为二，变成两个毗邻的`Text`节点。它的参数就是分割位置（从零开始），分割到该位置的字符前结束。如果分割位置不存在，将报错。
 
@@ -204,7 +204,8 @@ function reverse(n) {
 
 `DocumentFragment`节点对象没有自己的属性和方法，全部继承自`Node`节点和`ParentNode`接口。也就是说，`DocumentFragment`节点比`Node`节点多出以下四个属性。
 
-- `children`：返回一个动态的`HTMLCollection`集合对象，包括当前`DocumentFragment`对象的所有子元素节点。
-- `firstElementChild`：返回当前`DocumentFragment`对象的第一个子元素节点，如果没有则返回`null`。
-- `lastElementChild`：返回当前`DocumentFragment`对象的最后一个子元素节点，如果没有则返回`null`。
-- `childElementCount`：返回当前`DocumentFragment`对象的所有子元素数量。
+* `children`：返回一个动态的`HTMLCollection`集合对象，包括当前`DocumentFragment`对象的所有子元素节点。
+* `firstElementChild`：返回当前`DocumentFragment`对象的第一个子元素节点，如果没有则返回`null`。
+* `lastElementChild`：返回当前`DocumentFragment`对象的最后一个子元素节点，如果没有则返回`null`。
+* `childElementCount`：返回当前`DocumentFragment`对象的所有子元素数量。
+

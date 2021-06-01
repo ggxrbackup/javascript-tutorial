@@ -12,8 +12,8 @@ event = new Event(type, options);
 
 `Event`构造函数接受两个参数。第一个参数`type`是字符串，表示事件的名称；第二个参数`options`是一个对象，表示事件对象的配置。该对象主要有下面两个属性。
 
-- `bubbles`：布尔值，可选，默认为`false`，表示事件对象是否冒泡。
-- `cancelable`：布尔值，可选，默认为`false`，表示事件是否可以被取消，即能否用`Event.preventDefault()`取消这个事件。一旦事件被取消，就好像从来没有发生过，不会触发浏览器对该事件的默认行为。
+* `bubbles`：布尔值，可选，默认为`false`，表示事件对象是否冒泡。
+* `cancelable`：布尔值，可选，默认为`false`，表示事件是否可以被取消，即能否用`Event.preventDefault()`取消这个事件。一旦事件被取消，就好像从来没有发生过，不会触发浏览器对该事件的默认行为。
 
 ```javascript
 var ev = new Event(
@@ -71,10 +71,10 @@ var phase = event.eventPhase;
 
 `Event.eventPhase`的返回值有四种可能。
 
-- 0，事件目前没有发生。
-- 1，事件目前处于捕获阶段，即处于从祖先节点向目标节点的传播过程中。
-- 2，事件到达目标节点，即`Event.target`属性指向的那个节点。
-- 3，事件处于冒泡阶段，即处于从目标节点向祖先节点的反向传播过程中。
+* 0，事件目前没有发生。
+* 1，事件目前处于捕获阶段，即处于从祖先节点向目标节点的传播过程中。
+* 2，事件到达目标节点，即`Event.target`属性指向的那个节点。
+* 3，事件处于冒泡阶段，即处于从目标节点向祖先节点的反向传播过程中。
 
 ### Event.cancelable，Event.cancelBubble，event.defaultPrevented
 
@@ -213,7 +213,7 @@ document.querySelector('p').onclick = giveDetails;
 
 ## 实例方法
 
-### Event.preventDefault()
+### Event.preventDefault\(\)
 
 `Event.preventDefault`方法取消浏览器对当前事件的默认行为。比如点击链接后，浏览器默认会跳转到另一个页面，使用这个方法以后，就不会跳转了；再比如，按一下空格键，页面向下滚动一段距离，使用这个方法以后也不会滚动了。该方法生效的前提是，事件对象的`cancelable`属性为`true`，如果为`false`，调用该方法没有任何效果。
 
@@ -250,7 +250,7 @@ function checkName(e) {
 
 上面代码为文本框的`keypress`事件设定监听函数后，将只能输入小写字母，否则输入事件的默认行为（写入文本框）将被取消，导致不能向文本框输入内容。
 
-### Event.stopPropagation()
+### Event.stopPropagation\(\)
 
 `stopPropagation`方法阻止事件在 DOM 中继续传播，防止再触发定义在别的节点上的监听函数，但是不包括在当前节点上其他的事件监听函数。
 
@@ -264,7 +264,7 @@ el.addEventListener('click', stopEvent, false);
 
 上面代码中，`click`事件将不会进一步冒泡到`el`节点的父节点。
 
-### Event.stopImmediatePropagation()
+### Event.stopImmediatePropagation\(\)
 
 `Event.stopImmediatePropagation`方法阻止同一个事件的其他监听函数被调用，不管监听函数定义在当前节点还是其他节点。也就是说，该方法阻止事件的传播，比`Event.stopPropagation()`更彻底。
 
@@ -285,7 +285,7 @@ el.addEventListener('click', l2, false);
 
 上面代码在`el`节点上，为`click`事件添加了两个监听函数`l1`和`l2`。由于`l1`调用了`event.stopImmediatePropagation`方法，所以`l2`不会被调用。
 
-### Event.composedPath()
+### Event.composedPath\(\)
 
 `Event.composedPath()`返回一个数组，成员是事件的最底层节点和依次冒泡经过的所有上层节点。
 
@@ -304,3 +304,4 @@ div.addEventListener('click', function (e) {
 ```
 
 上面代码中，`click`事件的最底层节点是`p`，向上依次是`div`、`body`、`html`、`document`、`Window`。
+

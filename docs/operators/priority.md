@@ -23,7 +23,7 @@ x // 5
 
 请看下面的代码。
 
-```html
+```markup
 <script>
 function f() {
   console.log('Hello World');
@@ -36,13 +36,13 @@ function f() {
 
 `void`运算符可以取代上面的写法。
 
-```html
+```markup
 <a href="javascript: void(f())">文字</a>
 ```
 
 下面是一个更实际的例子，用户点击链接提交表单，但是不产生页面跳转。
 
-```html
+```markup
 <a href="javascript: void(document.form.submit())">
   提交
 </a>
@@ -101,7 +101,7 @@ var y = arr.length <= 0 || arr[0] === undefined ? x : arr[0];
 
 上面代码中，变量`y`的值就很难看出来，因为这个表达式涉及5个运算符，到底谁的优先级最高，实在不容易记住。
 
-根据语言规格，这五个运算符的优先级从高到低依次为：小于等于（`<=`)、严格相等（`===`）、或（`||`）、三元（`?:`）、等号（`=`）。因此上面的表达式，实际的运算顺序如下。
+根据语言规格，这五个运算符的优先级从高到低依次为：小于等于（`<=`\)、严格相等（`===`）、或（`||`）、三元（`?:`）、等号（`=`）。因此上面的表达式，实际的运算顺序如下。
 
 ```javascript
 var y = ((arr.length <= 0) || (arr[0] === undefined)) ? x : arr[0];

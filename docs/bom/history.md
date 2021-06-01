@@ -26,8 +26,8 @@ history.go(-1)
 
 History 对象主要有两个属性。
 
-- `History.length`：当前窗口访问过的网址数量（包括当前网页）
-- `History.state`：History 堆栈最上层的状态值（详见下文）
+* `History.length`：当前窗口访问过的网址数量（包括当前网页）
+* `History.state`：History 堆栈最上层的状态值（详见下文）
 
 ```javascript
 // 当前窗口访问过多少个网页
@@ -40,13 +40,13 @@ window.history.state // undefined
 
 ## 方法
 
-### History.back()、History.forward()、History.go()
+### History.back\(\)、History.forward\(\)、History.go\(\)
 
 这三个方法用于在历史之中移动。
 
-- `History.back()`：移动到上一个网址，等同于点击浏览器的后退键。对于第一个访问的网址，该方法无效果。
-- `History.forward()`：移动到下一个网址，等同于点击浏览器的前进键。对于最后一个访问的网址，该方法无效果。
-- `History.go()`：接受一个整数作为参数，以当前网址为基准，移动到参数指定的网址，比如`go(1)`相当于`forward()`，`go(-1)`相当于`back()`。如果参数超过实际存在的网址范围，该方法无效果；如果不指定参数，默认参数为`0`，相当于刷新当前页面。
+* `History.back()`：移动到上一个网址，等同于点击浏览器的后退键。对于第一个访问的网址，该方法无效果。
+* `History.forward()`：移动到下一个网址，等同于点击浏览器的前进键。对于最后一个访问的网址，该方法无效果。
+* `History.go()`：接受一个整数作为参数，以当前网址为基准，移动到参数指定的网址，比如`go(1)`相当于`forward()`，`go(-1)`相当于`back()`。如果参数超过实际存在的网址范围，该方法无效果；如果不指定参数，默认参数为`0`，相当于刷新当前页面。
 
 ```javascript
 history.back();
@@ -62,7 +62,7 @@ history.go(0); // 刷新当前页面
 
 注意，移动到以前访问过的页面时，页面通常是从浏览器缓存之中加载，而不是重新要求服务器发送新的网页。
 
-### History.pushState()，
+### History.pushState\(\)，
 
 `History.pushState()`方法用于在历史中添加一条记录。
 
@@ -72,9 +72,9 @@ window.history.pushState(state, title, url)
 
 该方法接受三个参数，依次为：
 
-- `state`：一个与添加的记录相关联的状态对象，主要用于`popstate`事件。该事件触发时，该对象会传入回调函数。也就是说，浏览器会将这个对象序列化以后保留在本地，重新载入这个页面的时候，可以拿到这个对象。如果不需要这个对象，此处可以填`null`。
-- `title`：新页面的标题。但是，现在所有浏览器都忽视这个参数，所以这里可以填空字符串。
-- `url`：新的网址，必须与当前页面处在同一个域。浏览器的地址栏将显示这个网址。
+* `state`：一个与添加的记录相关联的状态对象，主要用于`popstate`事件。该事件触发时，该对象会传入回调函数。也就是说，浏览器会将这个对象序列化以后保留在本地，重新载入这个页面的时候，可以拿到这个对象。如果不需要这个对象，此处可以填`null`。
+* `title`：新页面的标题。但是，现在所有浏览器都忽视这个参数，所以这里可以填空字符串。
+* `url`：新的网址，必须与当前页面处在同一个域。浏览器的地址栏将显示这个网址。
 
 假定当前网址是`example.com/1.html`，使用`pushState()`方法在浏览记录（History 对象）中添加一个新记录。
 
@@ -83,7 +83,7 @@ var stateObj = { foo: 'bar' };
 history.pushState(stateObj, 'page 2', '2.html');
 ```
 
-添加新记录后，浏览器地址栏立刻显示`example.com/2.html`，但并不会跳转到`2.html`，甚至也不会检查`2.html`是否存在，它只是成为浏览历史中的最新记录。这时，在地址栏输入一个新的地址(比如访问`google.com`)，然后点击了倒退按钮，页面的 URL 将显示`2.html`；你再点击一次倒退按钮，URL 将显示`1.html`。
+添加新记录后，浏览器地址栏立刻显示`example.com/2.html`，但并不会跳转到`2.html`，甚至也不会检查`2.html`是否存在，它只是成为浏览历史中的最新记录。这时，在地址栏输入一个新的地址\(比如访问`google.com`\)，然后点击了倒退按钮，页面的 URL 将显示`2.html`；你再点击一次倒退按钮，URL 将显示`1.html`。
 
 总之，`pushState()`方法不会触发页面刷新，只是导致 History 对象发生变化，地址栏会有反应。
 
@@ -107,7 +107,7 @@ history.pushState(null, '', 'https://twitter.com/hello');
 
 上面代码中，`pushState`想要插入一个跨域的网址，导致报错。这样设计的目的是，防止恶意代码让用户以为他们是在另一个网站上，因为这个方法不会导致页面跳转。
 
-### History.replaceState()
+### History.replaceState\(\)
 
 `History.replaceState()`方法用来修改 History 对象的当前记录，其他都与`pushState()`方法一模一样。
 
@@ -163,3 +163,4 @@ var currentState = history.state;
 ```
 
 注意，页面第一次加载的时候，浏览器不会触发`popstate`事件。
+

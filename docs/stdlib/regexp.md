@@ -36,10 +36,10 @@ var regex = /xyz/i;
 
 一类是修饰符相关，用于了解设置了什么修饰符。
 
-- `RegExp.prototype.ignoreCase`：返回一个布尔值，表示是否设置了`i`修饰符。
-- `RegExp.prototype.global`：返回一个布尔值，表示是否设置了`g`修饰符。
-- `RegExp.prototype.multiline`：返回一个布尔值，表示是否设置了`m`修饰符。
-- `RegExp.prototype.flags`：返回一个字符串，包含了已经设置的所有修饰符，按字母排序。
+* `RegExp.prototype.ignoreCase`：返回一个布尔值，表示是否设置了`i`修饰符。
+* `RegExp.prototype.global`：返回一个布尔值，表示是否设置了`g`修饰符。
+* `RegExp.prototype.multiline`：返回一个布尔值，表示是否设置了`m`修饰符。
+* `RegExp.prototype.flags`：返回一个字符串，包含了已经设置的所有修饰符，按字母排序。
 
 上面四个属性都是只读的。
 
@@ -54,8 +54,8 @@ r.flags // 'gim'
 
 另一类是与修饰符无关的属性，主要是下面两个。
 
-- `RegExp.prototype.lastIndex`：返回一个整数，表示下一次开始搜索的位置。该属性可读写，但是只在进行连续搜索时有意义，详细介绍请看后文。
-- `RegExp.prototype.source`：返回正则表达式的字符串形式（不包括反斜杠），该属性只读。
+* `RegExp.prototype.lastIndex`：返回一个整数，表示下一次开始搜索的位置。该属性可读写，但是只在进行连续搜索时有意义，详细介绍请看后文。
+* `RegExp.prototype.source`：返回正则表达式的字符串形式（不包括反斜杠），该属性只读。
 
 ```javascript
 var r = /abc/igm;
@@ -66,7 +66,7 @@ r.source // "abc"
 
 ## 实例方法
 
-### RegExp.prototype.test()
+### RegExp.prototype.test\(\)
 
 正则实例对象的`test`方法返回一个布尔值，表示当前模式是否能匹配参数字符串。
 
@@ -135,7 +135,7 @@ new RegExp('').test('abc')
 // true
 ```
 
-### RegExp.prototype.exec()
+### RegExp.prototype.exec\(\)
 
 正则实例对象的`exec()`方法，用来返回匹配结果。如果发现匹配，就返回一个数组，成员是匹配成功的子字符串，否则返回`null`。
 
@@ -163,8 +163,8 @@ r.exec(s) // ["_x", "x"]
 
 `exec()`方法的返回数组还包含以下两个属性：
 
-- `input`：整个原字符串。
-- `index`：模式匹配成功的开始位置（从0开始计数）。
+* `input`：整个原字符串。
+* `index`：模式匹配成功的开始位置（从0开始计数）。
 
 ```javascript
 var r = /a(b+)a/;
@@ -230,12 +230,12 @@ while(true) {
 
 字符串的实例方法之中，有4种与正则表达式有关。
 
-- `String.prototype.match()`：返回一个数组，成员是所有匹配的子字符串。
-- `String.prototype.search()`：按照给定的正则表达式进行搜索，返回一个整数，表示匹配开始的位置。
-- `String.prototype.replace()`：按照给定的正则表达式进行替换，返回替换后的字符串。
-- `String.prototype.split()`：按照给定规则进行字符串分割，返回一个数组，包含分割后的各个成员。
+* `String.prototype.match()`：返回一个数组，成员是所有匹配的子字符串。
+* `String.prototype.search()`：按照给定的正则表达式进行搜索，返回一个整数，表示匹配开始的位置。
+* `String.prototype.replace()`：按照给定的正则表达式进行替换，返回替换后的字符串。
+* `String.prototype.split()`：按照给定规则进行字符串分割，返回一个数组，包含分割后的各个成员。
 
-### String.prototype.match()
+### String.prototype.match\(\)
 
 字符串实例对象的`match`方法对字符串进行正则匹配，返回匹配结果。
 
@@ -271,7 +271,7 @@ r.lastIndex // 0
 
 上面代码表示，设置正则对象的`lastIndex`属性是无效的。
 
-### String.prototype.search()
+### String.prototype.search\(\)
 
 字符串对象的`search`方法，返回第一个满足条件的匹配结果在整个字符串中的位置。如果没有任何匹配，则返回`-1`。
 
@@ -282,7 +282,7 @@ r.lastIndex // 0
 
 上面代码中，第一个匹配结果出现在字符串的`1`号位置。
 
-### String.prototype.replace()
+### String.prototype.replace\(\)
 
 字符串对象的`replace`方法可以替换匹配的值。它接受两个参数，第一个是正则表达式，表示搜索模式，第二个是替换的内容。
 
@@ -311,11 +311,11 @@ str.replace(/^\s+|\s+$/g, '')
 
 `replace`方法的第二个参数可以使用美元符号`$`，用来指代所替换的内容。
 
-- `$&`：匹配的子字符串。
-- `` $` ``：匹配结果前面的文本。
-- `$'`：匹配结果后面的文本。
-- `$n`：匹配成功的第`n`组内容，`n`是从1开始的自然数。
-- `$$`：指代美元符号`$`。
+* `$&`：匹配的子字符串。
+* ``$``` ：匹配结果前面的文本。
+* `$'`：匹配结果后面的文本。
+* `$n`：匹配成功的第`n`组内容，`n`是从1开始的自然数。
+* `$$`：指代美元符号`$`。
 
 ```javascript
 'hello world'.replace(/(\w+)\s(\w+)/, '$2 $1')
@@ -368,7 +368,7 @@ template.replace(
 
 上面代码的捕捉模式中，有四个括号，所以会产生四个组匹配，在匹配函数中用`$1`到`$4`表示。匹配函数的作用是将价格插入模板中。
 
-### String.prototype.split()
+### String.prototype.split\(\)
 
 字符串对象的`split`方法按照正则规则分割字符串，返回一个由分割后的各个部分组成的数组。
 
@@ -431,9 +431,9 @@ str.split(separator, [limit])
 
 除了字面量字符以外，还有一部分字符有特殊含义，不代表字面的意思。它们叫做“元字符”（metacharacters），主要有以下几个。
 
-**（1）点字符（.)**
+**（1）点字符（.\)**
 
-点字符（`.`）匹配除回车（`\r`）、换行(`\n`) 、行分隔符（`\u2028`）和段分隔符（`\u2029`）以外的所有字符。注意，对于码点大于`0xFFFF`字符，点字符不能正确匹配，会认为这是两个字符。
+点字符（`.`）匹配除回车（`\r`）、换行\(`\n`\) 、行分隔符（`\u2028`）和段分隔符（`\u2029`）以外的所有字符。注意，对于码点大于`0xFFFF`字符，点字符不能正确匹配，会认为这是两个字符。
 
 ```javascript
 /c.t/
@@ -445,8 +445,8 @@ str.split(separator, [limit])
 
 位置字符用来提示字符所处的位置，主要有两个字符。
 
-- `^` 表示字符串的开始位置
-- `$` 表示字符串的结束位置
+* `^` 表示字符串的开始位置
+* `$` 表示字符串的结束位置
 
 ```javascript
 // test必须出现在开始位置
@@ -517,16 +517,16 @@ str.split(separator, [limit])
 
 正则表达式对一些不能打印的特殊字符，提供了表达方法。
 
-- `\cX` 表示`Ctrl-[X]`，其中的`X`是A-Z之中任一个英文字母，用来匹配控制字符。
-- `[\b]` 匹配退格键(U+0008)，不要与`\b`混淆。
-- `\n` 匹配换行键。
-- `\r` 匹配回车键。
-- `\t` 匹配制表符 tab（U+0009）。
-- `\v` 匹配垂直制表符（U+000B）。
-- `\f` 匹配换页符（U+000C）。
-- `\0` 匹配`null`字符（U+0000）。
-- `\xhh` 匹配一个以两位十六进制数（`\x00`-`\xFF`）表示的字符。
-- `\uhhhh` 匹配一个以四位十六进制数（`\u0000`-`\uFFFF`）表示的 Unicode 字符。
+* `\cX` 表示`Ctrl-[X]`，其中的`X`是A-Z之中任一个英文字母，用来匹配控制字符。
+* `[\b]` 匹配退格键\(U+0008\)，不要与`\b`混淆。
+* `\n` 匹配换行键。
+* `\r` 匹配回车键。
+* `\t` 匹配制表符 tab（U+0009）。
+* `\v` 匹配垂直制表符（U+000B）。
+* `\f` 匹配换页符（U+000C）。
+* `\0` 匹配`null`字符（U+0000）。
+* `\xhh` 匹配一个以两位十六进制数（`\x00`-`\xFF`）表示的字符。
+* `\uhhhh` 匹配一个以四位十六进制数（`\u0000`-`\uFFFF`）表示的 Unicode 字符。
 
 ### 字符类
 
@@ -541,7 +541,7 @@ str.split(separator, [limit])
 
 有两个字符在字符类中有特殊含义。
 
-**（1）脱字符（&#94;）**
+**（1）脱字符（^）**
 
 如果方括号内的第一个字符是`[^]`，则表示除了字符类之中的字符，其他字符都可以匹配。比如，`[^xyz]`表示除了`x`、`y`、`z`之外都可以匹配。
 
@@ -603,20 +603,20 @@ var str = "\u0130\u0131\u0132";
 /[A-z]/.test('\\') // true
 ```
 
-上面代码中，由于反斜杠（'\\'）的ASCII码在大写字母与小写字母之间，结果会被选中。
+上面代码中，由于反斜杠（'\'）的ASCII码在大写字母与小写字母之间，结果会被选中。
 
 ### 预定义模式
 
 预定义模式指的是某些常见模式的简写方式。
 
-- `\d` 匹配0-9之间的任一数字，相当于`[0-9]`。
-- `\D` 匹配所有0-9以外的字符，相当于`[^0-9]`。
-- `\w` 匹配任意的字母、数字和下划线，相当于`[A-Za-z0-9_]`。
-- `\W` 除所有字母、数字和下划线以外的字符，相当于`[^A-Za-z0-9_]`。
-- `\s` 匹配空格（包括换行符、制表符、空格符等），相等于`[ \t\r\n\v\f]`。
-- `\S` 匹配非空格的字符，相当于`[^ \t\r\n\v\f]`。
-- `\b` 匹配词的边界。
-- `\B` 匹配非词边界，即在词的内部。
+* `\d` 匹配0-9之间的任一数字，相当于`[0-9]`。
+* `\D` 匹配所有0-9以外的字符，相当于`[^0-9]`。
+* `\w` 匹配任意的字母、数字和下划线，相当于`[A-Za-z0-9_]`。
+* `\W` 除所有字母、数字和下划线以外的字符，相当于`[^A-Za-z0-9_]`。
+* `\s` 匹配空格（包括换行符、制表符、空格符等），相等于`[ \t\r\n\v\f]`。
+* `\S` 匹配非空格的字符，相当于`[^ \t\r\n\v\f]`。
+* `\b` 匹配词的边界。
+* `\B` 匹配非词边界，即在词的内部。
 
 下面是一些例子。
 
@@ -671,9 +671,9 @@ var html = "<b>Hello</b>\n<i>world!</i>";
 
 量词符用来设定某个模式出现的次数。
 
-- `?` 问号表示某个模式出现0次或1次，等同于`{0, 1}`。
-- `*` 星号表示某个模式出现0次或多次，等同于`{0,}`。
-- `+` 加号表示某个模式出现1次或多次，等同于`{1,}`。
+* `?` 问号表示某个模式出现0次或1次，等同于`{0, 1}`。
+* `*` 星号表示某个模式出现0次或多次，等同于`{0,}`。
+* `+` 加号表示某个模式出现1次或多次，等同于`{1,}`。
 
 ```javascript
 // t 出现0次或1次
@@ -714,9 +714,9 @@ s.match(/a+?/) // ["a"]
 
 除了非贪婪模式的加号（`+?`），还有非贪婪模式的星号（`*?`）和非贪婪模式的问号（`??`）。
 
-- `+?`：表示某个模式出现1次或多次，匹配时采用非贪婪模式。
-- `*?`：表示某个模式出现0次或多次，匹配时采用非贪婪模式。
-- `??`：表格某个模式出现0次或1次，匹配时采用非贪婪模式。
+* `+?`：表示某个模式出现1次或多次，匹配时采用非贪婪模式。
+* `*?`：表示某个模式出现0次或多次，匹配时采用非贪婪模式。
+* `??`：表格某个模式出现0次或1次，匹配时采用非贪婪模式。
 
 ```javascript
 'abb'.match(/ab*/) // ["abb"]
@@ -837,7 +837,7 @@ while (true) {
   console.log(result);
 }
 // ["abc", "a", "c"]
-// ["abc", "a", "c"]
+// ["abc", "a", "c"]
 ```
 
 正则表达式内部，还可以用`\n`引用括号匹配的内容，`n`是从1开始的自然数，表示对应顺序的括号。
@@ -961,7 +961,8 @@ m // ['b']
 
 ## 参考链接
 
-- Axel Rauschmayer, [JavaScript: an overview of the regular expression API](http://www.2ality.com/2011/04/javascript-overview-of-regular.html)
-- Mozilla Developer Network, [Regular Expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
-- Axel Rauschmayer, [The flag /g of JavaScript’s regular expressions](http://www.2ality.com/2013/08/regexp-g.html)
-- Sam Hughes, [Learn regular expressions in about 55 minutes](http://qntm.org/files/re/re.html)
+* Axel Rauschmayer, [JavaScript: an overview of the regular expression API](http://www.2ality.com/2011/04/javascript-overview-of-regular.html)
+* Mozilla Developer Network, [Regular Expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
+* Axel Rauschmayer, [The flag /g of JavaScript’s regular expressions](http://www.2ality.com/2013/08/regexp-g.html)
+* Sam Hughes, [Learn regular expressions in about 55 minutes](http://qntm.org/files/re/re.html)
+

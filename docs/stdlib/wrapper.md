@@ -45,7 +45,7 @@ Boolean(123) // true
 
 三种包装对象各自提供了许多实例方法，详见后文。这里介绍两种它们共同具有、从`Object`对象继承的方法：`valueOf()`和`toString()`。
 
-### valueOf()
+### valueOf\(\)
 
 `valueOf()`方法返回包装对象实例对应的原始类型的值。
 
@@ -55,7 +55,7 @@ new String('abc').valueOf() // "abc"
 new Boolean(true).valueOf() // true
 ```
 
-### toString()
+### toString\(\)
 
 `toString()`方法返回对应的字符串形式。
 

@@ -1,4 +1,4 @@
-# <button> 元素
+# 元素
 
 `<button>`元素继承了`HTMLButtonElement`接口。它有以下的实例属性。
 
@@ -28,9 +28,9 @@
 
 该属性可以取以下的值。
 
-- `application/x-www-form-urlencoded`（默认值）
-- `multipart/form-data`（上传文件的编码方式）
-- `text/plain`
+* `application/x-www-form-urlencoded`（默认值）
+* `multipart/form-data`（上传文件的编码方式）
+* `text/plain`
 
 **（7）HTMLButtonElement.formMethod**
 
@@ -78,9 +78,9 @@ for(var i = 0; i < button.labels.length; i++) {
 
 `HTMLButtonElement.type`属性是一个字符串，表示按钮的行为。该属性可读写，可能取以下的值。
 
-- `submit`：默认值，表示提交表单。
-- `reset`：重置表单。
-- `button`：没有任何默认行为。
+* `submit`：默认值，表示提交表单。
+* `reset`：重置表单。
+* `button`：没有任何默认行为。
 
 **（14）HTMLButtonElement.validationMessage**
 
@@ -97,3 +97,4 @@ for(var i = 0; i < button.labels.length; i++) {
 **（17）HTMLButtonElement.willValidate**
 
 `HTMLButtonElement.willValidate`属性是一个布尔值，表示该按钮提交表单时是否将被校验，默认为`false`。该属性只读。
+

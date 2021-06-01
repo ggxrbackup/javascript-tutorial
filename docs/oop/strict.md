@@ -10,10 +10,10 @@
 
 严格模式是从 ES5 进入标准的，主要目的有以下几个。
 
-- 明确禁止一些不合理、不严谨的语法，减少 JavaScript 语言的一些怪异行为。
-- 增加更多报错的场合，消除代码运行的一些不安全之处，保证代码运行的安全。
-- 提高编译器效率，增加运行速度。
-- 为未来新版本的 JavaScript 语法做好铺垫。
+* 明确禁止一些不合理、不严谨的语法，减少 JavaScript 语言的一些怪异行为。
+* 增加更多报错的场合，消除代码运行的一些不安全之处，保证代码运行的安全。
+* 提高编译器效率，增加运行速度。
+* 为未来新版本的 JavaScript 语法做好铺垫。
 
 总之，严格模式体现了 JavaScript 更合理、更安全、更严谨的发展方向。
 
@@ -31,9 +31,9 @@
 
 **（1） 整个脚本文件**
 
-`use strict`放在脚本文件的第一行，整个脚本都将以严格模式运行。如果这行语句不在第一行就无效，整个脚本会以正常模式运行。(严格地说，只要前面不是产生实际运行结果的语句，`use strict`可以不在第一行，比如直接跟在一个空的分号后面，或者跟在注释后面。)
+`use strict`放在脚本文件的第一行，整个脚本都将以严格模式运行。如果这行语句不在第一行就无效，整个脚本会以正常模式运行。\(严格地说，只要前面不是产生实际运行结果的语句，`use strict`可以不在第一行，比如直接跟在一个空的分号后面，或者跟在注释后面。\)
 
-```html
+```markup
 <script>
   'use strict';
   console.log('这是严格模式');
@@ -48,7 +48,7 @@
 
 如果`use strict`写成下面这样，则不起作用，严格模式必须从代码一开始就生效。
 
-```html
+```markup
 <script>
   console.log('这是正常模式');
   'use strict';
@@ -440,8 +440,9 @@ function package(protected) { // 语法错误
 
 ## 参考链接
 
-- MDN, [Strict mode](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode)
-- Dr. Axel Rauschmayer, [JavaScript: Why the hatred for strict mode?](http://www.2ality.com/2011/10/strict-mode-hatred.html)
-- Dr. Axel Rauschmayer，[JavaScript’s strict mode: a summary](http://www.2ality.com/2011/01/javascripts-strict-mode-summary.html)
-- Douglas Crockford, [Strict Mode Is Coming To Town](http://www.yuiblog.com/blog/2010/12/14/strict-mode-is-coming-to-town/)
-- [JavaScript Strict Mode Support](http://java-script.limewebs.com/strictMode/test_hosted.html)
+* MDN, [Strict mode](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode)
+* Dr. Axel Rauschmayer, [JavaScript: Why the hatred for strict mode?](http://www.2ality.com/2011/10/strict-mode-hatred.html)
+* Dr. Axel Rauschmayer，[JavaScript’s strict mode: a summary](http://www.2ality.com/2011/01/javascripts-strict-mode-summary.html)
+* Douglas Crockford, [Strict Mode Is Coming To Town](http://www.yuiblog.com/blog/2010/12/14/strict-mode-is-coming-to-town/)
+* [JavaScript Strict Mode Support](http://java-script.limewebs.com/strictMode/test_hosted.html)
+

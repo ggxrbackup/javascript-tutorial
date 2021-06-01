@@ -10,17 +10,17 @@
 
 最初，它的含义是指，A 网页设置的 Cookie，B 网页不能打开，除非这两个网页“同源”。所谓“同源”指的是“三个相同”。
 
-> - 协议相同
-> - 域名相同
-> - 端口相同（这点可以忽略，详见下文）
+> * 协议相同
+> * 域名相同
+> * 端口相同（这点可以忽略，详见下文）
 
 举例来说，`http://www.example.com/dir/page.html`这个网址，协议是`http://`，域名是`www.example.com`，端口是`80`（默认端口可以省略），它的同源情况如下。
 
-- `http://www.example.com/dir2/other.html`：同源
-- `http://example.com/dir/other.html`：不同源（域名不同）
-- `http://v2.www.example.com/dir/other.html`：不同源（域名不同）
-- `http://www.example.com:81/dir/other.html`：不同源（端口不同）
-- `https://www.example.com/dir/page.html`：不同源（协议不同）
+* `http://www.example.com/dir2/other.html`：同源
+* `http://example.com/dir/other.html`：不同源（域名不同）
+* `http://v2.www.example.com/dir/other.html`：不同源（域名不同）
+* `http://www.example.com:81/dir/other.html`：不同源（端口不同）
+* `https://www.example.com/dir/page.html`：不同源（协议不同）
 
 注意，标准规定端口不同的网址不是同源（比如8000端口和8001端口不是同源），但是浏览器没有遵守这条规定。实际上，同一个网域的不同端口，是可以互相读取 Cookie 的。
 
@@ -44,19 +44,19 @@
 
 另外，通过 JavaScript 脚本可以拿到其他窗口的`window`对象。如果是非同源的网页，目前允许一个窗口可以接触其他网页的`window`对象的九个属性和四个方法。
 
-- window.closed
-- window.frames
-- window.length
-- window.location
-- window.opener
-- window.parent
-- window.self
-- window.top
-- window.window
-- window.blur()
-- window.close()
-- window.focus()
-- window.postMessage()
+* window.closed
+* window.frames
+* window.length
+* window.location
+* window.opener
+* window.parent
+* window.self
+* window.top
+* window.window
+* window.blur\(\)
+* window.close\(\)
+* window.focus\(\)
+* window.postMessage\(\)
 
 上面的九个属性之中，只有`window.location`是可读写的，其他八个全部都是只读。而且，即使是`location`对象，非同源的情况下，也只允许调用`location.replace()`方法和写入`location.href`属性。
 
@@ -126,8 +126,8 @@ window.parent.document.body
 
 对于完全不同源的网站，目前有两种方法，可以解决跨域窗口的通信问题。
 
-> - 片段识别符（fragment identifier）
-> - 跨文档通信API（Cross-document messaging）
+> * 片段识别符（fragment identifier）
+> * 跨文档通信API（Cross-document messaging）
 
 ### 片段识别符
 
@@ -159,7 +159,7 @@ function checkMessage() {
 parent.location.href = target + '#' + hash;
 ```
 
-### window.postMessage()
+### window.postMessage\(\)
 
 上面的这种方法属于破解，HTML5 为了解决这个问题，引入了一个全新的API：跨文档通信 API（Cross-document messaging）。
 
@@ -193,9 +193,9 @@ window.addEventListener('message', function (e) {
 
 `message`事件的参数是事件对象`event`，提供以下三个属性。
 
-> - `event.source`：发送消息的窗口
-> - `event.origin`: 消息发向的网址
-> - `event.data`: 消息内容
+> * `event.source`：发送消息的窗口
+> * `event.origin`: 消息发向的网址
+> * `event.data`: 消息内容
 
 下面的例子是，子窗口通过`event.source`属性引用父窗口，然后发送消息。
 
@@ -300,9 +300,9 @@ window.onmessage = function(e) {
 
 除了架设服务器代理（浏览器请求同源服务器，再由后者请求外部服务），有三种方法规避这个限制。
 
-> - JSONP
-> - WebSocket
-> - CORS
+> * JSONP
+> * WebSocket
+> * CORS
 
 ### JSONP
 
@@ -312,7 +312,7 @@ JSONP 是服务器与客户端跨源通信的常用方法。最大特点就是�
 
 第一步，网页添加一个`<script>`元素，向服务器请求一个脚本，这不受同源政策限制，可以跨域请求。
 
-```html
+```markup
 <script src="http://api.foo.com?callback=bar"></script>
 ```
 
@@ -390,6 +390,7 @@ CORS 是跨源资源分享（Cross-Origin Resource Sharing）的缩写。它是 
 
 ## 参考链接
 
-- Mozilla Developer Network, [Window.postMessage](https://developer.mozilla.org/en-US/docs/Web/API/window.postMessage)
-- Jakub Jankiewicz, [Cross-Domain LocalStorage](http://jcubic.wordpress.com/2014/06/20/cross-domain-localstorage/)
-- David Baron, [setTimeout with a shorter delay](http://dbaron.org/log/20100309-faster-timeouts): 利用 window.postMessage 可以实现0毫秒触发回调函数
+* Mozilla Developer Network, [Window.postMessage](https://developer.mozilla.org/en-US/docs/Web/API/window.postMessage)
+* Jakub Jankiewicz, [Cross-Domain LocalStorage](http://jcubic.wordpress.com/2014/06/20/cross-domain-localstorage/)
+* David Baron, [setTimeout with a shorter delay](http://dbaron.org/log/20100309-faster-timeouts): 利用 window.postMessage 可以实现0毫秒触发回调函数
+

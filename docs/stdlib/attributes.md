@@ -43,7 +43,7 @@ JavaScript 提供了一个内部数据结构，用来描述对象的属性，控
 
 `set`是一个函数，表示该属性的存值函数（setter），默认为`undefined`。
 
-## Object.getOwnPropertyDescriptor()
+## Object.getOwnPropertyDescriptor\(\)
 
 `Object.getOwnPropertyDescriptor()`方法可以获取属性描述对象。它的第一个参数是目标对象，第二个参数是一个字符串，对应目标对象的某个属性名。
 
@@ -71,7 +71,7 @@ Object.getOwnPropertyDescriptor(obj, 'toString')
 
 上面代码中，`toString`是`obj`对象继承的属性，`Object.getOwnPropertyDescriptor()`无法获取。
 
-## Object.getOwnPropertyNames()
+## Object.getOwnPropertyNames\(\)
 
 `Object.getOwnPropertyNames`方法返回一个数组，成员是参数对象自身的全部属性的属性名，不管该属性是否可遍历。
 
@@ -106,7 +106,7 @@ Object.getOwnPropertyNames(Object.prototype)
 
 上面代码中，数组自身的`length`属性是不可遍历的，`Object.keys`不会返回该属性。第二个例子的`Object.prototype`也是一个对象，所有实例对象都会继承它，它自身的属性都是不可遍历的。
 
-## Object.defineProperty()，Object.defineProperties()
+## Object.defineProperty\(\)，Object.defineProperties\(\)
 
 `Object.defineProperty()`方法允许通过属性描述对象，定义或修改一个属性，然后返回修改后的对象，它的用法如下。
 
@@ -116,9 +116,9 @@ Object.defineProperty(object, propertyName, attributesObject)
 
 `Object.defineProperty`方法接受三个参数，依次如下。
 
-- object：属性所在的对象
-- propertyName：字符串，表示属性名
-- attributesObject：属性描述对象
+* object：属性所在的对象
+* propertyName：字符串，表示属性名
+* attributesObject：属性描述对象
 
 举例来说，定义`obj.p`可以写成下面这样。
 
@@ -197,7 +197,7 @@ Object.getOwnPropertyDescriptor(obj, 'foo')
 
 上面代码中，定义`obj.foo`时用了一个空的属性描述对象，就可以看到各个元属性的默认值。
 
-## Object.prototype.propertyIsEnumerable()
+## Object.prototype.propertyIsEnumerable\(\)
 
 实例对象的`propertyIsEnumerable()`方法返回一个布尔值，用来判断某个属性是否可遍历。注意，这个方法只能用于判断对象自身的属性，对于继承的属性一律返回`false`。
 
@@ -317,9 +317,9 @@ var obj = {};
 
 具体来说，如果一个属性的`enumerable`为`false`，下面三个操作不会取到该属性。
 
-- `for..in`循环
-- `Object.keys`方法
-- `JSON.stringify`方法
+* `for..in`循环
+* `Object.keys`方法
+* `JSON.stringify`方法
 
 因此，`enumerable`可以用来设置“秘密”属性。
 
@@ -350,7 +350,7 @@ JSON.stringify(obj) // "{}"
 
 ### configurable
 
-`configurable`(可配置性）返回一个布尔值，决定了是否可以修改属性描述对象。也就是说，`configurable`为`false`时，`value`、`writable`、`enumerable`和`configurable`都不能被修改了。
+`configurable`\(可配置性）返回一个布尔值，决定了是否可以修改属性描述对象。也就是说，`configurable`为`false`时，`value`、`writable`、`enumerable`和`configurable`都不能被修改了。
 
 ```javascript
 var obj = Object.defineProperty({}, 'p', {
@@ -558,7 +558,7 @@ extend({}, { get a(){ return 1 } })
 
 有时需要冻结对象的读写状态，防止对象被改变。JavaScript 提供了三种冻结方法，最弱的一种是`Object.preventExtensions`，其次是`Object.seal`，最强的是`Object.freeze`。
 
-### Object.preventExtensions()
+### Object.preventExtensions\(\)
 
 `Object.preventExtensions`方法可以使得一个对象无法再添加新的属性。
 
@@ -577,7 +577,7 @@ obj.p // undefined
 
 上面代码中，`obj`对象经过`Object.preventExtensions`以后，就无法添加新属性了。
 
-### Object.isExtensible()
+### Object.isExtensible\(\)
 
 `Object.isExtensible`方法用于检查一个对象是否使用了`Object.preventExtensions`方法。也就是说，检查是否可以为一个对象添加属性。
 
@@ -591,7 +591,7 @@ Object.isExtensible(obj) // false
 
 上面代码中，对`obj`对象使用`Object.preventExtensions`方法以后，再使用`Object.isExtensible`方法，返回`false`，表示已经不能添加新属性了。
 
-### Object.seal()
+### Object.seal\(\)
 
 `Object.seal`方法使得一个对象既无法添加新属性，也无法删除旧属性。
 
@@ -654,7 +654,7 @@ obj.p // 'b'
 
 上面代码中，`Object.seal`方法对`p`属性的`value`无效，是因为此时`p`属性的可写性由`writable`决定。
 
-### Object.isSealed()
+### Object.isSealed\(\)
 
 `Object.isSealed`方法用于检查一个对象是否使用了`Object.seal`方法。
 
@@ -674,7 +674,7 @@ Object.seal(obj);
 Object.isExtensible(obj) // false
 ```
 
-### Object.freeze()
+### Object.freeze\(\)
 
 `Object.freeze`方法可以使得一个对象无法添加新属性、无法删除旧属性、也无法改变属性的值，使得这个对象实际上变成了常量。
 
@@ -697,7 +697,7 @@ obj.p // "hello"
 
 上面代码中，对`obj`对象进行`Object.freeze()`以后，修改属性、新增属性、删除属性都无效了。这些操作并不报错，只是默默地失败。如果在严格模式下，则会报错。
 
-### Object.isFrozen()
+### Object.isFrozen\(\)
 
 `Object.isFrozen`方法用于检查一个对象是否使用了`Object.freeze`方法。
 
@@ -782,3 +782,4 @@ obj.bar // ["a", "b", "c"]
 ```
 
 上面代码中，`obj.bar`属性指向一个数组，`obj`对象被冻结以后，这个指向无法改变，即无法指向其他值，但是所指向的数组是可以改变的。
+

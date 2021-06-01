@@ -6,19 +6,19 @@ Cookie 是服务器保存在浏览器的一小段文本信息，一般大小不�
 
 Cookie 主要保存状态信息，以下是一些主要用途。
 
-- 对话（session）管理：保存登录、购物车等需要记录的信息。
-- 个性化信息：保存用户的偏好，比如网页的字体大小、背景色等等。
-- 追踪用户：记录和分析用户行为。
+* 对话（session）管理：保存登录、购物车等需要记录的信息。
+* 个性化信息：保存用户的偏好，比如网页的字体大小、背景色等等。
+* 追踪用户：记录和分析用户行为。
 
 Cookie 不是一种理想的客户端储存机制。它的容量很小（4KB），缺乏数据操作接口，而且会影响性能。客户端储存应该使用 Web storage API 和 IndexedDB。只有那些每次请求都需要让服务器知道的信息，才应该放在 Cookie 里面。
 
 每个 Cookie 都有以下几方面的元数据。
 
-- Cookie 的名字
-- Cookie 的值（真正的数据写在这里面）
-- 到期时间（超过这个时间会失效）
-- 所属域名（默认为当前域名）
-- 生效的路径（默认为当前网址）
+* Cookie 的名字
+* Cookie 的值（真正的数据写在这里面）
+* 到期时间（超过这个时间会失效）
+* 所属域名（默认为当前域名）
+* 生效的路径（默认为当前网址）
 
 举例来说，用户访问网址`www.example.com`，服务器在浏览器写入一个 Cookie。这个 Cookie 的所属域名为`www.example.com`，生效路径为根路径`/`。如果 Cookie 的生效路径设为`/forums`，那么这个 Cookie 只有在访问`www.example.com/forums`及其子路径时才有效。以后，浏览器访问某个路径之前，就会找出对该域名和路径有效，并且还没有到期的 Cookie，一起发送给服务器。
 
@@ -140,8 +140,8 @@ Cookie: yummy_cookie=choco; tasty_cookie=strawberry
 
 服务器收到浏览器发来的 Cookie 时，有两点是无法知道的。
 
-- Cookie 的各种属性，比如何时过期。
-- 哪个域名设置的 Cookie，到底是一级域名设的，还是某一个二级域名设的。
+* Cookie 的各种属性，比如何时过期。
+* 哪个域名设置的 Cookie，到底是一级域名设的，还是某一个二级域名设的。
 
 ## Cookie 的属性
 
@@ -191,7 +191,7 @@ Set-Cookie:id=a3fWa;
 
 用户后来又访问了恶意网站`malicious.com`，上面有一个表单。
 
-```html
+```markup
 <form action="your-bank.com/transfer" method="POST">
   ...
 </form>
@@ -199,7 +199,7 @@ Set-Cookie:id=a3fWa;
 
 用户一旦被诱骗发送这个表单，银行网站就会收到带有正确 Cookie 的请求。为了防止这种攻击，表单一般都带有一个随机 token，告诉服务器这是真实请求。
 
-```html
+```markup
 <form action="your-bank.com/transfer" method="POST">
   <input type="hidden" name="token" value="dad3weg34">
   ...
@@ -208,7 +208,7 @@ Set-Cookie:id=a3fWa;
 
 这种第三方网站引导发出的 Cookie，就称为第三方 Cookie。它除了用于 CSRF 攻击，还可以用于用户追踪。比如，Facebook 在第三方网站插入一张看不见的图片。
 
-```html
+```markup
 <img src="facebook.com" style="visibility:hidden;">
 ```
 
@@ -216,9 +216,9 @@ Set-Cookie:id=a3fWa;
 
 Cookie 的`SameSite`属性用来限制第三方 Cookie，从而减少安全风险。它可以设置三个值。
 
-> - Strict
-> - Lax
-> - None
+> * Strict
+> * Lax
+> * None
 
 **（1）Strict**
 
@@ -234,21 +234,21 @@ Set-Cookie: CookieName=CookieValue; SameSite=Strict;
 
 `Lax`规则稍稍放宽，大多数情况也是不发送第三方 Cookie，但是导航到目标网址的 Get 请求除外。
 
-```html
+```markup
 Set-Cookie: CookieName=CookieValue; SameSite=Lax;
 ```
 
 导航到目标网址的 GET 请求，只包括三种情况：链接，预加载请求，GET 表单。详见下表。
 
-| 请求类型  |                 示例                 |    正常情况 | Lax         |
-|-----------|:------------------------------------:|------------:|-------------|
-| 链接      | `<a href="..."></a>`                 | 发送 Cookie | 发送 Cookie |
-| 预加载    | `<link rel="prerender" href="..."/>` | 发送 Cookie | 发送 Cookie |
-| GET 表单  | `<form method="GET" action="...">`   | 发送 Cookie | 发送 Cookie |
-| POST 表单 | `<form method="POST" action="...">`  | 发送 Cookie | 不发送      |
-| iframe    | `<iframe src="..."></iframe>`        | 发送 Cookie | 不发送      |
-| AJAX      | `$.get("...")`                       | 发送 Cookie | 不发送      |
-| Image     | `<img src="...">`                    | 发送 Cookie | 不发送      |
+| 请求类型 | 示例 | 正常情况 | Lax |
+| :--- | :---: | ---: | :--- |
+| 链接 | `<a href="..."></a>` | 发送 Cookie | 发送 Cookie |
+| 预加载 | `<link rel="prerender" href="..."/>` | 发送 Cookie | 发送 Cookie |
+| GET 表单 | `<form method="GET" action="...">` | 发送 Cookie | 发送 Cookie |
+| POST 表单 | `<form method="POST" action="...">` | 发送 Cookie | 不发送 |
+| iframe | `<iframe src="..."></iframe>` | 发送 Cookie | 不发送 |
+| AJAX | `$.get("...")` | 发送 Cookie | 不发送 |
+| Image | `<img src="...">` | 发送 Cookie | 不发送 |
 
 设置了`Strict`或`Lax`以后，基本就杜绝了 CSRF 攻击。当然，前提是用户浏览器支持 SameSite 属性。
 
@@ -284,7 +284,7 @@ document.cookie // "foo=bar;baz=bar"
 var cookies = document.cookie.split(';');
 
 for (var i = 0; i < cookies.length; i++) {
-  console.log(cookies[i]);
+  console.log(cookies[i]);
 }
 // foo=bar
 // baz=bar
@@ -319,10 +319,10 @@ document.cookie = "foo=bar; expires=Fri, 31 Dec 2020 23:59:59 GMT";
 
 各个属性的写入注意点如下。
 
-- `path`属性必须为绝对路径，默认为当前路径。
-- `domain`属性值必须是当前发送 Cookie 的域名的一部分。比如，当前域名是`example.com`，就不能将其设为`foo.com`。该属性默认为当前的一级域名（不含二级域名）。
-- `max-age`属性的值为秒数。
-- `expires`属性的值为 UTC 格式，可以使用`Date.prototype.toUTCString()`进行日期格式转换。
+* `path`属性必须为绝对路径，默认为当前路径。
+* `domain`属性值必须是当前发送 Cookie 的域名的一部分。比如，当前域名是`example.com`，就不能将其设为`foo.com`。该属性默认为当前的一级域名（不含二级域名）。
+* `max-age`属性的值为秒数。
+* `expires`属性的值为 UTC 格式，可以使用`Date.prototype.toUTCString()`进行日期格式转换。
 
 `document.cookie`写入 Cookie 的例子如下。
 
@@ -345,9 +345,9 @@ document.cookie = 'fontSize=;expires=Thu, 01-Jan-1970 00:00:01 GMT';
 
 ## 参考链接
 
-- [HTTP cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies), by MDN
-- [Using the Same-Site Cookie Attribute to Prevent CSRF Attacks](https://www.netsparker.com/blog/web-security/same-site-cookie-attribute-prevent-cross-site-request-forgery/)
-- [SameSite cookies explained](https://web.dev/samesite-cookies-explained)
-- [Tough Cookies](https://scotthelme.co.uk/tough-cookies/), Scott Helme
-- [Cross-Site Request Forgery is dead!](https://scotthelme.co.uk/csrf-is-dead/), Scott Helme
+* [HTTP cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies), by MDN
+* [Using the Same-Site Cookie Attribute to Prevent CSRF Attacks](https://www.netsparker.com/blog/web-security/same-site-cookie-attribute-prevent-cross-site-request-forgery/)
+* [SameSite cookies explained](https://web.dev/samesite-cookies-explained)
+* [Tough Cookies](https://scotthelme.co.uk/tough-cookies/), Scott Helme
+* [Cross-Site Request Forgery is dead!](https://scotthelme.co.uk/csrf-is-dead/), Scott Helme
 

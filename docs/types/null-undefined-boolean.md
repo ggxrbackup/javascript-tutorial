@@ -87,18 +87,18 @@ f() // undefined
 
 下列运算符会返回布尔值：
 
-- 前置逻辑运算符： `!` (Not)
-- 相等运算符：`===`，`!==`，`==`，`!=`
-- 比较运算符：`>`，`>=`，`<`，`<=`
+* 前置逻辑运算符： `!` \(Not\)
+* 相等运算符：`===`，`!==`，`==`，`!=`
+* 比较运算符：`>`，`>=`，`<`，`<=`
 
 如果 JavaScript 预期某个位置应该是布尔值，会将该位置上现有的值自动转为布尔值。转换规则是除了下面六个值被转为`false`，其他值都视为`true`。
 
-- `undefined`
-- `null`
-- `false`
-- `0`
-- `NaN`
-- `""`或`''`（空字符串）
+* `undefined`
+* `null`
+* `false`
+* `0`
+* `NaN`
+* `""`或`''`（空字符串）
 
 布尔值往往用于程序流程的控制，请看一个例子。
 
@@ -129,4 +129,5 @@ if ({}) {
 
 ## 参考链接
 
-- Axel Rauschmayer, [Categorizing values in JavaScript](http://www.2ality.com/2013/01/categorizing-values.html)
+* Axel Rauschmayer, [Categorizing values in JavaScript](http://www.2ality.com/2013/01/categorizing-values.html)
+

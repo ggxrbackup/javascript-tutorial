@@ -93,7 +93,7 @@ f() // "姓名：李四"
 
 再看一个网页编程的例子。
 
-```html
+```markup
 <input type="text" name="age" size=3 onChange="validate(this, 18, 99);">
 
 <script>
@@ -517,7 +517,7 @@ $('#button').on('click', o.f);
 
 `this`的动态切换，固然为 JavaScript 创造了巨大的灵活性，但也使得编程变得困难和模糊。有时，需要把`this`固定下来，避免出现意想不到的情况。JavaScript 提供了`call`、`apply`、`bind`这三个方法，来切换/固定`this`的指向。
 
-### Function.prototype.call()
+### Function.prototype.call\(\)
 
 函数实例的`call`方法，可以指定函数内部`this`的指向（即函数执行时所在的作用域），然后在所指定的作用域中，调用该函数。
 
@@ -601,7 +601,7 @@ Object.prototype.hasOwnProperty.call(obj, 'toString') // false
 
 上面代码中，`hasOwnProperty`是`obj`对象继承的方法，如果这个方法一旦被覆盖，就不会得到正确结果。`call`方法可以解决这个问题，它将`hasOwnProperty`方法的原始定义放到`obj`对象上执行，这样无论`obj`上有没有同名方法，都不会影响结果。
 
-### Function.prototype.apply()
+### Function.prototype.apply\(\)
 
 `apply`方法的作用与`call`方法类似，也是改变`this`指向，然后再调用该函数。唯一的区别就是，它接收一个数组作为函数执行时的参数，使用格式如下。
 
@@ -696,7 +696,7 @@ $('#button').on('click', f);
 
 上面代码中，点击按钮以后，控制台将会显示`true`。由于`apply()`方法（或者`call()`方法）不仅绑定函数执行时所在的对象，还会立即执行函数，因此不得不把绑定语句写在一个函数体内。更简洁的写法是采用下面介绍的`bind()`方法。
 
-### Function.prototype.bind()
+### Function.prototype.bind\(\)
 
 `bind()`方法用于将函数体内的`this`绑定到某个对象，然后返回一个新函数。
 
@@ -931,6 +931,7 @@ bind(f, o)() // 123
 
 ## 参考链接
 
-- Jonathan Creamer, [Avoiding the "this" problem in JavaScript](http://tech.pro/tutorial/1192/avoiding-the-this-problem-in-javascript)
-- Erik Kronberg, [Bind, Call and Apply in JavaScript](https://variadic.me/posts/2013-10-22-bind-call-and-apply-in-javascript.html)
-- Axel Rauschmayer, [JavaScript’s this: how it works, where it can trip you up](http://www.2ality.com/2014/05/this.html)
+* Jonathan Creamer, [Avoiding the "this" problem in JavaScript](http://tech.pro/tutorial/1192/avoiding-the-this-problem-in-javascript)
+* Erik Kronberg, [Bind, Call and Apply in JavaScript](https://variadic.me/posts/2013-10-22-bind-call-and-apply-in-javascript.html)
+* Axel Rauschmayer, [JavaScript’s this: how it works, where it can trip you up](http://www.2ality.com/2014/05/this.html)
+

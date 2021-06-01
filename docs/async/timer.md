@@ -2,7 +2,7 @@
 
 JavaScript 提供定时执行代码的功能，叫做定时器（timer），主要由`setTimeout()`和`setInterval()`这两个函数来完成。它们向任务队列添加定时任务。
 
-## setTimeout()
+## setTimeout\(\)
 
 `setTimeout`函数用来指定某个函数或某段代码，在多少毫秒之后执行。它返回一个整数，表示定时器的编号，以后可以用来取消这个定时器。
 
@@ -104,7 +104,7 @@ setTimeout(obj.y.bind(obj), 1000)
 // 2
 ```
 
-## setInterval()
+## setInterval\(\)
 
 `setInterval`函数的用法与`setTimeout`完全一致，区别仅仅在于`setInterval`指定某个任务每隔一段时间就执行一次，也就是无限次的定时执行。
 
@@ -125,12 +125,12 @@ var timer = setInterval(function() {
 var div = document.getElementById('someDiv');
 var opacity = 1;
 var fader = setInterval(function() {
-  opacity -= 0.1;
-  if (opacity >= 0) {
-    div.style.opacity = opacity;
-  } else {
-    clearInterval(fader);
-  }
+  opacity -= 0.1;
+  if (opacity >= 0) {
+    div.style.opacity = opacity;
+  } else {
+    clearInterval(fader);
+  }
 }, 100);
 ```
 
@@ -141,9 +141,9 @@ var fader = setInterval(function() {
 ```javascript
 var hash = window.location.hash;
 var hashWatcher = setInterval(function() {
-  if (window.location.hash != hash) {
-    updatePage();
-  }
+  if (window.location.hash != hash) {
+    updatePage();
+  }
 }, 1000);
 ```
 
@@ -161,7 +161,7 @@ var timer = setTimeout(function f() {
 
 上面代码可以确保，下一次执行总是在本次执行结束之后的2000毫秒开始。
 
-## clearTimeout()，clearInterval()
+## clearTimeout\(\)，clearInterval\(\)
 
 `setTimeout`和`setInterval`函数，都返回一个整数值，表示计数器编号。将该整数传入`clearTimeout`和`clearInterval`函数，就可以取消对应的定时器。
 
@@ -268,7 +268,7 @@ function sleep(ms) {
 
 上面代码中，`setInterval`要求每隔1000毫秒，就输出一个2。但是，紧接着的`sleep`语句需要3000毫秒才能完成，那么`setInterval`就必须推迟到3000毫秒之后才开始生效。注意，生效后`setInterval`不会产生累积效应，即不会一下子输出三个2，而是只会输出一个2。
 
-## setTimeout(f, 0)
+## setTimeout\(f, 0\)
 
 ### 含义
 
@@ -364,3 +364,4 @@ timer = setTimeout(func, 0);
 上面代码有两种写法，都是改变一个网页元素的背景色。写法一会造成浏览器“堵塞”，因为 JavaScript 执行速度远高于 DOM，会造成大量 DOM 操作“堆积”，而写法二就不会，这就是`setTimeout(f, 0)`的好处。
 
 另一个使用这种技巧的例子是代码高亮的处理。如果代码块很大，一次性处理，可能会对性能造成很大的压力，那么将其分成一个个小块，一次处理一块，比如写成`setTimeout(highlightNext, 50)`的样子，性能压力就会减轻。
+

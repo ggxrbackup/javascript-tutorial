@@ -6,10 +6,10 @@
 
 `document`对象有不同的办法可以获取。
 
-- 正常的网页，直接使用`document`或`window.document`。
-- `iframe`框架里面的网页，使用`iframe`节点的`contentDocument`属性。
-- Ajax 操作返回的文档，使用`XMLHttpRequest`对象的`responseXML`属性。
-- 内部节点的`ownerDocument`属性。
+* 正常的网页，直接使用`document`或`window.document`。
+* `iframe`框架里面的网页，使用`iframe`节点的`contentDocument`属性。
+* Ajax 操作返回的文档，使用`XMLHttpRequest`对象的`responseXML`属性。
+* 内部节点的`ownerDocument`属性。
 
 `document`对象继承了`EventTarget`接口和`Node`接口，并且混入（mixin）了`ParentNode`接口。这意味着，这些接口的方法都可以在`document`对象上调用。除此之外，`document`对象还有很多自己的属性和方法。
 
@@ -269,10 +269,10 @@ document.referrer
 
 它的值有四种可能。
 
-> - `visible`：页面可见。注意，页面可能是部分可见，即不是焦点窗口，前面被其他窗口部分挡住了。
-> - `hidden`：页面不可见，有可能窗口最小化，或者浏览器切换到了另一个 Tab。
-> - `prerender`：页面处于正在渲染状态，对于用户来说，该页面不可见。
-> - `unloaded`：页面从内存里面卸载了。
+> * `visible`：页面可见。注意，页面可能是部分可见，即不是焦点窗口，前面被其他窗口部分挡住了。
+> * `hidden`：页面不可见，有可能窗口最小化，或者浏览器切换到了另一个 Tab。
+> * `prerender`：页面处于正在渲染状态，对于用户来说，该页面不可见。
+> * `unloaded`：页面从内存里面卸载了。
 
 这个属性可以用在页面加载时，防止加载某些资源；或者页面不可见时，停掉一些页面功能。
 
@@ -280,16 +280,16 @@ document.referrer
 
 `document.readyState`属性返回当前文档的状态，共有三种可能的值。
 
-- `loading`：加载 HTML 代码阶段（尚未完成解析）
-- `interactive`：加载外部资源阶段
-- `complete`：加载完成
+* `loading`：加载 HTML 代码阶段（尚未完成解析）
+* `interactive`：加载外部资源阶段
+* `complete`：加载完成
 
 这个属性变化的过程如下。
 
 1. 浏览器开始解析 HTML 文档，`document.readyState`属性等于`loading`。
-1. 浏览器遇到 HTML 文档中的`<script>`元素，并且没有`async`或`defer`属性，就暂停解析，开始执行脚本，这时`document.readyState`属性还是等于`loading`。
-1. HTML 文档解析完成，`document.readyState`属性变成`interactive`。
-1. 浏览器等待图片、样式表、字体文件等外部资源加载完成，一旦全部加载完成，`document.readyState`属性变成`complete`。
+2. 浏览器遇到 HTML 文档中的`<script>`元素，并且没有`async`或`defer`属性，就暂停解析，开始执行脚本，这时`document.readyState`属性还是等于`loading`。
+3. HTML 文档解析完成，`document.readyState`属性变成`interactive`。
+4. 浏览器等待图片、样式表、字体文件等外部资源加载完成，一旦全部加载完成，`document.readyState`属性变成`complete`。
 
 下面的代码用来检查网页是否加载成功。
 
@@ -331,7 +331,7 @@ editor.contentDocument.designMode = 'on';
 
 `document.currentScript`属性只用在`<script>`元素的内嵌脚本或加载的外部脚本之中，返回当前脚本所在的那个 DOM 节点，即`<script>`元素的 DOM 节点。
 
-```html
+```markup
 <script id="foo">
   console.log(
     document.currentScript === document.getElementById('foo')
@@ -345,9 +345,9 @@ editor.contentDocument.designMode = 'on';
 
 `document.implementation`属性返回一个`DOMImplementation`对象。该对象有三个方法，主要用于创建独立于当前文档的新的 Document 对象。
 
-- `DOMImplementation.createDocument()`：创建一个 XML 文档。
-- `DOMImplementation.createHTMLDocument()`：创建一个 HTML 文档。
-- `DOMImplementation.createDocumentType()`：创建一个 DocumentType 对象。
+* `DOMImplementation.createDocument()`：创建一个 XML 文档。
+* `DOMImplementation.createHTMLDocument()`：创建一个 HTML 文档。
+* `DOMImplementation.createDocumentType()`：创建一个 DocumentType 对象。
 
 下面是创建 HTML 文档的例子。
 
@@ -367,7 +367,7 @@ document.replaceChild(
 
 ## 方法
 
-### document.open()，document.close()
+### document.open\(\)，document.close\(\)
 
 `document.open`方法清除当前文档所有内容，使得文档处于可写状态，供`document.write`方法写入内容。
 
@@ -379,7 +379,7 @@ document.write('hello world');
 document.close();
 ```
 
-### document.write()，document.writeln()
+### document.write\(\)，document.writeln\(\)
 
 `document.write`方法用于向当前文档写入内容。
 
@@ -418,7 +418,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
 如果在页面渲染过程中调用`write`方法，并不会自动调用`open`方法。（可以理解成，`open`方法已调用，但`close`方法还未调用。）
 
-```html
+```markup
 <html>
 <body>
 hello
@@ -449,7 +449,7 @@ document.writeln(2);
 
 注意，`writeln`方法添加的是 ASCII 码的换行符，渲染成 HTML 网页时不起作用，即在网页上显示不出换行。网页上的换行，必须显式写入`<br>`。
 
-### document.querySelector()，document.querySelectorAll()
+### document.querySelector\(\)，document.querySelectorAll\(\)
 
 `document.querySelector`方法接受一个 CSS 选择器作为参数，返回匹配该选择器的元素节点。如果有多个节点满足匹配条件，则返回第一个匹配的节点。如果没有发现匹配的节点，则返回`null`。
 
@@ -494,7 +494,7 @@ document.querySelectorAll('DIV, A, SCRIPT');
 
 最后，这两个方法除了定义在`document`对象上，还定义在元素节点上，即在元素节点上也可以调用。
 
-### document.getElementsByTagName()
+### document.getElementsByTagName\(\)
 
 `document.getElementsByTagName()`方法搜索 HTML 标签名，返回符合条件的元素。它的返回值是一个类似数组对象（`HTMLCollection`实例），可以实时反映 HTML 文档的变化。如果没有任何匹配的元素，就返回一个空集。
 
@@ -522,7 +522,7 @@ var spans = firstPara.getElementsByTagName('span');
 
 上面代码选中第一个`p`元素内部的所有`span`元素。
 
-### document.getElementsByClassName()
+### document.getElementsByClassName\(\)
 
 `document.getElementsByClassName()`方法返回一个类似数组的对象（`HTMLCollection`实例），包括了所有`class`名字符合指定条件的元素，元素的变化实时反映在返回结果中。
 
@@ -549,7 +549,7 @@ var elements = document.getElementsByClassName('foo bar');
 var elements = rootElement.getElementsByClassName(names);
 ```
 
-### document.getElementsByName()
+### document.getElementsByName\(\)
 
 `document.getElementsByName()`方法用于选择拥有`name`属性的 HTML 元素（比如`<form>`、`<radio>`、`<img>`、`<frame>`、`<embed>`和`<object>`等），返回一个类似数组的的对象（`NodeList`实例），因为`name`属性相同的元素可能不止一个。
 
@@ -559,7 +559,7 @@ var forms = document.getElementsByName('x');
 forms[0].tagName // "FORM"
 ```
 
-### document.getElementById()
+### document.getElementById\(\)
 
 `document.getElementById()`方法返回匹配指定`id`属性的元素节点。如果没有发现匹配的节点，则返回`null`。
 
@@ -580,7 +580,7 @@ document.querySelector('#myElement')
 
 另外，这个方法只能在`document`对象上使用，不能在其他元素节点上使用。
 
-### document.elementFromPoint()，document.elementsFromPoint()
+### document.elementFromPoint\(\)，document.elementsFromPoint\(\)
 
 `document.elementFromPoint()`方法返回位于页面指定位置最上层的元素节点。
 
@@ -598,7 +598,7 @@ var element = document.elementFromPoint(50, 50);
 var elements = document.elementsFromPoint(x, y);
 ```
 
-### document.createElement()
+### document.createElement\(\)
 
 `document.createElement`方法用来生成元素节点，并返回该节点。
 
@@ -619,7 +619,7 @@ document.createElement('<div>');
 document.createElement('foo');
 ```
 
-### document.createTextNode()
+### document.createTextNode\(\)
 
 `document.createTextNode`方法用来生成文本节点（`Text`实例），并返回该节点。它的参数是文本节点的内容。
 
@@ -644,7 +644,7 @@ console.log(div.innerHTML)
 
 需要注意的是，该方法不对单引号和双引号转义，所以不能用来对 HTML 属性赋值。
 
-```html
+```markup
 function escapeHtml(str) {
   var div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
@@ -660,7 +660,7 @@ div.innerHTML = profileLink;
 
 上面代码中，由于`createTextNode`方法不转义双引号，导致`onmouseover`方法被注入了代码。
 
-### document.createAttribute()
+### document.createAttribute\(\)
 
 `document.createAttribute`方法生成一个新的属性节点（`Attr`实例），并返回它。
 
@@ -683,7 +683,7 @@ node.setAttribute('my_attrib', 'newVal');
 
 上面代码为`div1`节点，插入一个值为`newVal`的`my_attrib`属性。
 
-### document.createComment()
+### document.createComment\(\)
 
 `document.createComment`方法生成一个新的注释节点，并返回该节点。
 
@@ -693,7 +693,7 @@ var CommentNode = document.createComment(data);
 
 `document.createComment`方法的参数是一个字符串，会成为注释节点的内容。
 
-### document.createDocumentFragment()
+### document.createDocumentFragment\(\)
 
 `document.createDocumentFragment`方法生成一个空的文档片段对象（`DocumentFragment`实例）。
 
@@ -718,7 +718,7 @@ element.appendChild(docfrag);
 
 上面代码中，文档片断`docfrag`包含四个`<li>`节点，这些子节点被一次性插入了当前文档。
 
-### document.createEvent()
+### document.createEvent\(\)
 
 `document.createEvent`方法生成一个事件对象（`Event`实例），该对象可以被`element.dispatchEvent`方法使用，触发指定事件。
 
@@ -739,7 +739,7 @@ document.dispatchEvent(event);
 
 上面代码新建了一个名为`build`的事件实例，然后触发该事件。
 
-### document.addEventListener()，document.removeEventListener()，document.dispatchEvent()
+### document.addEventListener\(\)，document.removeEventListener\(\)，document.dispatchEvent\(\)
 
 这三个方法用于处理`document`节点的事件。它们都继承自`EventTarget`接口，详细介绍参见《EventTarget 接口》一章。
 
@@ -755,7 +755,7 @@ var event = new Event('click');
 document.dispatchEvent(event);
 ```
 
-### document.hasFocus()
+### document.hasFocus\(\)
 
 `document.hasFocus`方法返回一个布尔值，表示当前文档之中是否有元素被激活或获得焦点。
 
@@ -765,7 +765,7 @@ var focused = document.hasFocus();
 
 注意，有焦点的文档必定被激活（active），反之不成立，激活的文档未必有焦点。比如，用户点击按钮，从当前窗口跳出一个新窗口，该新窗口就是激活的，但是不拥有焦点。
 
-### document.adoptNode()，document.importNode()
+### document.adoptNode\(\)，document.importNode\(\)
 
 `document.adoptNode`方法将某个节点及其子节点，从原来所在的文档或`DocumentFragment`里面移除，归属当前`document`对象，返回插入后的新节点。插入的节点对象的`ownerDocument`属性，会变成当前的`document`对象，而`parentNode`属性是`null`。
 
@@ -795,7 +795,7 @@ document.getElementById("container").appendChild(newNode);
 
 上面代码从`iframe`窗口，拷贝一个指定节点`myNode`，插入当前文档。
 
-### document.createNodeIterator()
+### document.createNodeIterator\(\)
 
 `document.createNodeIterator`方法返回一个子节点遍历器。
 
@@ -810,10 +810,10 @@ var nodeIterator = document.createNodeIterator(
 
 `document.createNodeIterator`方法第一个参数为所要遍历的根节点，第二个参数为所要遍历的节点类型，这里指定为元素节点（`NodeFilter.SHOW_ELEMENT`）。几种主要的节点类型写法如下。
 
-- 所有节点：NodeFilter.SHOW_ALL
-- 元素节点：NodeFilter.SHOW_ELEMENT
-- 文本节点：NodeFilter.SHOW_TEXT
-- 评论节点：NodeFilter.SHOW_COMMENT
+* 所有节点：NodeFilter.SHOW\_ALL
+* 元素节点：NodeFilter.SHOW\_ELEMENT
+* 文本节点：NodeFilter.SHOW\_TEXT
+* 评论节点：NodeFilter.SHOW\_COMMENT
 
 `document.createNodeIterator`方法返回一个“遍历器”对象（`NodeFilter`实例）。该实例的`nextNode()`方法和`previousNode()`方法，可以用来遍历所有子节点。
 
@@ -849,7 +849,7 @@ currentNode === previousNode // true
 pars[0] === document.body // true
 ```
 
-### document.createTreeWalker()
+### document.createTreeWalker\(\)
 
 `document.createTreeWalker`方法返回一个 DOM 的子树遍历器。它与`document.createNodeIterator`方法基本是类似的，区别在于它返回的是`TreeWalker`实例，后者返回的是`NodeIterator`实例。另外，它的第一个节点不是根节点。
 
@@ -870,9 +870,9 @@ while(treeWalker.nextNode()) {
 
 上面代码遍历`<body>`节点下属的所有元素节点，将它们插入`nodeList`数组。
 
-### document.execCommand()，document.queryCommandSupported()，document.queryCommandEnabled()
+### document.execCommand\(\)，document.queryCommandSupported\(\)，document.queryCommandEnabled\(\)
 
-**（1）document.execCommand()**
+**（1）document.execCommand\(\)**
 
 如果`document.designMode`属性设为`on`，那么整个文档用户可编辑；如果元素的`contenteditable`属性设为`true`，那么该元素可编辑。这两种情况下，可以使用`document.execCommand()`方法，改变内容的样式，比如`document.execCommand('bold')`会使得字体加粗。
 
@@ -882,9 +882,9 @@ document.execCommand(command, showDefaultUI, input)
 
 该方法接受三个参数。
 
-- `command`：字符串，表示所要实施的样式。
-- `showDefaultUI`：布尔值，表示是否要使用默认的用户界面，建议总是设为`false`。
-- `input`：字符串，表示该样式的辅助内容，比如生成超级链接时，这个参数就是所要链接的网址。如果第二个参数设为`true`，那么浏览器会弹出提示框，要求用户在提示框输入该参数。但是，不是所有浏览器都支持这样做，为了兼容性，还是需要自己部署获取这个参数的方式。
+* `command`：字符串，表示所要实施的样式。
+* `showDefaultUI`：布尔值，表示是否要使用默认的用户界面，建议总是设为`false`。
+* `input`：字符串，表示该样式的辅助内容，比如生成超级链接时，这个参数就是所要链接的网址。如果第二个参数设为`true`，那么浏览器会弹出提示框，要求用户在提示框输入该参数。但是，不是所有浏览器都支持这样做，为了兼容性，还是需要自己部署获取这个参数的方式。
 
 ```javascript
 var url = window.prompt('请输入网址');
@@ -902,7 +902,7 @@ if (url) {
 
 `document.execCommand()`方法可以执行的样式改变有很多种，下面是其中的一些：bold、insertLineBreak、selectAll、createLink、insertOrderedList、subscript、delete、insertUnorderedList、superscript、formatBlock、insertParagraph、undo、forwardDelete、insertText、unlink、insertImage、italic、unselect、insertHTML、redo。这些值都可以用作第一个参数，它们的含义不难从字面上看出来。
 
-**（2）document.queryCommandSupported()**
+**（2）document.queryCommandSupported\(\)**
 
 `document.queryCommandSupported()`方法返回一个布尔值，表示浏览器是否支持`document.execCommand()`的某个命令。
 
@@ -912,7 +912,7 @@ if (document.queryCommandSupported('SelectAll')) {
 }
 ```
 
-**（3）document.queryCommandEnabled()**
+**（3）document.queryCommandEnabled\(\)**
 
 `document.queryCommandEnabled()`方法返回一个布尔值，表示当前是否可用`document.execCommand()`的某个命令。比如，`bold`（加粗）命令只有存在文本选中时才可用，如果没有选中文本，就不可用。
 
@@ -949,7 +949,7 @@ function copyText(text) {
 
 上面代码中，先判断浏览器是否支持`copy`命令（允许可编辑区域的选中内容，复制到剪贴板），如果支持，就新建一个临时文本框，里面写入内容“你好”，并将其选中。然后，判断是否选中成功，如果成功，就将“你好”复制到剪贴板，再删除那个临时文本框。
 
-### document.getSelection()
+### document.getSelection\(\)
 
 这个方法指向`window.getSelection()`，参见`window`对象一节的介绍。
 

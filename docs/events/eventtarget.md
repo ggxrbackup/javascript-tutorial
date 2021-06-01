@@ -8,11 +8,11 @@ DOM 的事件操作（监听和触发），都定义在`EventTarget`接口。所
 
 该接口主要提供三个实例方法。
 
-- `addEventListener`：绑定事件的监听函数
-- `removeEventListener`：移除事件的监听函数
-- `dispatchEvent`：触发事件
+* `addEventListener`：绑定事件的监听函数
+* `removeEventListener`：移除事件的监听函数
+* `dispatchEvent`：触发事件
 
-## EventTarget.addEventListener()
+## EventTarget.addEventListener\(\)
 
 `EventTarget.addEventListener()`用于在当前节点或对象上，定义一个特定事件的监听函数。一旦这个事件发生，就会执行监听函数。该方法没有返回值。
 
@@ -22,9 +22,9 @@ target.addEventListener(type, listener[, useCapture]);
 
 该方法接受三个参数。
 
-- `type`：事件名称，大小写敏感。
-- `listener`：监听函数。事件发生时，会调用该监听函数。
-- `useCapture`：布尔值，表示监听函数是否在捕获阶段（capture）触发（参见后文《事件的传播》部分），默认为`false`（监听函数只在冒泡阶段被触发）。该参数可选。
+* `type`：事件名称，大小写敏感。
+* `listener`：监听函数。事件发生时，会调用该监听函数。
+* `useCapture`：布尔值，表示监听函数是否在捕获阶段（capture）触发（参见后文《事件的传播》部分），默认为`false`（监听函数只在冒泡阶段被触发）。该参数可选。
 
 下面是一个例子。
 
@@ -55,9 +55,9 @@ buttonElement.addEventListener('click', {
 
 其次，第三个参数除了布尔值`useCapture`，还可以是一个属性配置对象。该对象有以下属性。
 
-> - `capture`：布尔值，表示该事件是否在`捕获阶段`触发监听函数。
-> - `once`：布尔值，表示监听函数是否只触发一次，然后就自动移除。
-> - `passive`：布尔值，表示监听函数不会调用事件的`preventDefault`方法。如果监听函数调用了，浏览器将忽略这个要求，并在监控台输出一行警告。
+> * `capture`：布尔值，表示该事件是否在`捕获阶段`触发监听函数。
+> * `once`：布尔值，表示监听函数是否只触发一次，然后就自动移除。
+> * `passive`：布尔值，表示监听函数不会调用事件的`preventDefault`方法。如果监听函数调用了，浏览器将忽略这个要求，并在监控台输出一行警告。
 
 如果希望事件监听函数只执行一次，可以打开属性配置对象的`once`属性。
 
@@ -106,7 +106,7 @@ para.addEventListener('click', function (e) {
 
 上面代码中，监听函数内部的`this`指向事件所在的对象`para`。
 
-## EventTarget.removeEventListener()
+## EventTarget.removeEventListener\(\)
 
 `EventTarget.removeEventListener`方法用来移除`addEventListener`方法添加的事件监听函数。该方法没有返回值。
 
@@ -133,7 +133,7 @@ element.removeEventListener("mousedown", handleMouseDown, false);
 
 上面代码中，`removeEventListener`方法也是无效的，因为第三个参数不一样。
 
-## EventTarget.dispatchEvent()
+## EventTarget.dispatchEvent\(\)
 
 `EventTarget.dispatchEvent`方法在当前节点上触发指定事件，从而触发监听函数的执行。该方法返回一个布尔值，只要有一个监听函数调用了`Event.preventDefault()`，则返回值为`false`，否则为`true`。
 
@@ -163,3 +163,4 @@ if (canceled) {
   console.log('事件未取消');
 }
 ```
+

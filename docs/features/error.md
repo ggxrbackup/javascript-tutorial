@@ -13,9 +13,9 @@ err.message // "出错了"
 
 JavaScript 语言标准只提到，`Error`实例对象必须有`message`属性，表示出错时的提示信息，没有提到其他属性。大多数 JavaScript 引擎，对`Error`实例还提供`name`和`stack`属性，分别表示错误的名称和错误的堆栈，但它们是非标准的，不是每种实现都有。
 
-- **message**：错误提示信息
-- **name**：错误名称（非标准属性）
-- **stack**：错误的堆栈（非标准属性）
+* **message**：错误提示信息
+* **name**：错误名称（非标准属性）
+* **stack**：错误的堆栈（非标准属性）
 
 使用`name`和`message`这两个属性，可以对发生什么错误有一个大概的了解。
 
@@ -450,4 +450,5 @@ try {
 
 ## 参考连接
 
-- Jani Hartikainen, [JavaScript Errors and How to Fix Them](http://davidwalsh.name/fix-javascript-errors)
+* Jani Hartikainen, [JavaScript Errors and How to Fix Them](http://davidwalsh.name/fix-javascript-errors)
+

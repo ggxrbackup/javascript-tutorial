@@ -8,16 +8,16 @@ JavaScript 是浏览器的内置脚本语言。也就是说，浏览器内置了
 
 网页中嵌入 JavaScript 代码，主要有三种方法。
 
-- `<script>`元素直接嵌入代码。
-- `<script>`标签加载外部脚本
-- 事件属性
-- URL 协议
+* `<script>`元素直接嵌入代码。
+* `<script>`标签加载外部脚本
+* 事件属性
+* URL 协议
 
 ### script 元素嵌入代码
 
 `<script>`元素内部可以直接写 JavaScript 代码。
 
-```html
+```markup
 <script>
   var x = 1 + 5;
   console.log(x);
@@ -26,10 +26,10 @@ JavaScript 是浏览器的内置脚本语言。也就是说，浏览器内置了
 
 `<script>`标签有一个`type`属性，用来指定脚本类型。对 JavaScript 脚本来说，`type`属性可以设为两种值。
 
-- `text/javascript`：这是默认值，也是历史上一贯设定的值。如果你省略`type`属性，默认就是这个值。对于老式浏览器，设为这个值比较好。
-- `application/javascript`：对于较新的浏览器，建议设为这个值。
+* `text/javascript`：这是默认值，也是历史上一贯设定的值。如果你省略`type`属性，默认就是这个值。对于老式浏览器，设为这个值比较好。
+* `application/javascript`：对于较新的浏览器，建议设为这个值。
 
-```html
+```markup
 <script type="application/javascript">
   console.log('Hello World');
 </script>
@@ -39,7 +39,7 @@ JavaScript 是浏览器的内置脚本语言。也就是说，浏览器内置了
 
 如果`type`属性的值，浏览器不认识，那么它不会执行其中的代码。利用这一点，可以在`<script>`标签之中嵌入任意的文本内容，只要加上一个浏览器不认识的`type`属性即可。
 
-```html
+```markup
 <script id="mydata" type="x-custom-data">
   console.log('Hello World');
 </script>
@@ -56,13 +56,13 @@ document.getElementById('mydata').text
 
 `<script>`标签也可以指定加载外部的脚本文件。
 
-```html
+```markup
 <script src="https://www.example.com/script.js"></script>
 ```
 
 如果脚本文件使用了非英语字符，还应该注明字符的编码。
 
-```html
+```markup
 <script charset="utf-8" src="https://www.example.com/script.js"></script>
 ```
 
@@ -70,7 +70,7 @@ document.getElementById('mydata').text
 
 加载外部脚本和直接添加代码块，这两种方法不能混用。下面代码的`console.log`语句直接被忽略。
 
-```html
+```markup
 <script charset="utf-8" src="example.js">
   console.log('Hello World!');
 </script>
@@ -78,7 +78,7 @@ document.getElementById('mydata').text
 
 为了防止攻击者篡改外部脚本，`script`标签允许设置一个`integrity`属性，写入该外部脚本的 Hash 签名，用来验证脚本的一致性。
 
-```html
+```markup
 <script src="/assets/application.js"
   integrity="sha256-TvVUHzSfftWg1rcfL6TIJ0XKEGrgLyEq6lEpcmrG9qs=">
 </script>
@@ -90,7 +90,7 @@ document.getElementById('mydata').text
 
 网页元素的事件属性（比如`onclick`和`onmouseover`），可以写入 JavaScript 代码。当指定事件发生时，就会调用这些代码。
 
-```html
+```markup
 <button id="myBtn" onclick="console.log(this.id)">点击</button>
 ```
 
@@ -100,7 +100,7 @@ document.getElementById('mydata').text
 
 URL 支持`javascript:`协议，即在 URL 的位置写入代码，使用这个 URL 的时候就会执行 JavaScript 代码。
 
-```html
+```markup
 <a href="javascript:console.log('Hello')">点击</a>
 ```
 
@@ -108,7 +108,7 @@ URL 支持`javascript:`协议，即在 URL 的位置写入代码，使用这个 
 
 如果 JavaScript 代码返回一个字符串，浏览器就会新建一个文档，展示这个字符串的内容，原有文档的内容都会消失。
 
-```html
+```markup
 <a href="javascript: new Date().toLocaleTimeString();">点击</a>
 ```
 
@@ -124,7 +124,7 @@ URL 支持`javascript:`协议，即在 URL 的位置写入代码，使用这个 
 
 `javascript:`协议的常见用途是书签脚本 Bookmarklet。由于浏览器的书签保存的是一个网址，所以`javascript:`网址也可以保存在里面，用户选择这个书签的时候，就会在当前页面执行这个脚本。为了防止书签替换掉当前文档，可以在脚本前加上`void`，或者在脚本最后加上`void 0`。
 
-```html
+```markup
 <a href="javascript: void new Date().toLocaleTimeString();">点击</a>
 <a href="javascript: new Date().toLocaleTimeString();void 0;">点击</a>
 ```
@@ -150,7 +150,7 @@ URL 支持`javascript:`协议，即在 URL 的位置写入代码，使用这个 
 
 脚本文件都放在网页尾部加载，还有一个好处。因为在 DOM 结构生成之前就调用 DOM 节点，JavaScript 会报错，如果脚本都在网页尾部加载，就不存在这个问题，因为这时 DOM 肯定已经生成了。
 
-```html
+```markup
 <head>
   <script>
     console.log(document.body.innerHTML);
@@ -164,7 +164,7 @@ URL 支持`javascript:`协议，即在 URL 的位置写入代码，使用这个 
 
 一种解决方法是设定`DOMContentLoaded`事件的回调函数。
 
-```html
+```markup
 <head>
   <script>
     document.addEventListener(
@@ -181,14 +181,14 @@ URL 支持`javascript:`协议，即在 URL 的位置写入代码，使用这个 
 
 另一种解决方法是，使用`<script>`标签的`onload`属性。当`<script>`标签指定的外部脚本文件下载和解析完成，会触发一个`load`事件，可以把所需执行的代码，放在这个事件的回调函数里面。
 
-```html
+```markup
 <script src="jquery.min.js" onload="console.log(document.body.innerHTML)">
 </script>
 ```
 
 但是，如果将脚本放在页面底部，就可以完全按照正常的方式写，上面两种方式都不需要。
 
-```html
+```markup
 <body>
   <!-- 其他代码  -->
   <script>
@@ -199,7 +199,7 @@ URL 支持`javascript:`协议，即在 URL 的位置写入代码，使用这个 
 
 如果有多个`script`标签，比如下面这样。
 
-```html
+```markup
 <script src="a.js"></script>
 <script src="b.js"></script>
 ```
@@ -214,7 +214,7 @@ URL 支持`javascript:`协议，即在 URL 的位置写入代码，使用这个 
 
 为了解决脚本文件下载阻塞网页渲染的问题，一个方法是对`<script>`元素加入`defer`属性。它的作用是延迟脚本的执行，等到 DOM 加载生成后，再执行脚本。
 
-```html
+```markup
 <script src="a.js" defer></script>
 <script src="b.js" defer></script>
 ```
@@ -236,7 +236,7 @@ URL 支持`javascript:`协议，即在 URL 的位置写入代码，使用这个 
 
 解决“阻塞效应”的另一个方法是对`<script>`元素加入`async`属性。
 
-```html
+```markup
 <script src="a.js" async></script>
 <script src="b.js" async></script>
 ```
@@ -302,19 +302,19 @@ function loadScript(src, done) {
 
 如果不指定协议，浏览器默认采用 HTTP 协议下载。
 
-```html
+```markup
 <script src="example.js"></script>
 ```
 
 上面的`example.js`默认就是采用 HTTP 协议下载，如果要采用 HTTPS 协议下载，必需写明。
 
-```html
+```markup
 <script src="https://example.js"></script>
 ```
 
 但是有时我们会希望，根据页面本身的协议来决定加载协议，这时可以采用下面的写法。
 
-```html
+```markup
 <script src="//example.js"></script>
 ```
 
@@ -328,11 +328,11 @@ function loadScript(src, done) {
 
 不同的浏览器有不同的渲染引擎。
 
-- Firefox：Gecko 引擎
-- Safari：WebKit 引擎
-- Chrome：Blink 引擎
-- IE: Trident 引擎
-- Edge: EdgeHTML 引擎
+* Firefox：Gecko 引擎
+* Safari：WebKit 引擎
+* Chrome：Blink 引擎
+* IE: Trident 引擎
+* Edge: EdgeHTML 引擎
 
 渲染引擎处理网页，通常分成四个阶段。
 
@@ -366,14 +366,14 @@ foo.style.marginTop = '30px';
 
 下面是一些优化技巧。
 
-- 读取 DOM 或者写入 DOM，尽量写在一起，不要混杂。不要读取一个 DOM 节点，然后立刻写入，接着再读取一个 DOM 节点。
-- 缓存 DOM 信息。
-- 不要一项一项地改变样式，而是使用 CSS class 一次性改变样式。
-- 使用`documentFragment`操作 DOM
-- 动画使用`absolute`定位或`fixed`定位，这样可以减少对其他元素的影响。
-- 只在必要时才显示隐藏元素。
-- 使用`window.requestAnimationFrame()`，因为它可以把代码推迟到下一次重流时执行，而不是立即要求页面重流。
-- 使用虚拟 DOM（virtual DOM）库。
+* 读取 DOM 或者写入 DOM，尽量写在一起，不要混杂。不要读取一个 DOM 节点，然后立刻写入，接着再读取一个 DOM 节点。
+* 缓存 DOM 信息。
+* 不要一项一项地改变样式，而是使用 CSS class 一次性改变样式。
+* 使用`documentFragment`操作 DOM
+* 动画使用`absolute`定位或`fixed`定位，这样可以减少对其他元素的影响。
+* 只在必要时才显示隐藏元素。
+* 使用`window.requestAnimationFrame()`，因为它可以把代码推迟到下一次重流时执行，而不是立即要求页面重流。
+* 使用虚拟 DOM（virtual DOM）库。
 
 下面是一个`window.requestAnimationFrame()`对比效果的例子。
 
@@ -419,21 +419,22 @@ JavaScript 是一种解释型语言，也就是说，它不需要编译，由解
 
 字节码不能直接运行，而是运行在一个虚拟机（Virtual Machine）之上，一般也把虚拟机称为 JavaScript 引擎。并非所有的 JavaScript 虚拟机运行时都有字节码，有的 JavaScript 虚拟机基于源码，即只要有可能，就通过 JIT（just in time）编译器直接把源码编译成机器码运行，省略字节码步骤。这一点与其他采用虚拟机（比如 Java）的语言不尽相同。这样做的目的，是为了尽可能地优化代码、提高性能。下面是目前最常见的一些 JavaScript 虚拟机：
 
-- [Chakra](https://en.wikipedia.org/wiki/Chakra_(JScript_engine)) (Microsoft Internet Explorer)
-- [Nitro/JavaScript Core](http://en.wikipedia.org/wiki/WebKit#JavaScriptCore) (Safari)
-- [Carakan](http://dev.opera.com/articles/view/labs-carakan/) (Opera)
-- [SpiderMonkey](https://developer.mozilla.org/en-US/docs/SpiderMonkey) (Firefox)
-- [V8](https://en.wikipedia.org/wiki/Chrome_V8) (Chrome, Chromium)
+* \[Chakra\]\([https://en.wikipedia.org/wiki/Chakra\_\(JScript\_engine](https://en.wikipedia.org/wiki/Chakra_%28JScript_engine)\)\) \(Microsoft Internet Explorer\)
+* [Nitro/JavaScript Core](http://en.wikipedia.org/wiki/WebKit#JavaScriptCore) \(Safari\)
+* [Carakan](http://dev.opera.com/articles/view/labs-carakan/) \(Opera\)
+* [SpiderMonkey](https://developer.mozilla.org/en-US/docs/SpiderMonkey) \(Firefox\)
+* [V8](https://en.wikipedia.org/wiki/Chrome_V8) \(Chrome, Chromium\)
 
 ## 参考链接
 
-- John Dalziel, [The race for speed part 2: How JavaScript compilers work](http://creativejs.com/2013/06/the-race-for-speed-part-2-how-javascript-compilers-work/)
-- Jake Archibald, [Deep dive into the murky waters of script loading](http://www.html5rocks.com/en/tutorials/speed/script-loading/)
-- Mozilla Developer Network, [window.setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/window.setTimeout)
-- Remy Sharp, [Throttling function calls](http://remysharp.com/2010/07/21/throttling-function-calls/)
-- Ayman Farhat, [An alternative to JavaScript's evil setInterval](http://www.thecodeship.com/web-development/alternative-to-javascript-evil-setinterval/)
-- Ilya Grigorik, [Script-injected "async scripts" considered harmful](https://www.igvita.com/2014/05/20/script-injected-async-scripts-considered-harmful/)
-- Axel Rauschmayer, [ECMAScript 6 promises (1/2): foundations](http://www.2ality.com/2014/09/es6-promises-foundations.html)
-- Daniel Imms, [async vs defer attributes](http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html)
-- Craig Buckler, [Load Non-blocking JavaScript with HTML5 Async and Defer](http://www.sitepoint.com/non-blocking-async-defer/)
-- Domenico De Felice, [How browsers work](http://domenicodefelice.blogspot.sg/2015/08/how-browsers-work.html?t=2)
+* John Dalziel, [The race for speed part 2: How JavaScript compilers work](http://creativejs.com/2013/06/the-race-for-speed-part-2-how-javascript-compilers-work/)
+* Jake Archibald, [Deep dive into the murky waters of script loading](http://www.html5rocks.com/en/tutorials/speed/script-loading/)
+* Mozilla Developer Network, [window.setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/window.setTimeout)
+* Remy Sharp, [Throttling function calls](http://remysharp.com/2010/07/21/throttling-function-calls/)
+* Ayman Farhat, [An alternative to JavaScript's evil setInterval](http://www.thecodeship.com/web-development/alternative-to-javascript-evil-setinterval/)
+* Ilya Grigorik, [Script-injected "async scripts" considered harmful](https://www.igvita.com/2014/05/20/script-injected-async-scripts-considered-harmful/)
+* Axel Rauschmayer, [ECMAScript 6 promises \(1/2\): foundations](http://www.2ality.com/2014/09/es6-promises-foundations.html)
+* Daniel Imms, [async vs defer attributes](http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html)
+* Craig Buckler, [Load Non-blocking JavaScript with HTML5 Async and Defer](http://www.sitepoint.com/non-blocking-async-defer/)
+* Domenico De Felice, [How browsers work](http://domenicodefelice.blogspot.sg/2015/08/how-browsers-work.html?t=2)
+

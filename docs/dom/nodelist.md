@@ -10,8 +10,8 @@
 
 `NodeList`实例是一个类似数组的对象，它的成员是节点对象。通过以下方法可以得到`NodeList`实例。
 
-- `Node.childNodes`
-- `document.querySelectorAll()`等节点搜索方法
+* `Node.childNodes`
+* `document.querySelectorAll()`等节点搜索方法
 
 ```javascript
 document.body.childNodes instanceof NodeList // true
@@ -69,7 +69,7 @@ document.querySelectorAll('xxx').length
 
 上面代码中，`document.querySelectorAll`返回一个 NodeList 集合。对于那些不存在的 HTML 标签，`length`属性返回`0`。
 
-### NodeList.prototype.forEach()
+### NodeList.prototype.forEach\(\)
 
 `forEach`方法用于遍历 NodeList 的所有成员。它接受一个回调函数作为参数，每一轮遍历就执行一次这个回调函数，用法与数组实例的`forEach`方法完全一致。
 
@@ -82,7 +82,7 @@ children.forEach(function f(item, i, list) {
 
 上面代码中，回调函数`f`的三个参数依次是当前成员、位置和当前 NodeList 实例。`forEach`方法的第二个参数，用于绑定回调函数内部的`this`，该参数可省略。
 
-### NodeList.prototype.item()
+### NodeList.prototype.item\(\)
 
 `item`方法接受一个整数值作为参数，表示成员的位置，返回该位置上的成员。
 
@@ -100,7 +100,7 @@ document.body.childNodes.item(0)
 document.body.childNodes[0]
 ```
 
-### NodeList.prototype.keys()，NodeList.prototype.values()，NodeList.prototype.entries()
+### NodeList.prototype.keys\(\)，NodeList.prototype.values\(\)，NodeList.prototype.entries\(\)
 
 这三个方法都返回一个 ES6 的遍历器对象，可以通过`for...of`循环遍历获取每一个成员的信息。区别在于，`keys()`返回键名的遍历器，`values()`返回键值的遍历器，`entries()`返回的遍历器同时包含键名和键值的信息。
 
@@ -164,7 +164,7 @@ document.images.pic === pic // true
 document.links.length // 18
 ```
 
-### HTMLCollection.prototype.item()
+### HTMLCollection.prototype.item\(\)
 
 `item`方法接受一个整数值作为参数，表示成员的位置，返回该位置上的成员。
 
@@ -177,7 +177,7 @@ var img0 = c.item(0);
 
 如果参数值超出成员数量或者不合法（比如小于0），那么`item`方法返回`null`。
 
-### HTMLCollection.prototype.namedItem()
+### HTMLCollection.prototype.namedItem\(\)
 
 `namedItem`方法的参数是一个字符串，表示`id`属性或`name`属性的值，返回对应的元素节点。如果没有对应的节点，则返回`null`。
 
@@ -188,3 +188,4 @@ var img0 = c.item(0);
 var pic = document.getElementById('pic');
 document.images.namedItem('pic') === pic // true
 ```
+

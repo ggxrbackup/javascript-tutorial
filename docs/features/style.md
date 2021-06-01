@@ -105,9 +105,7 @@ console.log('abc');
 建议可以用空格，区分这两种不同的括号。
 
 > 1. 表示函数调用时，函数名与左括号之间没有空格。
->
 > 2. 表示函数定义时，函数名与左括号之间没有空格。
->
 > 3. 其他情况时，前面位置的语法元素与左括号之间，都有一个空格。
 
 按照上面的规则，下面的写法都是不规范的。
@@ -486,7 +484,8 @@ function doAction(action) {
 
 ## 参考链接
 
-- Eric Elliott, Programming JavaScript Applications, [Chapter 2. JavaScript Style Guide](http://chimera.labs.oreilly.com/books/1234000000262/ch02.html), O'Reilly, 2013
-- Axel Rauschmayer, [A meta style guide for JavaScript](http://www.2ality.com/2013/07/meta-style-guide.html)
-- Axel Rauschmayer, [Automatic semicolon insertion in JavaScript](http://www.2ality.com/2011/05/semicolon-insertion.html)
-- Rod Vagg, [JavaScript and Semicolons](http://dailyjs.com/2012/04/19/semicolons/)
+* Eric Elliott, Programming JavaScript Applications, [Chapter 2. JavaScript Style Guide](http://chimera.labs.oreilly.com/books/1234000000262/ch02.html), O'Reilly, 2013
+* Axel Rauschmayer, [A meta style guide for JavaScript](http://www.2ality.com/2013/07/meta-style-guide.html)
+* Axel Rauschmayer, [Automatic semicolon insertion in JavaScript](http://www.2ality.com/2011/05/semicolon-insertion.html)
+* Rod Vagg, [JavaScript and Semicolons](http://dailyjs.com/2012/04/19/semicolons/)
+

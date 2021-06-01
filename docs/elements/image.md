@@ -1,4 +1,4 @@
-# <img> 元素
+# 元素
 
 ## 概述
 
@@ -39,9 +39,9 @@ document.body.appendChild(img);
 
 除了使用`Image`构造，下面的方法也可以得到`HTMLImageElement`实例。
 
-- `document.images`的成员
-- 节点选取方法（比如`document.getElementById`）得到的`<img>`节点
-- `document.createElement('img')`生成的`<img>`节点
+* `document.images`的成员
+* 节点选取方法（比如`document.getElementById`）得到的`<img>`节点
+* `document.createElement('img')`生成的`<img>`节点
 
 ```javascript
 document.images[0] instanceof HTMLImageElement
@@ -154,8 +154,8 @@ if (img.naturalHeight > img.naturalWidth) {
 
 这个属性有两个可能的值。
 
-- `anonymous`：跨域请求不要求用户身份（credentials），这是默认值。
-- `use-credentials`：跨域请求要求用户身份。
+* `anonymous`：跨域请求不要求用户身份（credentials），这是默认值。
+* `use-credentials`：跨域请求要求用户身份。
 
 ```javascript
 // HTML 代码如下
@@ -170,11 +170,11 @@ img.crossOrigin // "anonymous"
 
 它有五个可能的值。
 
-- `no-referrer`：不带有`referrer`字段。
-- `no-referrer-when-downgrade`：如果请求的地址不是 HTTPS 协议，就不带有`referrer`字段，这是默认值。
-- `origin`：`referrer`字段是当前网页的地址，包含协议、域名和端口。
-- `origin-when-cross-origin`：如果请求的地址与当前网页是同源关系，那么`referrer`字段将带有完整路径，否则将只包含协议、域名和端口。
-- `unsafe-url`：`referrer`字段包含当前网页的地址，除了协议、域名和端口以外，还包括路径。这个设置是不安全的，因为会泄漏路径信息。
+* `no-referrer`：不带有`referrer`字段。
+* `no-referrer-when-downgrade`：如果请求的地址不是 HTTPS 协议，就不带有`referrer`字段，这是默认值。
+* `origin`：`referrer`字段是当前网页的地址，包含协议、域名和端口。
+* `origin-when-cross-origin`：如果请求的地址与当前网页是同源关系，那么`referrer`字段将带有完整路径，否则将只包含协议、域名和端口。
+* `unsafe-url`：`referrer`字段包含当前网页的地址，除了协议、域名和端口以外，还包括路径。这个设置是不安全的，因为会泄漏路径信息。
 
 ## HTMLImageElement.x，HTMLImageElement.y
 
@@ -199,3 +199,4 @@ function myFunction() {
   console.log('There is something wrong');
 }
 ```
+

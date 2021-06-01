@@ -10,7 +10,7 @@ JavaScript 有三种方法，可以为事件绑定监听函数。
 
 HTML 语言允许在元素的属性中，直接定义某些事件的监听代码。
 
-```html
+```markup
 <body onload="doSomething()">
 <div onclick="console.log('触发事件')">
 ```
@@ -21,7 +21,7 @@ HTML 语言允许在元素的属性中，直接定义某些事件的监听代码
 
 注意，这些属性的值是将会执行的代码，而不是一个函数。
 
-```html
+```markup
 <!-- 正确 -->
 <body onload="doSomething()">
 
@@ -33,7 +33,7 @@ HTML 语言允许在元素的属性中，直接定义某些事件的监听代码
 
 使用这个方法指定的监听代码，只会在冒泡阶段触发。
 
-```html
+```markup
 <div onclick="console.log(2)">
   <button onclick="console.log(1)">点击</button>
 </div>
@@ -65,7 +65,7 @@ div.onclick = function (event) {
 
 注意，这种方法与 HTML 的`on-`属性的差异是，它的值是函数名（`doSomething`），而不像后者，必须给出完整的监听代码（`doSomething()`）。
 
-### EventTarget.addEventListener()
+### EventTarget.addEventListener\(\)
 
 所有 DOM 节点实例都有`addEventListener`方法，用来为该节点定义事件的监听函数。
 
@@ -83,15 +83,15 @@ window.addEventListener('load', doSomething, false);
 
 第三种`EventTarget.addEventListener`是推荐的指定监听函数的方法。它有如下优点：
 
-- 同一个事件可以添加多个监听函数。
-- 能够指定在哪个阶段（捕获阶段还是冒泡阶段）触发监听函数。
-- 除了 DOM 节点，其他对象（比如`window`、`XMLHttpRequest`等）也有这个接口，它等于是整个 JavaScript 统一的监听函数接口。
+* 同一个事件可以添加多个监听函数。
+* 能够指定在哪个阶段（捕获阶段还是冒泡阶段）触发监听函数。
+* 除了 DOM 节点，其他对象（比如`window`、`XMLHttpRequest`等）也有这个接口，它等于是整个 JavaScript 统一的监听函数接口。
 
 ## this 的指向
 
 监听函数内部的`this`指向触发事件的那个元素节点。
 
-```html
+```markup
 <button id="btn" onclick="console.log(this.id)">点击</button>
 ```
 
@@ -125,13 +125,13 @@ btn.addEventListener(
 
 一个事件发生后，会在子元素和父元素之间传播（propagation）。这种传播分成三个阶段。
 
-- **第一阶段**：从`window`对象传导到目标节点（上层传到底层），称为“捕获阶段”（capture phase）。
-- **第二阶段**：在目标节点上触发，称为“目标阶段”（target phase）。
-- **第三阶段**：从目标节点传导回`window`对象（从底层传回上层），称为“冒泡阶段”（bubbling phase）。
+* **第一阶段**：从`window`对象传导到目标节点（上层传到底层），称为“捕获阶段”（capture phase）。
+* **第二阶段**：在目标节点上触发，称为“目标阶段”（target phase）。
+* **第三阶段**：从目标节点传导回`window`对象（从底层传回上层），称为“冒泡阶段”（bubbling phase）。
 
 这种三阶段的传播模型，使得同一个事件会在多个节点上触发。
 
-```html
+```markup
 <div>
   <p>点击</p>
 </div>
@@ -244,3 +244,4 @@ p.addEventListener('click', function(event) {
 ```
 
 上面代码中，`stopImmediatePropagation`方法可以彻底取消这个事件，使得后面绑定的所有`click`监听函数都不再触发。所以，只会输出1，不会输出2。
+

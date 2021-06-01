@@ -111,13 +111,13 @@ new Date(2013, 0, 1, 0, 0, 0, 0)
 
 最后，各个参数的取值范围如下。
 
-- 年：使用四位数年份，比如`2000`。如果写成两位数或个位数，则加上`1900`，即`10`代表1910年。如果是负数，表示公元前。
-- 月：`0`表示一月，依次类推，`11`表示12月。
-- 日：`1`到`31`。
-- 小时：`0`到`23`。
-- 分钟：`0`到`59`。
-- 秒：`0`到`59`
-- 毫秒：`0`到`999`。
+* 年：使用四位数年份，比如`2000`。如果写成两位数或个位数，则加上`1900`，即`10`代表1910年。如果是负数，表示公元前。
+* 月：`0`表示一月，依次类推，`11`表示12月。
+* 日：`1`到`31`。
+* 小时：`0`到`23`。
+* 分钟：`0`到`59`。
+* 秒：`0`到`59`
+* 毫秒：`0`到`999`。
 
 注意，月份从`0`开始计算，但是，天数从`1`开始计算。另外，除了日期的默认值为`1`，小时、分钟、秒钟和毫秒的默认值都是`0`。
 
@@ -159,7 +159,7 @@ d2 + d1
 
 ## 静态方法
 
-### Date.now()
+### Date.now\(\)
 
 `Date.now`方法返回当前时间距离时间零点（1970年1月1日 00:00:00 UTC）的毫秒数，相当于 Unix 时间戳乘以1000。
 
@@ -167,7 +167,7 @@ d2 + d1
 Date.now() // 1364026285194
 ```
 
-### Date.parse()
+### Date.parse\(\)
 
 `Date.parse`方法用来解析日期字符串，返回该时间距离时间零点（1970年1月1日 00:00:00）的毫秒数。
 
@@ -190,7 +190,7 @@ Date.parse('2011-10-10T14:48:00')
 Date.parse('xxx') // NaN
 ```
 
-### Date.UTC()
+### Date.UTC\(\)
 
 `Date.UTC`方法接受年、月、日等变量作为参数，返回该时间距离时间零点（1970年1月1日 00:00:00 UTC）的毫秒数。
 
@@ -209,11 +209,11 @@ Date.UTC(2011, 0, 1, 2, 3, 4, 567)
 
 `Date`的实例对象，有几十个自己的方法，除了`valueOf`和`toString`，可以分为以下三类。
 
-- `to`类：从`Date`对象返回一个字符串，表示指定的时间。
-- `get`类：获取`Date`对象的日期和时间。
-- `set`类：设置`Date`对象的日期和时间。
+* `to`类：从`Date`对象返回一个字符串，表示指定的时间。
+* `get`类：获取`Date`对象的日期和时间。
+* `set`类：设置`Date`对象的日期和时间。
 
-### Date.prototype.valueOf()
+### Date.prototype.valueOf\(\)
 
 `valueOf`方法返回实例对象距离时间零点（1970年1月1日00:00:00 UTC）对应的毫秒数，该方法等同于`getTime`方法。
 
@@ -235,7 +235,7 @@ var elapsed = end - start;
 
 ### to 类方法
 
-**（1）Date.prototype.toString()**
+**（1）Date.prototype.toString\(\)**
 
 `toString`方法返回一个完整的日期字符串。
 
@@ -250,7 +250,7 @@ d
 
 因为`toString`是默认的调用方法，所以如果直接读取`Date`实例，就相当于调用这个方法。
 
-**（2）Date.prototype.toUTCString()**
+**（2）Date.prototype.toUTCString\(\)**
 
 `toUTCString`方法返回对应的 UTC 时间，也就是比北京时间晚8个小时。
 
@@ -261,7 +261,7 @@ d.toUTCString()
 // "Mon, 31 Dec 2012 16:00:00 GMT"
 ```
 
-**（3）Date.prototype.toISOString()**
+**（3）Date.prototype.toISOString\(\)**
 
 `toISOString`方法返回对应时间的 ISO8601 写法。
 
@@ -274,7 +274,7 @@ d.toISOString()
 
 注意，`toISOString`方法返回的总是 UTC 时区的时间。
 
-**（4）Date.prototype.toJSON()**
+**（4）Date.prototype.toJSON\(\)**
 
 `toJSON`方法返回一个符合 JSON 格式的 ISO 日期字符串，与`toISOString`方法的返回结果完全相同。
 
@@ -285,7 +285,7 @@ d.toJSON()
 // "2012-12-31T16:00:00.000Z"
 ```
 
-**（5）Date.prototype.toDateString()**
+**（5）Date.prototype.toDateString\(\)**
 
 `toDateString`方法返回日期字符串（不含小时、分和秒）。
 
@@ -294,7 +294,7 @@ var d = new Date(2013, 0, 1);
 d.toDateString() // "Tue Jan 01 2013"
 ```
 
-**（6）Date.prototype.toTimeString()**
+**（6）Date.prototype.toTimeString\(\)**
 
 `toTimeString`方法返回时间字符串（不含年月日）。
 
@@ -307,9 +307,9 @@ d.toTimeString() // "00:00:00 GMT+0800 (CST)"
 
 以下三种方法，可以将 Date 实例转为表示本地时间的字符串。
 
-- `Date.prototype.toLocaleString()`：完整的本地时间。
-- `Date.prototype.toLocaleDateString()`：本地日期（不含小时、分和秒）。
-- `Date.prototype.toLocaleTimeString()`：本地时间（不含年月日）。
+* `Date.prototype.toLocaleString()`：完整的本地时间。
+* `Date.prototype.toLocaleDateString()`：本地日期（不含小时、分和秒）。
+* `Date.prototype.toLocaleTimeString()`：本地时间（不含年月日）。
 
 下面是用法实例。
 
@@ -354,15 +354,15 @@ d.toLocaleTimeString('zh-CN') // "上午12:00:00"
 
 `options`配置对象有以下属性。
 
-- `dateStyle`：可能的值为`full`、`long`、`medium`、`short`。
-- `timeStyle`：可能的值为`full`、`long`、`medium`、`short`。
-- `month`：可能的值为`numeric`、`2-digit`、`long`、`short`、`narrow`。
-- `year`：可能的值为`numeric`、`2-digit`。
-- `weekday`：可能的值为`long`、`short`、`narrow`。
-- `day`、`hour`、`minute`、`second`：可能的值为`numeric`、`2-digit`。
-- `timeZone`：可能的值为 IANA 的时区数据库。
-- `timeZooneName`：可能的值为`long`、`short`。
-- `hour12`：24小时周期还是12小时周期，可能的值为`true`、`false`。
+* `dateStyle`：可能的值为`full`、`long`、`medium`、`short`。
+* `timeStyle`：可能的值为`full`、`long`、`medium`、`short`。
+* `month`：可能的值为`numeric`、`2-digit`、`long`、`short`、`narrow`。
+* `year`：可能的值为`numeric`、`2-digit`。
+* `weekday`：可能的值为`long`、`short`、`narrow`。
+* `day`、`hour`、`minute`、`second`：可能的值为`numeric`、`2-digit`。
+* `timeZone`：可能的值为 IANA 的时区数据库。
+* `timeZooneName`：可能的值为`long`、`short`。
+* `hour12`：24小时周期还是12小时周期，可能的值为`true`、`false`。
 
 下面是用法实例。
 
@@ -411,24 +411,24 @@ d.toLocaleTimeString('en-US', {
 
 `Date`对象提供了一系列`get*`方法，用来获取实例对象某个方面的值。
 
-- `getTime()`：返回实例距离1970年1月1日00:00:00的毫秒数，等同于`valueOf`方法。
-- `getDate()`：返回实例对象对应每个月的几号（从1开始）。
-- `getDay()`：返回星期几，星期日为0，星期一为1，以此类推。
-- `getFullYear()`：返回四位的年份。
-- `getMonth()`：返回月份（0表示1月，11表示12月）。
-- `getHours()`：返回小时（0-23）。
-- `getMilliseconds()`：返回毫秒（0-999）。
-- `getMinutes()`：返回分钟（0-59）。
-- `getSeconds()`：返回秒（0-59）。
-- `getTimezoneOffset()`：返回当前时间与 UTC 的时区差异，以分钟表示，返回结果考虑到了夏令时因素。
+* `getTime()`：返回实例距离1970年1月1日00:00:00的毫秒数，等同于`valueOf`方法。
+* `getDate()`：返回实例对象对应每个月的几号（从1开始）。
+* `getDay()`：返回星期几，星期日为0，星期一为1，以此类推。
+* `getFullYear()`：返回四位的年份。
+* `getMonth()`：返回月份（0表示1月，11表示12月）。
+* `getHours()`：返回小时（0-23）。
+* `getMilliseconds()`：返回毫秒（0-999）。
+* `getMinutes()`：返回分钟（0-59）。
+* `getSeconds()`：返回秒（0-59）。
+* `getTimezoneOffset()`：返回当前时间与 UTC 的时区差异，以分钟表示，返回结果考虑到了夏令时因素。
 
 所有这些`get*`方法返回的都是整数，不同方法返回值的范围不一样。
 
-- 分钟和秒：0 到 59
-- 小时：0 到 23
-- 星期：0（星期天）到 6（星期六）
-- 日期：1 到 31
-- 月份：0（一月）到 11（十二月）
+* 分钟和秒：0 到 59
+* 小时：0 到 23
+* 星期：0（星期天）到 6（星期六）
+* 日期：1 到 31
+* 月份：0（一月）到 11（十二月）
 
 ```javascript
 var d = new Date('January 6, 2013');
@@ -454,14 +454,14 @@ function leftDays() {
 
 上面这些`get*`方法返回的都是当前时区的时间，`Date`对象还提供了这些方法对应的 UTC 版本，用来返回 UTC 时间。
 
-- `getUTCDate()`
-- `getUTCFullYear()`
-- `getUTCMonth()`
-- `getUTCDay()`
-- `getUTCHours()`
-- `getUTCMinutes()`
-- `getUTCSeconds()`
-- `getUTCMilliseconds()`
+* `getUTCDate()`
+* `getUTCFullYear()`
+* `getUTCMonth()`
+* `getUTCDay()`
+* `getUTCHours()`
+* `getUTCMinutes()`
+* `getUTCSeconds()`
+* `getUTCMilliseconds()`
 
 ```javascript
 var d = new Date('January 6, 2013');
@@ -476,14 +476,14 @@ d.getUTCDate() // 5
 
 `Date`对象提供了一系列`set*`方法，用来设置实例对象的各个方面。
 
-- `setDate(date)`：设置实例对象对应的每个月的几号（1-31），返回改变后毫秒时间戳。
-- `setFullYear(year [, month, date])`：设置四位年份。
-- `setHours(hour [, min, sec, ms])`：设置小时（0-23）。
-- `setMilliseconds()`：设置毫秒（0-999）。
-- `setMinutes(min [, sec, ms])`：设置分钟（0-59）。
-- `setMonth(month [, date])`：设置月份（0-11）。
-- `setSeconds(sec [, ms])`：设置秒（0-59）。
-- `setTime(milliseconds)`：设置毫秒时间戳。
+* `setDate(date)`：设置实例对象对应的每个月的几号（1-31），返回改变后毫秒时间戳。
+* `setFullYear(year [, month, date])`：设置四位年份。
+* `setHours(hour [, min, sec, ms])`：设置小时（0-23）。
+* `setMilliseconds()`：设置毫秒（0-999）。
+* `setMinutes(min [, sec, ms])`：设置分钟（0-59）。
+* `setMonth(month [, date])`：设置月份（0-11）。
+* `setSeconds(sec [, ms])`：设置秒（0-59）。
+* `setTime(milliseconds)`：设置毫秒时间戳。
 
 这些方法基本是跟`get*`方法一一对应的，但是没有`setDay`方法，因为星期几是计算出来的，而不是设置的。另外，需要注意的是，凡是涉及到设置月份，都是从0开始算的，即`0`是1月，`11`是12月。
 
@@ -526,13 +526,13 @@ d.setFullYear(d.getFullYear() - 1);
 
 `set*`系列方法除了`setTime()`，都有对应的 UTC 版本，即设置 UTC 时区的时间。
 
-- `setUTCDate()`
-- `setUTCFullYear()`
-- `setUTCHours()`
-- `setUTCMilliseconds()`
-- `setUTCMinutes()`
-- `setUTCMonth()`
-- `setUTCSeconds()`
+* `setUTCDate()`
+* `setUTCFullYear()`
+* `setUTCHours()`
+* `setUTCMilliseconds()`
+* `setUTCMinutes()`
+* `setUTCMonth()`
+* `setUTCSeconds()`
 
 ```javascript
 var d = new Date('January 6, 2013');
@@ -545,5 +545,6 @@ d // Sun Jan 06 2013 06:00:00 GMT+0800 (CST)
 
 ## 参考链接
 
-- Rakhitha Nimesh，[Getting Started with the Date Object](http://jspro.com/raw-javascript/beginners-guide-to-javascript-date-and-time/)
-- Ilya Kantor, [Date/Time functions](http://javascript.info/tutorial/datetime-functions)
+* Rakhitha Nimesh，[Getting Started with the Date Object](http://jspro.com/raw-javascript/beginners-guide-to-javascript-date-and-time/)
+* Ilya Kantor, [Date/Time functions](http://javascript.info/tutorial/datetime-functions)
+

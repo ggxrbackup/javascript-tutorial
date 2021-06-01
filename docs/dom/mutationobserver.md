@@ -10,9 +10,9 @@ Mutation Observer API 用来监视 DOM 变动。DOM 的任何变动，比如节�
 
 Mutation Observer 有以下特点。
 
-- 它等待所有脚本任务完成后，才会运行（即异步触发方式）。
-- 它把 DOM 变动记录封装成一个数组进行处理，而不是一条条个别处理 DOM 变动。
-- 它既可以观察 DOM 的所有类型变动，也可以指定只观察某一类变动。
+* 它等待所有脚本任务完成后，才会运行（即异步触发方式）。
+* 它把 DOM 变动记录封装成一个数组进行处理，而不是一条条个别处理 DOM 变动。
+* 它既可以观察 DOM 的所有类型变动，也可以指定只观察某一类变动。
 
 ## MutationObserver 构造函数
 
@@ -34,12 +34,12 @@ var observer = new MutationObserver(function (mutations, observer) {
 
 ## MutationObserver 的实例方法
 
-### observe()
+### observe\(\)
 
 `observe()`方法用来启动监听，它接受两个参数。
 
-- 第一个参数：所要观察的 DOM 节点
-- 第二个参数：一个配置对象，指定所要观察的特定变动
+* 第一个参数：所要观察的 DOM 节点
+* 第二个参数：一个配置对象，指定所要观察的特定变动
 
 ```javascript
 var article = document.querySelector('article');
@@ -56,18 +56,18 @@ observer.observe(article, options);
 
 观察器所能观察的 DOM 变动类型（即上面代码的`options`对象），有以下几种。
 
-- **childList**：子节点的变动（指新增，删除或者更改）。
-- **attributes**：属性的变动。
-- **characterData**：节点内容或节点文本的变动。
+* **childList**：子节点的变动（指新增，删除或者更改）。
+* **attributes**：属性的变动。
+* **characterData**：节点内容或节点文本的变动。
 
 想要观察哪一种变动类型，就在`option`对象中指定它的值为`true`。需要注意的是，至少必须同时指定这三种观察的一种，若均未指定将报错。
 
 除了变动类型，`options`对象还可以设定以下属性：
 
-- `subtree`：布尔值，表示是否将该观察器应用于该节点的所有后代节点。
-- `attributeOldValue`：布尔值，表示观察`attributes`变动时，是否需要记录变动前的属性值。
-- `characterDataOldValue`：布尔值，表示观察`characterData`变动时，是否需要记录变动前的值。
-- `attributeFilter`：数组，表示需要观察的特定属性（比如`['class','src']`）。
+* `subtree`：布尔值，表示是否将该观察器应用于该节点的所有后代节点。
+* `attributeOldValue`：布尔值，表示观察`attributes`变动时，是否需要记录变动前的属性值。
+* `characterDataOldValue`：布尔值，表示观察`characterData`变动时，是否需要记录变动前的值。
+* `attributeFilter`：数组，表示需要观察的特定属性（比如`['class','src']`）。
 
 ```javascript
 // 开始监听文档根节点（即<html>标签）的变动
@@ -98,7 +98,7 @@ var observer = new MutationObserver(function(mutations) {
 observer.observe(document, { childList: true, subtree: true });
 ```
 
-### disconnect()，takeRecords（）
+### disconnect\(\)，takeRecords（）
 
 `disconnect()`方法用来停止观察。调用该方法后，DOM 再发生变动，也不会触发观察器。
 
@@ -128,14 +128,14 @@ DOM 每次发生变化，就会生成一条变动记录（MutationRecord 实例�
 
 `MutationRecord`对象包含了DOM的相关信息，有如下属性：
 
-- `type`：观察的变动类型（`attributes`、`characterData`或者`childList`）。
-- `target`：发生变动的DOM节点。
-- `addedNodes`：新增的DOM节点。
-- `removedNodes`：删除的DOM节点。
-- `previousSibling`：前一个同级节点，如果没有则返回`null`。
-- `nextSibling`：下一个同级节点，如果没有则返回`null`。
-- `attributeName`：发生变动的属性。如果设置了`attributeFilter`，则只返回预先指定的属性。
-- `oldValue`：变动前的值。这个属性只对`attribute`和`characterData`变动有效，如果发生`childList`变动，则返回`null`。
+* `type`：观察的变动类型（`attributes`、`characterData`或者`childList`）。
+* `target`：发生变动的DOM节点。
+* `addedNodes`：新增的DOM节点。
+* `removedNodes`：删除的DOM节点。
+* `previousSibling`：前一个同级节点，如果没有则返回`null`。
+* `nextSibling`：下一个同级节点，如果没有则返回`null`。
+* `attributeName`：发生变动的属性。如果设置了`attributeFilter`，则只返回预先指定的属性。
+* `oldValue`：变动前的值。这个属性只对`attribute`和`characterData`变动有效，如果发生`childList`变动，则返回`null`。
 
 ## 应用示例
 
@@ -262,9 +262,10 @@ ready('.foo', function(element){
 
 ## 参考链接
 
-- Paul Kinlan, [Detect DOM changes with Mutation Observers](https://developers.google.com/web/updates/2012/02/Detect-DOM-changes-with-Mutation-Observers)
-- Tiffany Brown, [Getting to know mutation observers](http://dev.opera.com/articles/view/mutation-observers-tutorial/)
-- Michal Budzynski, [JavaScript: The less known parts. DOM Mutations](http://michalbe.blogspot.com/2013/04/javascript-less-known-parts-dom.html)
-- Jeff Griffiths, [DOM MutationObserver – reacting to DOM changes without killing browser performance](https://hacks.mozilla.org/2012/05/dom-mutationobserver-reacting-to-dom-changes-without-killing-browser-performance/)
-- Addy Osmani, [Detect, Undo And Redo DOM Changes With Mutation Observers](http://addyosmani.com/blog/mutation-observers/)
-- Ryan Morr, [Using Mutation Observers to Watch for Element Availability](http://ryanmorr.com/using-mutation-observers-to-watch-for-element-availability/)
+* Paul Kinlan, [Detect DOM changes with Mutation Observers](https://developers.google.com/web/updates/2012/02/Detect-DOM-changes-with-Mutation-Observers)
+* Tiffany Brown, [Getting to know mutation observers](http://dev.opera.com/articles/view/mutation-observers-tutorial/)
+* Michal Budzynski, [JavaScript: The less known parts. DOM Mutations](http://michalbe.blogspot.com/2013/04/javascript-less-known-parts-dom.html)
+* Jeff Griffiths, [DOM MutationObserver – reacting to DOM changes without killing browser performance](https://hacks.mozilla.org/2012/05/dom-mutationobserver-reacting-to-dom-changes-without-killing-browser-performance/)
+* Addy Osmani, [Detect, Undo And Redo DOM Changes With Mutation Observers](http://addyosmani.com/blog/mutation-observers/)
+* Ryan Morr, [Using Mutation Observers to Watch for Element Availability](http://ryanmorr.com/using-mutation-observers-to-watch-for-element-availability/)
+

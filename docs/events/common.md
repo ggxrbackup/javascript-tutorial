@@ -299,9 +299,9 @@ document.addEventListener('fullscreenchange', function (event) {
 
 以下三个事件属于剪贴板操作的相关事件。
 
-- `cut`：将选中的内容从文档中移除，加入剪贴板时触发。
-- `copy`：进行复制动作时触发。
-- `paste`：剪贴板内容粘贴到文档后触发。
+* `cut`：将选中的内容从文档中移除，加入剪贴板时触发。
+* `copy`：进行复制动作时触发。
+* `paste`：剪贴板内容粘贴到文档后触发。
 
 这三个事件都是`ClipboardEvent`接口的实例。`ClipboardEvent`有一个实例属性`clipboardData`，是一个 DataTransfer 对象，存放剪贴的数据。具体的 API 接口和操作方法，请参见《拖拉事件》的 DataTransfer 对象部分。
 
@@ -319,15 +319,15 @@ document.addEventListener('copy', function (e) {
 
 焦点事件发生在元素节点和`document`对象上面，与获得或失去焦点相关。它主要包括以下四个事件。
 
-- `focus`：元素节点获得焦点后触发，该事件不会冒泡。
-- `blur`：元素节点失去焦点后触发，该事件不会冒泡。
-- `focusin`：元素节点将要获得焦点时触发，发生在`focus`事件之前。该事件会冒泡。
-- `focusout`：元素节点将要失去焦点时触发，发生在`blur`事件之前。该事件会冒泡。
+* `focus`：元素节点获得焦点后触发，该事件不会冒泡。
+* `blur`：元素节点失去焦点后触发，该事件不会冒泡。
+* `focusin`：元素节点将要获得焦点时触发，发生在`focus`事件之前。该事件会冒泡。
+* `focusout`：元素节点将要失去焦点时触发，发生在`blur`事件之前。该事件会冒泡。
 
 这四个事件都继承了`FocusEvent`接口。`FocusEvent`实例具有以下属性。
 
-- `FocusEvent.target`：事件的目标节点。
-- `FocusEvent.relatedTarget`：对于`focusin`事件，返回失去焦点的节点；对于`focusout`事件，返回将要接受焦点的节点；对于`focus`和`blur`事件，返回`null`。
+* `FocusEvent.target`：事件的目标节点。
+* `FocusEvent.relatedTarget`：对于`focusin`事件，返回失去焦点的节点；对于`focusout`事件，返回将要接受焦点的节点；对于`focus`和`blur`事件，返回`null`。
 
 由于`focus`和`blur`事件不会冒泡，只能在捕获阶段触发，所以`addEventListener`方法的第三个参数需要设为`true`。
 
@@ -355,7 +355,7 @@ new CustomEvent(type, options)
 
 `CustomEvent()`构造函数接受两个参数。第一个参数是字符串，表示事件的名字，这是必须的。第二个参数是事件的配置对象，这个参数是可选的。`CustomEvent`的配置对象除了接受 Event 事件的配置属性，只有一个自己的属性。
 
-- `detail`：表示事件的附带数据，默认为`null`。
+* `detail`：表示事件的附带数据，默认为`null`。
 
 下面是一个例子。
 
@@ -394,3 +394,4 @@ el.dispatchEvent(myEvent);
 ```
 
 上面代码也说明，CustomEvent 的事件实例，除了具有 Event 接口的实例属性，还具有`detail`属性。
+

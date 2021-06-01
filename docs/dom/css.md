@@ -15,7 +15,7 @@ div.setAttribute(
 
 上面的代码相当于下面的 HTML 代码。
 
-```html
+```markup
 <div style="background-color:red; border:1px solid black;" />
 ```
 
@@ -32,9 +32,9 @@ e.style.color = 'black';
 
 CSSStyleDeclaration 接口用来操作元素的样式。三个地方部署了这个接口。
 
-- 元素节点的`style`属性（`Element.style`）
-- `CSSStyle`实例的`style`属性
-- `window.getComputedStyle()`的返回值
+* 元素节点的`style`属性（`Element.style`）
+* `CSSStyle`实例的`style`属性
+* `window.getComputedStyle()`的返回值
 
 CSSStyleDeclaration 接口可以直接读写 CSS 的样式属性，不过，连词号需要变成骆驼拼写法。
 
@@ -112,7 +112,7 @@ declaration.parentRule === document.styleSheets[0].rules[0]
 
 ### CSSStyleDeclaration 实例方法
 
-**（1）CSSStyleDeclaration.getPropertyPriority()**
+**（1）CSSStyleDeclaration.getPropertyPriority\(\)**
 
 `CSSStyleDeclaration.getPropertyPriority`方法接受 CSS 样式的属性名作为参数，返回一个字符串，表示有没有设置`important`优先级。如果有就返回`important`，否则返回空字符串。
 
@@ -127,7 +127,7 @@ style.getPropertyPriority('color') // ""
 
 上面代码中，`margin`属性有`important`优先级，`color`属性没有。
 
-**（2）CSSStyleDeclaration.getPropertyValue()**
+**（2）CSSStyleDeclaration.getPropertyValue\(\)**
 
 `CSSStyleDeclaration.getPropertyValue`方法接受 CSS 样式属性名作为参数，返回一个字符串，表示该属性的属性值。
 
@@ -139,7 +139,7 @@ style.margin // "10px"
 style.getPropertyValue("margin") // "10px"
 ```
 
-**（3）CSSStyleDeclaration.item()**
+**（3）CSSStyleDeclaration.item\(\)**
 
 `CSSStyleDeclaration.item`方法接受一个整数值作为参数，返回该位置的 CSS 属性名。
 
@@ -155,7 +155,7 @@ style.item(1) // "background-color"
 
 如果没有提供参数，这个方法会报错。如果参数值超过实际的属性数目，这个方法返回一个空字符值。
 
-**（4）CSSStyleDeclaration.removeProperty()**
+**（4）CSSStyleDeclaration.removeProperty\(\)**
 
 `CSSStyleDeclaration.removeProperty`方法接受一个属性名作为参数，在 CSS 规则里面移除这个属性，返回这个属性原来的值。
 
@@ -172,15 +172,15 @@ style.removeProperty('color') // 'red'
 
 上面代码中，删除`color`属性以后，字体颜色从红色变成默认颜色。
 
-**（5）CSSStyleDeclaration.setProperty()**
+**（5）CSSStyleDeclaration.setProperty\(\)**
 
 `CSSStyleDeclaration.setProperty`方法用来设置新的 CSS 属性。该方法没有返回值。
 
 该方法可以接受三个参数。
 
-- 第一个参数：属性名，该参数是必需的。
-- 第二个参数：属性值，该参数可选。如果省略，则参数值默认为空字符串。
-- 第三个参数：优先级，该参数可选。如果设置，唯一的合法值是`important`，表示 CSS 规则里面的`!important`。
+* 第一个参数：属性名，该参数是必需的。
+* 第二个参数：属性值，该参数可选。如果省略，则参数值默认为空字符串。
+* 第三个参数：优先级，该参数可选。如果设置，唯一的合法值是`important`，表示 CSS 规则里面的`!important`。
 
 ```javascript
 // HTML 代码为
@@ -252,11 +252,11 @@ isPropertySupported('background-clip')
 
 这个对象目前有两个静态方法。
 
-### CSS.escape()
+### CSS.escape\(\)
 
 `CSS.escape`方法用于转义 CSS 选择器里面的特殊字符。
 
-```html
+```markup
 <div id="foo#bar">
 ```
 
@@ -268,7 +268,7 @@ isPropertySupported('background-clip')
 document.querySelector('#' + CSS.escape('foo#bar'))
 ```
 
-### CSS.supports()
+### CSS.supports\(\)
 
 `CSS.supports`方法返回一个布尔值，表示当前环境是否支持某一句 CSS 规则。
 
@@ -288,11 +288,11 @@ CSS.supports('display: table-cell') // true
 CSS.supports('display: table-cell;') // false
 ```
 
-## window.getComputedStyle()
+## window.getComputedStyle\(\)
 
 行内样式（inline style）具有最高的优先级，改变行内样式，通常会立即反映出来。但是，网页元素最终的样式是综合各种规则计算出来的。因此，如果想得到元素实际的样式，只读取行内样式是不够的，需要得到浏览器最终计算出来的样式规则。
 
-`window.getComputedStyle`方法，就用来返回浏览器计算后得到的最终规则。它接受一个节点对象作为参数，返回一个 CSSStyleDeclaration  实例，包含了指定节点的最终样式信息。所谓“最终样式信息”，指的是各种 CSS 规则叠加后的结果。
+`window.getComputedStyle`方法，就用来返回浏览器计算后得到的最终规则。它接受一个节点对象作为参数，返回一个 CSSStyleDeclaration 实例，包含了指定节点的最终样式信息。所谓“最终样式信息”，指的是各种 CSS 规则叠加后的结果。
 
 ```javascript
 var div = document.querySelector('div');
@@ -325,10 +325,10 @@ var height = styleObj.getPropertyValue('height');
 
 有几点需要注意。
 
-- CSSStyleDeclaration 实例返回的 CSS 值都是绝对单位。比如，长度都是像素单位（返回值包括`px`后缀），颜色是`rgb(#, #, #)`或`rgba(#, #, #, #)`格式。
-- CSS 规则的简写形式无效。比如，想读取`margin`属性的值，不能直接读，只能读`marginLeft`、`marginTop`等属性；再比如，`font`属性也是不能直接读的，只能读`font-size`等单个属性。
-- 如果读取 CSS 原始的属性名，要用方括号运算符，比如`styleObj['z-index']`；如果读取骆驼拼写法的 CSS 属性名，可以直接读取`styleObj.zIndex`。
-- 该方法返回的 CSSStyleDeclaration 实例的`cssText`属性无效，返回`undefined`。
+* CSSStyleDeclaration 实例返回的 CSS 值都是绝对单位。比如，长度都是像素单位（返回值包括`px`后缀），颜色是`rgb(#, #, #)`或`rgba(#, #, #, #)`格式。
+* CSS 规则的简写形式无效。比如，想读取`margin`属性的值，不能直接读，只能读`marginLeft`、`marginTop`等属性；再比如，`font`属性也是不能直接读的，只能读`font-size`等单个属性。
+* 如果读取 CSS 原始的属性名，要用方括号运算符，比如`styleObj['z-index']`；如果读取骆驼拼写法的 CSS 属性名，可以直接读取`styleObj.zIndex`。
+* 该方法返回的 CSSStyleDeclaration 实例的`cssText`属性无效，返回`undefined`。
 
 ## CSS 伪元素
 
@@ -336,7 +336,7 @@ CSS 伪元素是通过 CSS 向 DOM 添加的元素，主要是通过`:before`和
 
 下面是一段 HTML 代码。
 
-```html
+```markup
 <div id="test">Test content</div>
 ```
 
@@ -486,7 +486,7 @@ cssStyleSheet.cssRules[1].style.color = 'purple';
 
 ### 实例方法
 
-**（1）CSSStyleSheet.insertRule()**
+**（1）CSSStyleSheet.insertRule\(\)**
 
 `CSSStyleSheet.insertRule`方法用于在当前样式表的插入一个新的 CSS 规则。
 
@@ -502,7 +502,7 @@ sheet.insertRule('p { color: red }', 1);
 
 注意，浏览器对脚本在样式表里面插入规则有很多[限制](https://drafts.csswg.org/cssom/#insert-a-css-rule)。所以，这个方法最好放在`try...catch`里使用。
 
-**（2）CSSStyleSheet.deleteRule()**
+**（2）CSSStyleSheet.deleteRule\(\)**
 
 `CSSStyleSheet.deleteRule`方法用来在样式表里面移除一条规则，它的参数是该条规则在`cssRules`对象中的位置。该方法没有返回值。
 
@@ -669,10 +669,10 @@ rule2.parentRule === rule1 // true
 
 最常见的类型有以下几种。
 
-- 1：普通样式规则（CSSStyleRule 实例）
-- 3：`@import`规则
-- 4：`@media`规则（CSSMediaRule 实例）
-- 5：`@font-face`规则
+* 1：普通样式规则（CSSStyleRule 实例）
+* 3：`@import`规则
+* 4：`@media`规则（CSSMediaRule 实例）
+* 5：`@font-face`规则
 
 ### CSSStyleRule 接口
 
@@ -745,7 +745,7 @@ styleSheet.cssRules[0].conditionText
 // "screen and (min-width: 900px)"
 ```
 
-## window.matchMedia()
+## window.matchMedia\(\)
 
 ### 基本用法
 

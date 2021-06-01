@@ -20,12 +20,12 @@ Netscape 公司很快发现，Navigator 浏览器需要一种可以嵌入网页�
 
 1995年5月，Brendan Eich 只用了10天，就设计完成了这种语言的第一版。它是一个大杂烩，语法有多个来源。
 
-- 基本语法：借鉴 C 语言和 Java 语言。
-- 数据结构：借鉴 Java 语言，包括将值分成原始值和对象两大类。
-- 函数的用法：借鉴 Scheme 语言和 Awk 语言，将函数当作第一等公民，并引入闭包。
-- 原型继承模型：借鉴 Self 语言（Smalltalk 的一种变种）。
-- 正则表达式：借鉴 Perl 语言。
-- 字符串和数组处理：借鉴 Python 语言。
+* 基本语法：借鉴 C 语言和 Java 语言。
+* 数据结构：借鉴 Java 语言，包括将值分成原始值和对象两大类。
+* 函数的用法：借鉴 Scheme 语言和 Awk 语言，将函数当作第一等公民，并引入闭包。
+* 原型继承模型：借鉴 Self 语言（Smalltalk 的一种变种）。
+* 正则表达式：借鉴 Perl 语言。
+* 字符串和数组处理：借鉴 Python 语言。
 
 为了保持简单，这种脚本语言缺少一些关键的功能，比如块级作用域、模块、子类型（subtyping）等等，但是可以利用现有功能找出解决办法。这种功能的不足，直接导致了后来 JavaScript 的一个显著特点：对于其他语言，你需要学习语言的各种功能，而对于 JavaScript，你常常需要学习各种解决问题的模式。而且由于来源多样，从一开始就注定，JavaScript 的编程风格是函数式编程和面向对象编程的一种混合体。
 
@@ -181,7 +181,8 @@ JavaScript 伴随着互联网的发展一起发展。互联网周边技术的快
 
 ## 参考链接
 
-- Axel Rauschmayer, [The Past, Present, and Future of JavaScript](http://oreilly.com/javascript/radarreports/past-present-future-javascript.csp)
-- John Dalziel, [The race for speed part 4: The future for JavaScript](http://creativejs.com/2013/06/the-race-for-speed-part-4-the-future-for-javascript/)
-- Axel Rauschmayer, [Basic JavaScript for the impatient programmer](http://www.2ality.com/2013/06/basic-javascript.html)
-- resin.io, [Happy 18th Birthday JavaScript! A look at an unlikely past and bright future](http://resin.io/happy-18th-birthday-javascript/)
+* Axel Rauschmayer, [The Past, Present, and Future of JavaScript](http://oreilly.com/javascript/radarreports/past-present-future-javascript.csp)
+* John Dalziel, [The race for speed part 4: The future for JavaScript](http://creativejs.com/2013/06/the-race-for-speed-part-4-the-future-for-javascript/)
+* Axel Rauschmayer, [Basic JavaScript for the impatient programmer](http://www.2ality.com/2013/06/basic-javascript.html)
+* resin.io, [Happy 18th Birthday JavaScript! A look at an unlikely past and bright future](http://resin.io/happy-18th-birthday-javascript/)
+

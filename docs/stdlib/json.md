@@ -11,14 +11,10 @@ JSON 格式（JavaScript Object Notation 的缩写）是一种用于数据交换
 JSON 对值的类型和格式有严格的规定。
 
 > 1. 复合类型的值只能是数组或对象，不能是函数、正则表达式对象、日期对象。
->
-> 1. 原始类型的值只有四种：字符串、数值（必须以十进制表示）、布尔值和`null`（不能使用`NaN`, `Infinity`, `-Infinity`和`undefined`）。
->
-> 1. 字符串必须使用双引号表示，不能使用单引号。
->
-> 1. 对象的键名必须放在双引号里面。
->
-> 1. 数组或对象最后一个成员的后面，不能加逗号。
+> 2. 原始类型的值只有四种：字符串、数值（必须以十进制表示）、布尔值和`null`（不能使用`NaN`, `Infinity`, `-Infinity`和`undefined`）。
+> 3. 字符串必须使用双引号表示，不能使用单引号。
+> 4. 对象的键名必须放在双引号里面。
+> 5. 数组或对象最后一个成员的后面，不能加逗号。
 
 以下都是合法的 JSON。
 
@@ -55,7 +51,7 @@ JSON 对值的类型和格式有严格的规定。
 
 `JSON`对象是 JavaScript 的原生对象，用来处理 JSON 格式数据。它有两个静态方法：`JSON.stringify()`和`JSON.parse()`。
 
-## JSON.stringify()
+## JSON.stringify\(\)
 
 ### 基本用法
 
@@ -334,7 +330,7 @@ JSON.stringify(/foo/) // ""/foo/""
 
 上面代码在正则对象的原型上面部署了`toJSON()`方法，将其指向`toString()`方法，因此转换成 JSON 格式时，正则对象就先调用`toJSON()`方法转为字符串，然后再被`JSON.stringify()`方法处理。
 
-## JSON.parse()
+## JSON.parse\(\)
 
 `JSON.parse`方法用于将 JSON 字符串转换成对应的值。
 
@@ -386,8 +382,9 @@ JSON.parse('{"a": 1, "b": 2}', f)
 
 ## 参考链接
 
-- MDN, [Using native JSON](https://developer.mozilla.org/en-US/docs/Using_native_JSON)
-- MDN, [JSON.parse](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/JSON/parse)
-- Dr. Axel Rauschmayer, [JavaScript’s JSON API](http://www.2ality.com/2011/08/json-api.html)
-- Jim Cowart, [What You Might Not Know About JSON.stringify()](http://freshbrewedcode.com/jimcowart/2013/01/29/what-you-might-not-know-about-json-stringify/)
-- Marco Rogers, [What is JSON?](https://docs.nodejitsu.com/articles/javascript-conventions/what-is-json/)
+* MDN, [Using native JSON](https://developer.mozilla.org/en-US/docs/Using_native_JSON)
+* MDN, [JSON.parse](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/JSON/parse)
+* Dr. Axel Rauschmayer, [JavaScript’s JSON API](http://www.2ality.com/2011/08/json-api.html)
+* Jim Cowart, [What You Might Not Know About JSON.stringify\(\)](http://freshbrewedcode.com/jimcowart/2013/01/29/what-you-might-not-know-about-json-stringify/)
+* Marco Rogers, [What is JSON?](https://docs.nodejitsu.com/articles/javascript-conventions/what-is-json/)
+

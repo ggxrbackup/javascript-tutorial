@@ -258,7 +258,7 @@ f.length // 2
 
 `length`属性提供了一种机制，判断定义时和调用时参数的差异，以便实现面向对象编程的“方法重载”（overload）。
 
-### toString()
+### toString\(\)
 
 函数的`toString()`方法返回一个字符串，内容是函数的源码。
 
@@ -987,9 +987,10 @@ window.eval('...')
 
 ## 参考链接
 
-- Ben Alman, [Immediately-Invoked Function Expression (IIFE)](http://benalman.com/news/2010/11/immediately-invoked-function-expression/)
-- Mark Daggett, [Functions Explained](http://markdaggett.com/blog/2013/02/15/functions-explained/)
-- Juriy Zaytsev, [Named function expressions demystified](http://kangax.github.com/nfe/)
-- Marco Rogers polotek, [What is the arguments object?](http://docs.nodejitsu.com/articles/javascript-conventions/what-is-the-arguments-object)
-- Juriy Zaytsev, [Global eval. What are the options?](http://perfectionkills.com/global-eval-what-are-the-options/)
-- Axel Rauschmayer, [Evaluating JavaScript code via eval() and new Function()](http://www.2ality.com/2014/01/eval.html)
+* Ben Alman, [Immediately-Invoked Function Expression \(IIFE\)](http://benalman.com/news/2010/11/immediately-invoked-function-expression/)
+* Mark Daggett, [Functions Explained](http://markdaggett.com/blog/2013/02/15/functions-explained/)
+* Juriy Zaytsev, [Named function expressions demystified](http://kangax.github.com/nfe/)
+* Marco Rogers polotek, [What is the arguments object?](http://docs.nodejitsu.com/articles/javascript-conventions/what-is-the-arguments-object)
+* Juriy Zaytsev, [Global eval. What are the options?](http://perfectionkills.com/global-eval-what-are-the-options/)
+* Axel Rauschmayer, [Evaluating JavaScript code via eval\(\) and new Function\(\)](http://www.2ality.com/2014/01/eval.html)
+

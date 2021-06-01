@@ -155,10 +155,10 @@ droptarget.ondrop = function (e) {
 
 FileReader 对象提供四个方法，处理 Blob 对象。Blob 对象作为参数传入这些方法，然后以指定的格式返回。
 
-- `FileReader.readAsText()`：返回文本，需要指定文本编码，默认为 UTF-8。
-- `FileReader.readAsArrayBuffer()`：返回 ArrayBuffer 对象。
-- `FileReader.readAsDataURL()`：返回 Data URL。
-- `FileReader.readAsBinaryString()`：返回原始的二进制字符串。
+* `FileReader.readAsText()`：返回文本，需要指定文本编码，默认为 UTF-8。
+* `FileReader.readAsArrayBuffer()`：返回 ArrayBuffer 对象。
+* `FileReader.readAsDataURL()`：返回 Data URL。
+* `FileReader.readAsBinaryString()`：返回原始的二进制字符串。
 
 下面是`FileReader.readAsText()`方法的例子，用来读取文本文件。
 
@@ -210,3 +210,4 @@ function typefile(file) {
   };
 }
 ```
+

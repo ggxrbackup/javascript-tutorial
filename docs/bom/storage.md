@@ -14,7 +14,7 @@ Storage 接口用于脚本在浏览器保存数据。两个对象部署了这个
 
 Storage 接口只有一个属性。
 
-- `Storage.length`：返回保存的数据项个数。
+* `Storage.length`：返回保存的数据项个数。
 
 ```javascript
 window.localStorage.setItem('foo', 'a');
@@ -26,7 +26,7 @@ window.localStorage.length // 3
 
 该接口提供5个方法。
 
-### Storage.setItem()
+### Storage.setItem\(\)
 
 `Storage.setItem()`方法用于存入数据。它接受两个参数，第一个是键名，第二个是保存的数据。如果键名已经存在，该方法会更新已有的键值。该方法没有返回值。
 
@@ -55,7 +55,7 @@ window.localStorage['foo'] = '123';
 window.localStorage.setItem('foo', '123');
 ```
 
-### Storage.getItem()
+### Storage.getItem\(\)
 
 `Storage.getItem()`方法用于读取数据。它只有一个参数，就是键名。如果键名不存在，该方法返回`null`。
 
@@ -66,7 +66,7 @@ window.localStorage.getItem('key')
 
 键名应该是一个字符串，否则会被自动转为字符串。
 
-### Storage.removeItem()
+### Storage.removeItem\(\)
 
 `Storage.removeItem()`方法用于清除某个键名对应的键值。它接受键名作为参数，如果键名不存在，该方法不会做任何事情。
 
@@ -75,7 +75,7 @@ sessionStorage.removeItem('key');
 localStorage.removeItem('key');
 ```
 
-### Storage.clear()
+### Storage.clear\(\)
 
 `Storage.clear()`方法用于清除所有保存的数据。该方法的返回值是`undefined`。
 
@@ -84,7 +84,7 @@ window.sessionStorage.clear()
 window.localStorage.clear()
 ```
 
-### Storage.key()
+### Storage.key\(\)
 
 `Storage.key()`接受一个整数作为参数（从零开始），返回该位置对应的键值。
 
@@ -111,11 +111,11 @@ window.addEventListener('storage', onStorageChange);
 
 监听函数接受一个`event`实例对象作为参数。这个实例对象继承了 StorageEvent 接口，有几个特有的属性，都是只读属性。
 
-- `StorageEvent.key`：字符串，表示发生变动的键名。如果 storage 事件是由`clear()`方法引起，该属性返回`null`。
-- `StorageEvent.newValue`：字符串，表示新的键值。如果 storage 事件是由`clear()`方法或删除该键值对引发的，该属性返回`null`。
-- `StorageEvent.oldValue`：字符串，表示旧的键值。如果该键值对是新增的，该属性返回`null`。
-- `StorageEvent.storageArea`：对象，返回键值对所在的整个对象。也说是说，可以从这个属性上面拿到当前域名储存的所有键值对。
-- `StorageEvent.url`：字符串，表示原始触发 storage 事件的那个网页的网址。
+* `StorageEvent.key`：字符串，表示发生变动的键名。如果 storage 事件是由`clear()`方法引起，该属性返回`null`。
+* `StorageEvent.newValue`：字符串，表示新的键值。如果 storage 事件是由`clear()`方法或删除该键值对引发的，该属性返回`null`。
+* `StorageEvent.oldValue`：字符串，表示旧的键值。如果该键值对是新增的，该属性返回`null`。
+* `StorageEvent.storageArea`：对象，返回键值对所在的整个对象。也说是说，可以从这个属性上面拿到当前域名储存的所有键值对。
+* `StorageEvent.url`：字符串，表示原始触发 storage 事件的那个网页的网址。
 
 下面是`StorageEvent.key`属性的例子。
 
@@ -131,9 +131,10 @@ window.addEventListener('storage', onStorageChange);
 
 ## 参考链接
 
-- Ryan Stewart，[Introducing the HTML5 storage APIs](http://www.adobe.com/devnet/html5/articles/html5-storage-apis.html)
-- [Getting Started with LocalStorage](http://codular.com/localstorage)
-- Feross Aboukhadijeh, [Introducing the HTML5 Hard Disk Filler™ API](http://feross.org/fill-disk/)
-- Ben Summers, [Inter-window messaging using localStorage](http://bens.me.uk/2013/localstorage-inter-window-messaging)
-- Stack Overflow, [Why does Internet Explorer fire the window “storage” event on the window that stored the data?](http://stackoverflow.com/questions/18265556/why-does-internet-explorer-fire-the-window-storage-event-on-the-window-that-st)
-- Stack Overflow, [localStorage eventListener is not called](https://stackoverflow.com/questions/5370784/localstorage-eventlistener-is-not-called)
+* Ryan Stewart，[Introducing the HTML5 storage APIs](http://www.adobe.com/devnet/html5/articles/html5-storage-apis.html)
+* [Getting Started with LocalStorage](http://codular.com/localstorage)
+* Feross Aboukhadijeh, [Introducing the HTML5 Hard Disk Filler™ API](http://feross.org/fill-disk/)
+* Ben Summers, [Inter-window messaging using localStorage](http://bens.me.uk/2013/localstorage-inter-window-messaging)
+* Stack Overflow, [Why does Internet Explorer fire the window “storage” event on the window that stored the data?](http://stackoverflow.com/questions/18265556/why-does-internet-explorer-fire-the-window-storage-event-on-the-window-that-st)
+* Stack Overflow, [localStorage eventListener is not called](https://stackoverflow.com/questions/5370784/localstorage-eventlistener-is-not-called)
+

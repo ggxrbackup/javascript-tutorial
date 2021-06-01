@@ -52,7 +52,7 @@ document.lastElementChild.nodeName
 document.body.childElementCount // 13
 ```
 
-### ParentNode.append()，ParentNode.prepend()
+### ParentNode.append\(\)，ParentNode.prepend\(\)
 
 `append`方法为当前节点追加一个或多个子节点，位置是最后一个元素子节点的后面。
 
@@ -86,7 +86,7 @@ parent.append('Hello', p);
 
 如果一个节点有父节点，那么该节点就拥有了`ChildNode`接口。
 
-### ChildNode.remove()
+### ChildNode.remove\(\)
 
 `remove`方法用于从父节点移除当前节点。
 
@@ -96,7 +96,7 @@ el.remove()
 
 上面代码在 DOM 里面移除了`el`节点。
 
-### ChildNode.before()，ChildNode.after()
+### ChildNode.before\(\)，ChildNode.after\(\)
 
 `before`方法用于在当前节点的前面，插入一个或多个同级节点。两者拥有相同的父节点。
 
@@ -121,7 +121,7 @@ el.before(p, 'Hello');
 
 `after`方法用于在当前节点的后面，插入一个或多个同级节点，两者拥有相同的父节点。用法与`before`方法完全相同。
 
-### ChildNode.replaceWith()
+### ChildNode.replaceWith\(\)
 
 `replaceWith`方法使用参数节点，替换当前节点。参数可以是元素节点，也可以是文本节点。
 
@@ -131,3 +131,4 @@ el.replaceWith(span);
 ```
 
 上面代码中，`el`节点将被`span`节点替换。
+

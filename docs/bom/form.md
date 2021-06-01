@@ -4,7 +4,7 @@
 
 表单（`<form>`）用来收集用户提交的数据，发送到服务器。比如，用户提交用户名和密码，让服务器验证，就要通过表单。表单提供多种控件，让开发者使用，具体的控件种类和用法请参考 HTML 语言的教程。本章主要介绍 JavaScript 与表单的交互。
 
-```html
+```markup
 <form action="/handling-page" method="post">
   <div>
     <label for="name">用户名：</label>
@@ -46,7 +46,7 @@ user_name=张三&user_passwd=123&submit_button=提交
 
 点击`submit`控件，就可以提交表单。
 
-```html
+```markup
 <form>
   <input type="submit" value="提交">
 </form>
@@ -56,7 +56,7 @@ user_name=张三&user_passwd=123&submit_button=提交
 
 注意，表单里面的`<button>`元素如果没有用`type`属性指定类型，那么默认就是`submit`控件。
 
-```html
+```markup
 <form>
   <button>提交</button>
 </form>
@@ -92,7 +92,7 @@ var formdata = new FormData(form);
 
 下面是一个表单。
 
-```html
+```markup
 <form id="myForm" name="myForm">
   <div>
     <label for="username">用户名：</label>
@@ -129,15 +129,15 @@ formData.get('username') // "张三"
 
 FormData 提供以下实例方法。
 
-- `FormData.get(key)`：获取指定键名对应的键值，参数为键名。如果有多个同名的键值对，则返回第一个键值对的键值。
-- `FormData.getAll(key)`：返回一个数组，表示指定键名对应的所有键值。如果有多个同名的键值对，数组会包含所有的键值。
-- `FormData.set(key, value)`：设置指定键名的键值，参数为键名。如果键名不存在，会添加这个键值对，否则会更新指定键名的键值。如果第二个参数是文件，还可以使用第三个参数，表示文件名。
-- `FormData.delete(key)`：删除一个键值对，参数为键名。
-- `FormData.append(key, value)`：添加一个键值对。如果键名重复，则会生成两个相同键名的键值对。如果第二个参数是文件，还可以使用第三个参数，表示文件名。
-- `FormData.has(key)`：返回一个布尔值，表示是否具有该键名的键值对。
-- `FormData.keys()`：返回一个遍历器对象，用于`for...of`循环遍历所有的键名。
-- `FormData.values()`：返回一个遍历器对象，用于`for...of`循环遍历所有的键值。
-- `FormData.entries()`：返回一个遍历器对象，用于`for...of`循环遍历所有的键值对。如果直接用`for...of`循环遍历 FormData 实例，默认就会调用这个方法。
+* `FormData.get(key)`：获取指定键名对应的键值，参数为键名。如果有多个同名的键值对，则返回第一个键值对的键值。
+* `FormData.getAll(key)`：返回一个数组，表示指定键名对应的所有键值。如果有多个同名的键值对，数组会包含所有的键值。
+* `FormData.set(key, value)`：设置指定键名的键值，参数为键名。如果键名不存在，会添加这个键值对，否则会更新指定键名的键值。如果第二个参数是文件，还可以使用第三个参数，表示文件名。
+* `FormData.delete(key)`：删除一个键值对，参数为键名。
+* `FormData.append(key, value)`：添加一个键值对。如果键名重复，则会生成两个相同键名的键值对。如果第二个参数是文件，还可以使用第三个参数，表示文件名。
+* `FormData.has(key)`：返回一个布尔值，表示是否具有该键名的键值对。
+* `FormData.keys()`：返回一个遍历器对象，用于`for...of`循环遍历所有的键名。
+* `FormData.values()`：返回一个遍历器对象，用于`for...of`循环遍历所有的键值。
+* `FormData.entries()`：返回一个遍历器对象，用于`for...of`循环遍历所有的键值对。如果直接用`for...of`循环遍历 FormData 实例，默认就会调用这个方法。
 
 下面是`get()`、`getAll()`、`set()`、`append()`方法的例子。
 
@@ -192,7 +192,7 @@ for (var pair of formData) {
 
 表单提交的时候，浏览器允许开发者指定一些条件，它会自动验证各个表单控件的值是否符合条件。
 
-```html
+```markup
 <!-- 必填 -->
 <input required>
 
@@ -224,7 +224,7 @@ input:valid {
 }
 ```
 
-### checkValidity()
+### checkValidity\(\)
 
 除了提交表单的时候，浏览器自动校验表单，还可以手动触发表单的校验。表单元素和表单控件都有`checkValidity()`方法，用于手动触发校验。
 
@@ -266,8 +266,8 @@ input.willValidate // true
 
 控件元素的`validationMessage`属性返回一个字符串，表示控件不满足校验条件时，浏览器显示的提示文本。以下两种情况，该属性返回空字符串。
 
-- 该控件不会在提交时自动校验
-- 该控件满足校验条件
+* 该控件不会在提交时自动校验
+* 该控件满足校验条件
 
 ```javascript
 // HTML 代码如下
@@ -285,13 +285,13 @@ if (!myInput.checkValidity()) {
 }
 ```
 
-### setCustomValidity()
+### setCustomValidity\(\)
 
 控件元素的`setCustomValidity()`方法用来定制校验失败时的报错信息。它接受一个字符串作为参数，该字符串就是定制的报错信息。如果参数为空字符串，则上次设置的报错信息被清除。
 
 这个方法可以替换浏览器内置的表单验证报错信息，参数就是要显示的报错信息。
 
-```html
+```markup
 <form action="somefile.php">
   <input
     type="text"
@@ -348,17 +348,17 @@ function checkFileSize() {
 
 该对象有以下属性，全部为只读属性。
 
-- `ValidityState.badInput`：布尔值，表示浏览器是否不能将用户的输入转换成正确的类型，比如用户在数值框里面输入字符串。
-- `ValidityState.customError`：布尔值，表示是否已经调用`setCustomValidity()`方法，将校验信息设置为一个非空字符串。
-- `ValidityState.patternMismatch`：布尔值，表示用户输入的值是否不满足模式的要求。
-- `ValidityState.rangeOverflow`：布尔值，表示用户输入的值是否大于最大范围。
-- `ValidityState.rangeUnderflow`：布尔值，表示用户输入的值是否小于最小范围。
-- `ValidityState.stepMismatch`：布尔值，表示用户输入的值不符合步长的设置（即不能被步长值整除）。
-- `ValidityState.tooLong`：布尔值，表示用户输入的字数超出了最长字数。
-- `ValidityState.tooShort`：布尔值，表示用户输入的字符少于最短字数。
-- `ValidityState.typeMismatch`：布尔值，表示用户填入的值不符合类型要求（主要是类型为 Email 或 URL 的情况）。
-- `ValidityState.valid`：布尔值，表示用户是否满足所有校验条件。
-- `ValidityState.valueMissing`：布尔值，表示用户没有填入必填的值。
+* `ValidityState.badInput`：布尔值，表示浏览器是否不能将用户的输入转换成正确的类型，比如用户在数值框里面输入字符串。
+* `ValidityState.customError`：布尔值，表示是否已经调用`setCustomValidity()`方法，将校验信息设置为一个非空字符串。
+* `ValidityState.patternMismatch`：布尔值，表示用户输入的值是否不满足模式的要求。
+* `ValidityState.rangeOverflow`：布尔值，表示用户输入的值是否大于最大范围。
+* `ValidityState.rangeUnderflow`：布尔值，表示用户输入的值是否小于最小范围。
+* `ValidityState.stepMismatch`：布尔值，表示用户输入的值不符合步长的设置（即不能被步长值整除）。
+* `ValidityState.tooLong`：布尔值，表示用户输入的字数超出了最长字数。
+* `ValidityState.tooShort`：布尔值，表示用户输入的字符少于最短字数。
+* `ValidityState.typeMismatch`：布尔值，表示用户填入的值不符合类型要求（主要是类型为 Email 或 URL 的情况）。
+* `ValidityState.valid`：布尔值，表示用户是否满足所有校验条件。
+* `ValidityState.valueMissing`：布尔值，表示用户没有填入必填的值。
 
 下面是一个例子。
 
@@ -416,7 +416,7 @@ input.addEventListener('input', function(event){
 
 表单元素的 HTML 属性`novalidate`，可以关闭浏览器的自动校验。
 
-```html
+```markup
 <form novalidate>
 </form>
 ```
@@ -429,7 +429,7 @@ form.noValidate = true;
 
 如果表单元素没有设置`novalidate`属性，那么提交按钮（`<button>`或`<input>`元素）的`formnovalidate`属性也有同样的作用。
 
-```html
+```markup
 <form>
   <input type="submit" value="submit" formnovalidate>
 </form>
@@ -441,7 +441,7 @@ form.noValidate = true;
 
 假定表单有两个字段，分别是`foo`和`baz`，其中`foo`字段的值等于`bar`，`baz`字段的值是一个分为两行的字符串。
 
-```
+```text
 The first line.
 The second line.
 ```
@@ -452,7 +452,7 @@ The second line.
 
 如果表单使用`GET`方法发送数据，`enctype`属性无效。
 
-```html
+```markup
 <form
   action="register.php"
   method="get"
@@ -471,7 +471,7 @@ The second line.
 
 如果表单用`POST`方法发送数据，并省略`enctype`属性，那么数据以`application/x-www-form-urlencoded`格式发送（因为这是默认值）。
 
-```html
+```markup
 <form
   action="register.php"
   method="post"
@@ -494,7 +494,7 @@ foo=bar&baz=The+first+line.%0D%0AThe+second+line.%0D%0A
 
 如果表单使用`POST`方法发送数据，`enctype`属性为`text/plain`，那么数据将以纯文本格式发送。
 
-```html
+```markup
 <form
   action="register.php"
   method="post"
@@ -518,7 +518,7 @@ The second line.
 
 如果表单使用`POST`方法，`enctype`属性为`multipart/form-data`，那么数据将以混合的格式发送。
 
-```html
+```markup
 <form
   action="register.php"
   method="post"
@@ -552,13 +552,13 @@ The second line.
 
 用户上传文件，也是通过表单。具体来说，就是通过文件输入框选择本地文件，提交表单的时候，浏览器就会把这个文件发送到服务器。
 
-```html
+```markup
 <input type="file" id="file" name="myFile">
 ```
 
 此外，还需要将表单`<form>`元素的`method`属性设为`POST`，`enctype`属性设为`multipart/form-data`。其中，`enctype`属性决定了 HTTP 头信息的`Content-Type`字段的值，默认情况下这个字段的值是`application/x-www-form-urlencoded`，但是文件上传的时候要改成`multipart/form-data`。
 
-```html
+```markup
 <form method="post" enctype="multipart/form-data">
   <div>
     <label for="file">选择一个文件</label>
@@ -623,4 +623,5 @@ xhr.send(file);
 
 ## 参考链接
 
-- [HTML5 Form Validation With the “pattern” Attribute](https://webdesign.tutsplus.com/tutorials/html5-form-validation-with-the-pattern-attribute--cms-25145), Thoriq Firdaus
+* [HTML5 Form Validation With the “pattern” Attribute](https://webdesign.tutsplus.com/tutorials/html5-form-validation-with-the-pattern-attribute--cms-25145), Thoriq Firdaus
+

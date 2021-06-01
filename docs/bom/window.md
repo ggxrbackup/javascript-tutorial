@@ -66,7 +66,7 @@ newWin.opener = null;
 
 通过`opener`属性，可以获得父窗口的全局属性和方法，但只限于两个窗口同源的情况（参见《同源限制》一章），且其中一个窗口由另一个打开。`<a>`元素添加`rel="noopener"`属性，可以防止新打开的窗口获取父窗口，减轻被恶意网站修改父窗口 URL 的风险。
 
-```html
+```markup
 <a href="https://an.evil.site" target="_blank" rel="noopener">
 恶意网站
 </a>
@@ -186,12 +186,12 @@ if (window.scrollY < 75) {
 
 组件属性返回浏览器的组件对象。这样的属性有下面几个。
 
-- `window.locationbar`：地址栏对象
-- `window.menubar`：菜单栏对象
-- `window.scrollbars`：窗口的滚动条对象
-- `window.toolbar`：工具栏对象
-- `window.statusbar`：状态栏对象
-- `window.personalbar`：用户安装的个人工具栏对象
+* `window.locationbar`：地址栏对象
+* `window.menubar`：菜单栏对象
+* `window.scrollbars`：窗口的滚动条对象
+* `window.toolbar`：工具栏对象
+* `window.statusbar`：状态栏对象
+* `window.personalbar`：用户安装的个人工具栏对象
 
 这些对象的`visible`属性是一个布尔值，表示这些组件是否可见。这些属性只读。
 
@@ -208,14 +208,14 @@ window.personalbar.visible
 
 全局对象属性指向一些浏览器原生的全局对象。
 
-- `window.document`：指向`document`对象，详见《document 对象》一章。注意，这个属性有同源限制。只有来自同源的脚本才能读取这个属性。
-- `window.location`：指向`Location`对象，用于获取当前窗口的 URL 信息。它等同于`document.location`属性，详见《Location 对象》一章。
-- `window.navigator`：指向`Navigator`对象，用于获取环境信息，详见《Navigator 对象》一章。
-- `window.history`：指向`History`对象，表示浏览器的浏览历史，详见《History 对象》一章。
-- `window.localStorage`：指向本地储存的 localStorage 数据，详见《Storage 接口》一章。
-- `window.sessionStorage`：指向本地储存的 sessionStorage 数据，详见《Storage 接口》一章。
-- `window.console`：指向`console`对象，用于操作控制台，详见《console 对象》一章。
-- `window.screen`：指向`Screen`对象，表示屏幕信息，详见《Screen 对象》一章。
+* `window.document`：指向`document`对象，详见《document 对象》一章。注意，这个属性有同源限制。只有来自同源的脚本才能读取这个属性。
+* `window.location`：指向`Location`对象，用于获取当前窗口的 URL 信息。它等同于`document.location`属性，详见《Location 对象》一章。
+* `window.navigator`：指向`Navigator`对象，用于获取环境信息，详见《Navigator 对象》一章。
+* `window.history`：指向`History`对象，表示浏览器的浏览历史，详见《History 对象》一章。
+* `window.localStorage`：指向本地储存的 localStorage 数据，详见《Storage 接口》一章。
+* `window.sessionStorage`：指向本地储存的 sessionStorage 数据，详见《Storage 接口》一章。
+* `window.console`：指向`console`对象，用于操作控制台，详见《console 对象》一章。
+* `window.screen`：指向`Screen`对象，表示屏幕信息，详见《Screen 对象》一章。
 
 ### window.isSecureContext
 
@@ -223,11 +223,11 @@ window.personalbar.visible
 
 ## window 对象的方法
 
-### window.alert()，window.prompt()，window.confirm()
+### window.alert\(\)，window.prompt\(\)，window.confirm\(\)
 
 `window.alert()`、`window.prompt()`、`window.confirm()`都是浏览器与用户互动的全局方法。它们会弹出不同的对话框，要求用户做出回应。注意，这三个方法弹出的对话框，都是浏览器统一规定的式样，无法定制。
 
-**（1）window.alert()**
+**（1）window.alert\(\)**
 
 `window.alert()`方法弹出的对话框，只有一个“确定”按钮，往往用来通知用户某些信息。
 
@@ -243,7 +243,7 @@ window.alert('Hello World');
 alert('本条提示\n分成两行');
 ```
 
-**（2）window.prompt()**
+**（2）window.prompt\(\)**
 
 `window.prompt()`方法弹出的对话框，提示文字的下方，还有一个输入框，要求用户输入信息，并有“确定”和“取消”两个按钮。它往往用来获取用户输入的数据。
 
@@ -261,7 +261,7 @@ var result = prompt('您的年龄？', 25)
 
 `window.prompt()`方法的第二个参数是可选的，但是最好总是提供第二个参数，作为输入框的默认值。
 
-**（3）window.confirm()**
+**（3）window.confirm\(\)**
 
 `window.confirm()`方法弹出的对话框，除了提示信息之外，只有“确定”和“取消”两个按钮，往往用来征询用户是否同意。
 
@@ -292,9 +292,9 @@ window.onunload = function () {
 
 这三个方法都具有堵塞效应，一旦弹出对话框，整个页面就是暂停执行，等待用户做出反应。
 
-### window.open(), window.close()，window.stop()
+### window.open\(\), window.close\(\)，window.stop\(\)
 
-**（1）window.open()**
+**（1）window.open\(\)**
 
 `window.open`方法用于新建另一个浏览器窗口，类似于浏览器菜单的新建窗口选项。它会返回新窗口的引用，如果无法新建窗口，则返回`null`。
 
@@ -310,9 +310,9 @@ var popup = window.open('somefile.html');
 window.open(url, windowName, [windowFeatures])
 ```
 
-- `url`：字符串，表示新窗口的网址。如果省略，默认网址就是`about:blank`。
-- `windowName`：字符串，表示新窗口的名字。如果该名字的窗口已经存在，则占用该窗口，不再新建窗口。如果省略，就默认使用`_blank`，表示新建一个没有名字的窗口。另外还有几个预设值，`_self`表示当前窗口，`_top`表示顶层窗口，`_parent`表示上一层窗口。
-- `windowFeatures`：字符串，内容为逗号分隔的键值对（详见下文），表示新窗口的参数，比如有没有提示栏、工具条等等。如果省略，则默认打开一个完整 UI 的新窗口。如果新建的是一个已经存在的窗口，则该参数不起作用，浏览器沿用以前窗口的参数。
+* `url`：字符串，表示新窗口的网址。如果省略，默认网址就是`about:blank`。
+* `windowName`：字符串，表示新窗口的名字。如果该名字的窗口已经存在，则占用该窗口，不再新建窗口。如果省略，就默认使用`_blank`，表示新建一个没有名字的窗口。另外还有几个预设值，`_self`表示当前窗口，`_top`表示顶层窗口，`_parent`表示上一层窗口。
+* `windowFeatures`：字符串，内容为逗号分隔的键值对（详见下文），表示新窗口的参数，比如有没有提示栏、工具条等等。如果省略，则默认打开一个完整 UI 的新窗口。如果新建的是一个已经存在的窗口，则该参数不起作用，浏览器沿用以前窗口的参数。
 
 下面是一个例子。
 
@@ -328,27 +328,27 @@ var popup = window.open(
 
 第三个参数可以设定如下属性。
 
-- left：新窗口距离屏幕最左边的距离（单位像素）。注意，新窗口必须是可见的，不能设置在屏幕以外的位置。
-- top：新窗口距离屏幕最顶部的距离（单位像素）。
-- height：新窗口内容区域的高度（单位像素），不得小于100。
-- width：新窗口内容区域的宽度（单位像素），不得小于100。
-- outerHeight：整个浏览器窗口的高度（单位像素），不得小于100。
-- outerWidth：整个浏览器窗口的宽度（单位像素），不得小于100。
-- menubar：是否显示菜单栏。
-- toolbar：是否显示工具栏。
-- location：是否显示地址栏。
-- personalbar：是否显示用户自己安装的工具栏。
-- status：是否显示状态栏。
-- dependent：是否依赖父窗口。如果依赖，那么父窗口最小化，该窗口也最小化；父窗口关闭，该窗口也关闭。
-- minimizable：是否有最小化按钮，前提是`dialog=yes`。
-- noopener：新窗口将与父窗口切断联系，即新窗口的`window.opener`属性返回`null`，父窗口的`window.open()`方法也返回`null`。
-- resizable：新窗口是否可以调节大小。
-- scrollbars：是否允许新窗口出现滚动条。
-- dialog：新窗口标题栏是否出现最大化、最小化、恢复原始大小的控件。
-- titlebar：新窗口是否显示标题栏。
-- alwaysRaised：是否显示在所有窗口的顶部。
-- alwaysLowered：是否显示在父窗口的底下。
-- close：新窗口是否显示关闭按钮。
+* left：新窗口距离屏幕最左边的距离（单位像素）。注意，新窗口必须是可见的，不能设置在屏幕以外的位置。
+* top：新窗口距离屏幕最顶部的距离（单位像素）。
+* height：新窗口内容区域的高度（单位像素），不得小于100。
+* width：新窗口内容区域的宽度（单位像素），不得小于100。
+* outerHeight：整个浏览器窗口的高度（单位像素），不得小于100。
+* outerWidth：整个浏览器窗口的宽度（单位像素），不得小于100。
+* menubar：是否显示菜单栏。
+* toolbar：是否显示工具栏。
+* location：是否显示地址栏。
+* personalbar：是否显示用户自己安装的工具栏。
+* status：是否显示状态栏。
+* dependent：是否依赖父窗口。如果依赖，那么父窗口最小化，该窗口也最小化；父窗口关闭，该窗口也关闭。
+* minimizable：是否有最小化按钮，前提是`dialog=yes`。
+* noopener：新窗口将与父窗口切断联系，即新窗口的`window.opener`属性返回`null`，父窗口的`window.open()`方法也返回`null`。
+* resizable：新窗口是否可以调节大小。
+* scrollbars：是否允许新窗口出现滚动条。
+* dialog：新窗口标题栏是否出现最大化、最小化、恢复原始大小的控件。
+* titlebar：新窗口是否显示标题栏。
+* alwaysRaised：是否显示在所有窗口的顶部。
+* alwaysLowered：是否显示在父窗口的底下。
+* close：新窗口是否显示关闭按钮。
 
 对于那些可以打开和关闭的属性，设为`yes`或`1`或不设任何值就表示打开，比如`status=yes`、`status=1`、`status`都会得到同样的结果。如果想设为关闭，不用写`no`，而是直接省略这个属性即可。也就是说，如果在第三个参数中设置了一部分属性，其他没有被设置的`yes/no`属性都会被设成`no`，只有`titlebar`和关闭按钮除外（它们的值默认为`yes`）。
 
@@ -388,7 +388,7 @@ if (popup === null) {
 }
 ```
 
-**（2）window.close()**
+**（2）window.close\(\)**
 
 `window.close`方法用于关闭当前窗口，一般只用来关闭`window.open`方法新建的窗口。
 
@@ -398,7 +398,7 @@ popup.close()
 
 该方法只对顶层窗口有效，`iframe`框架之中的窗口使用该方法无效。
 
-**（3）window.stop()**
+**（3）window.stop\(\)**
 
 `window.stop()`方法完全等同于单击浏览器的停止按钮，会停止加载图像、视频等正在或等待加载的对象。
 
@@ -406,7 +406,7 @@ popup.close()
 window.stop()
 ```
 
-### window.moveTo()，window.moveBy()
+### window.moveTo\(\)，window.moveBy\(\)
 
 `window.moveTo()`方法用于移动浏览器窗口到指定位置。它接受两个参数，分别是窗口左上角距离屏幕左上角的水平距离和垂直距离，单位为像素。
 
@@ -426,7 +426,7 @@ window.moveBy(25, 50)
 
 为了防止有人滥用这两个方法，随意移动用户的窗口，目前只有一种情况，浏览器允许用脚本移动窗口：该窗口是用`window.open()`方法新建的，并且窗口里只有它一个 Tab 页。除此以外的情况，使用上面两个方法都是无效的。
 
-### window.resizeTo()，window.resizeBy()
+### window.resizeTo\(\)，window.resizeBy\(\)
 
 `window.resizeTo()`方法用于缩放窗口到指定大小。
 
@@ -451,7 +451,7 @@ window.resizeBy(-200, -200)
 
 上面的代码将当前窗口的宽度和高度，都缩小200像素。
 
-### window.scrollTo()，window.scroll()，window.scrollBy()
+### window.scrollTo\(\)，window.scroll\(\)，window.scrollBy\(\)
 
 `window.scrollTo`方法用于将文档滚动到指定位置。它接受两个参数，表示滚动后位于窗口左上角的页面坐标。
 
@@ -467,9 +467,9 @@ window.scrollTo(options)
 
 配置对象`options`有三个属性。
 
-- `top`：滚动后页面左上角的垂直坐标，即 y 坐标。
-- `left`：滚动后页面左上角的水平坐标，即 x 坐标。
-- `behavior`：字符串，表示滚动的方式，有三个可能值（`smooth`、`instant`、`auto`），默认值为`auto`。
+* `top`：滚动后页面左上角的垂直坐标，即 y 坐标。
+* `left`：滚动后页面左上角的水平坐标，即 x 坐标。
+* `behavior`：字符串，表示滚动的方式，有三个可能值（`smooth`、`instant`、`auto`），默认值为`auto`。
 
 ```javascript
 window.scrollTo({
@@ -490,11 +490,11 @@ window.scrollBy(0, window.innerHeight)
 
 如果不是要滚动整个文档，而是要滚动某个元素，可以使用下面三个属性和方法。
 
-- Element.scrollTop
-- Element.scrollLeft
-- Element.scrollIntoView()
+* Element.scrollTop
+* Element.scrollLeft
+* Element.scrollIntoView\(\)
 
-### window.print()
+### window.print\(\)
 
 `window.print`方法会跳出打印对话框，与用户点击菜单里面的“打印”命令效果相同。
 
@@ -502,7 +502,7 @@ window.scrollBy(0, window.innerHeight)
 
 ```javascript
 document.getElementById('printLink').onclick = function () {
-  window.print();
+  window.print();
 }
 ```
 
@@ -514,7 +514,7 @@ if (typeof window.print === 'function') {
 }
 ```
 
-### window.focus()，window.blur()
+### window.focus\(\)，window.blur\(\)
 
 `window.focus()`方法会激活窗口，使其获得焦点，出现在其他窗口的前面。
 
@@ -522,7 +522,7 @@ if (typeof window.print === 'function') {
 var popup = window.open('popup.html', 'Popup Window');
 
 if ((popup !== null) && !popup.closed) {
-  popup.focus();
+  popup.focus();
 }
 ```
 
@@ -532,7 +532,7 @@ if ((popup !== null) && !popup.closed) {
 
 当前窗口获得焦点时，会触发`focus`事件；当前窗口失去焦点时，会触发`blur`事件。
 
-### window.getSelection()
+### window.getSelection\(\)
 
 `window.getSelection`方法返回一个`Selection`对象，表示用户现在选中的文本。
 
@@ -546,13 +546,13 @@ var selObj = window.getSelection();
 var selectedText = selObj.toString();
 ```
 
-### window.getComputedStyle()，window.matchMedia()
+### window.getComputedStyle\(\)，window.matchMedia\(\)
 
 `window.getComputedStyle()`方法接受一个元素节点作为参数，返回一个包含该元素的最终样式信息的对象，详见《CSS 操作》一章。
 
 `window.matchMedia()`方法用来检查 CSS 的`mediaQuery`语句，详见《CSS 操作》一章。
 
-### window.requestAnimationFrame()
+### window.requestAnimationFrame\(\)
 
 `window.requestAnimationFrame()`方法跟`setTimeout`类似，都是推迟某个函数的执行。不同之处在于，`setTimeout`必须指定推迟的时间，`window.requestAnimationFrame()`则是推迟到浏览器下一次重流时执行，执行完才会进行下一次重绘。重绘通常是 16ms 执行一次，不过浏览器会自动调节这个速率，比如网页切换到后台 Tab 页时，`requestAnimationFrame()`会暂停执行。
 
@@ -593,7 +593,7 @@ window.requestAnimationFrame(step);
 
 上面代码定义了一个网页动画，持续时间是2秒，会让元素向右移动。
 
-### window.requestIdleCallback()
+### window.requestIdleCallback\(\)
 
 `window.requestIdleCallback()`跟`setTimeout`类似，也是将某个函数推迟执行，但是它保证将回调函数推迟到系统资源空闲时执行。也就是说，如果某个任务不是很关键，就可以使用`window.requestIdleCallback()`将其推迟执行，以保证网页性能。
 
@@ -669,11 +669,11 @@ window.onerror = function (message, filename, lineno, colno, error) {
 
 由于历史原因，`window`的`error`事件的回调函数不接受错误对象作为参数，而是一共可以接受五个参数，它们的含义依次如下。
 
-- 出错信息
-- 出错脚本的网址
-- 行号
-- 列号
-- 错误对象
+* 出错信息
+* 出错脚本的网址
+* 行号
+* 列号
+* 错误对象
 
 老式浏览器只支持前三个参数。
 
@@ -700,7 +700,7 @@ Access-Control-Allow-Origin: *
 
 然后，在网页的`<script>`标签中设置`crossorigin`属性。
 
-```html
+```markup
 <script crossorigin="anonymous" src="//example.com/file.js"></script>
 ```
 
@@ -710,21 +710,21 @@ Access-Control-Allow-Origin: *
 
 除了具备元素节点都有的 GlobalEventHandlers 接口，`window`对象还具有以下的事件监听函数属性。
 
-- `window.onafterprint`：`afterprint`事件的监听函数。
-- `window.onbeforeprint`：`beforeprint`事件的监听函数。
-- `window.onbeforeunload`：`beforeunload`事件的监听函数。
-- `window.onhashchange`：`hashchange`事件的监听函数。
-- `window.onlanguagechange`: `languagechange`的监听函数。
-- `window.onmessage`：`message`事件的监听函数。
-- `window.onmessageerror`：`MessageError`事件的监听函数。
-- `window.onoffline`：`offline`事件的监听函数。
-- `window.ononline`：`online`事件的监听函数。
-- `window.onpagehide`：`pagehide`事件的监听函数。
-- `window.onpageshow`：`pageshow`事件的监听函数。
-- `window.onpopstate`：`popstate`事件的监听函数。
-- `window.onstorage`：`storage`事件的监听函数。
-- `window.onunhandledrejection`：未处理的 Promise 对象的`reject`事件的监听函数。
-- `window.onunload`：`unload`事件的监听函数。
+* `window.onafterprint`：`afterprint`事件的监听函数。
+* `window.onbeforeprint`：`beforeprint`事件的监听函数。
+* `window.onbeforeunload`：`beforeunload`事件的监听函数。
+* `window.onhashchange`：`hashchange`事件的监听函数。
+* `window.onlanguagechange`: `languagechange`的监听函数。
+* `window.onmessage`：`message`事件的监听函数。
+* `window.onmessageerror`：`MessageError`事件的监听函数。
+* `window.onoffline`：`offline`事件的监听函数。
+* `window.ononline`：`online`事件的监听函数。
+* `window.onpagehide`：`pagehide`事件的监听函数。
+* `window.onpageshow`：`pageshow`事件的监听函数。
+* `window.onpopstate`：`popstate`事件的监听函数。
+* `window.onstorage`：`storage`事件的监听函数。
+* `window.onunhandledrejection`：未处理的 Promise 对象的`reject`事件的监听函数。
+* `window.onunload`：`unload`事件的监听函数。
 
 ## 多窗口操作
 
@@ -734,9 +734,9 @@ Access-Control-Allow-Origin: *
 
 各个窗口之中的脚本，可以引用其他窗口。浏览器提供了一些特殊变量，用来返回其他窗口。
 
-- `top`：顶层窗口，即最上层的那个窗口
-- `parent`：父窗口
-- `self`：当前窗口，即自身
+* `top`：顶层窗口，即最上层的那个窗口
+* `parent`：父窗口
+* `self`：当前窗口，即自身
 
 下面代码可以判断，当前窗口是否为顶层窗口。
 
@@ -756,13 +756,13 @@ window.parent.history.back();
 
 与这些变量对应，浏览器还提供一些特殊的窗口名，供`window.open()`方法、`<a>`标签、`<form>`标签等引用。
 
-- `_top`：顶层窗口
-- `_parent`：父窗口
-- `_blank`：新窗口
+* `_top`：顶层窗口
+* `_parent`：父窗口
+* `_blank`：新窗口
 
 下面代码就表示在顶层窗口打开链接。
 
-```html
+```markup
 <a href="somepage.html" target="_top">Link</a>
 ```
 
@@ -827,3 +827,4 @@ frames.myframe === myFrame // true
 ```
 
 另外，`name`属性的值会自动成为子窗口的名称，可以用在`window.open`方法的第二个参数，或者`<a>`和`<frame>`标签的`target`属性。
+

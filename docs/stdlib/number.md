@@ -25,12 +25,12 @@ Number(true) // 1
 
 `Number`对象拥有以下一些静态属性（即直接定义在`Number`对象上的属性，而不是定义在实例上的属性）。
 
-- `Number.POSITIVE_INFINITY`：正的无限，指向`Infinity`。
-- `Number.NEGATIVE_INFINITY`：负的无限，指向`-Infinity`。
-- `Number.NaN`：表示非数值，指向`NaN`。
-- `Number.MIN_VALUE`：表示最小的正数（即最接近0的正数，在64位浮点数体系中为`5e-324`），相应的，最接近0的负数为`-Number.MIN_VALUE`。
-- `Number.MAX_SAFE_INTEGER`：表示能够精确表示的最大整数，即`9007199254740991`。
-- `Number.MIN_SAFE_INTEGER`：表示能够精确表示的最小整数，即`-9007199254740991`。
+* `Number.POSITIVE_INFINITY`：正的无限，指向`Infinity`。
+* `Number.NEGATIVE_INFINITY`：负的无限，指向`-Infinity`。
+* `Number.NaN`：表示非数值，指向`NaN`。
+* `Number.MIN_VALUE`：表示最小的正数（即最接近0的正数，在64位浮点数体系中为`5e-324`），相应的，最接近0的负数为`-Number.MIN_VALUE`。
+* `Number.MAX_SAFE_INTEGER`：表示能够精确表示的最大整数，即`9007199254740991`。
+* `Number.MIN_SAFE_INTEGER`：表示能够精确表示的最小整数，即`-9007199254740991`。
 
 ```javascript
 Number.POSITIVE_INFINITY // Infinity
@@ -55,7 +55,7 @@ Number.MIN_SAFE_INTEGER // -9007199254740991
 
 `Number`对象有4个实例方法，都跟将数值转换成指定格式有关。
 
-### Number.prototype.toString()
+### Number.prototype.toString\(\)
 
 `Number`对象部署了自己的`toString`方法，用来将一个数值转为字符串形式。
 
@@ -106,7 +106,7 @@ Number.MIN_SAFE_INTEGER // -9007199254740991
 
 `toString`方法只能将十进制的数，转为其他进制的字符串。如果要将其他进制的数，转回十进制，需要使用`parseInt`方法。
 
-### Number.prototype.toFixed()
+### Number.prototype.toFixed\(\)
 
 `toFixed()`方法先将一个数转为指定位数的小数，然后返回这个小数对应的字符串。
 
@@ -126,7 +126,7 @@ Number.MIN_SAFE_INTEGER // -9007199254740991
 (10.005).toFixed(2) // 10.01
 ```
 
-### Number.prototype.toExponential()
+### Number.prototype.toExponential\(\)
 
 `toExponential`方法用于将一个数转为科学计数法形式。
 
@@ -142,7 +142,7 @@ Number.MIN_SAFE_INTEGER // -9007199254740991
 
 `toExponential`方法的参数是小数点后有效数字的位数，范围为0到100，超出这个范围，会抛出一个 RangeError 错误。
 
-### Number.prototype.toPrecision()
+### Number.prototype.toPrecision\(\)
 
 `Number.prototype.toPrecision()`方法用于将一个数转为指定位数的有效数字。
 
@@ -165,7 +165,7 @@ Number.MIN_SAFE_INTEGER // -9007199254740991
 (12.45).toPrecision(3) // "12.4"
 ```
 
-### Number.prototype.toLocaleString()
+### Number.prototype.toLocaleString\(\)
 
 `Number.prototype.toLocaleString()`方法接受一个地区码作为参数，返回一个字符串，表示当前数字在该地区的当地书写形式。
 
@@ -188,7 +188,7 @@ Number.MIN_SAFE_INTEGER // -9007199254740991
 // "￥123.00"
 
 (123).toLocaleString('de-DE', { style: 'currency', currency: 'EUR' })
-// "123,00 €"
+// "123,00 €"
 
 (123).toLocaleString('en-US', { style: 'currency', currency: 'USD' })
 // "$123.00"
@@ -251,3 +251,4 @@ n.x // undefined
 ```
 
 上面代码中，`n`是一个原始类型的数值。直接在它上面新增一个属性`x`，不会报错，但毫无作用，总是返回`undefined`。这是因为一旦被调用属性，`n`就自动转为`Number`的实例对象，调用结束后，该对象自动销毁。所以，下一次调用`n`的属性时，实际取到的是另一个对象，属性`x`当然就读不出来。
+

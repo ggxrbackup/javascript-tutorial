@@ -37,7 +37,7 @@ obj.print() // Object
 
 以下先介绍`Object`作为函数的用法，然后再介绍`Object`对象的原生方法，分成对象自身的方法（又称为“静态方法”）和实例方法两部分。
 
-## Object()
+## Object\(\)
 
 `Object`本身是一个函数，可以当作工具方法使用，将任意值转为对象。这个方法常用于保证某个值一定是对象。
 
@@ -130,7 +130,7 @@ obj instanceof Number // true
 
 所谓“静态方法”，是指部署在`Object`对象自身的方法。
 
-### Object.keys()，Object.getOwnPropertyNames()
+### Object.keys\(\)，Object.getOwnPropertyNames\(\)
 
 `Object.keys`方法和`Object.getOwnPropertyNames`方法都用来遍历对象的属性。
 
@@ -187,23 +187,23 @@ Object.getOwnPropertyNames(obj).length // 2
 
 **（1）对象属性模型的相关方法**
 
-- `Object.getOwnPropertyDescriptor()`：获取某个属性的描述对象。
-- `Object.defineProperty()`：通过描述对象，定义某个属性。
-- `Object.defineProperties()`：通过描述对象，定义多个属性。
+* `Object.getOwnPropertyDescriptor()`：获取某个属性的描述对象。
+* `Object.defineProperty()`：通过描述对象，定义某个属性。
+* `Object.defineProperties()`：通过描述对象，定义多个属性。
 
 **（2）控制对象状态的方法**
 
-- `Object.preventExtensions()`：防止对象扩展。
-- `Object.isExtensible()`：判断对象是否可扩展。
-- `Object.seal()`：禁止对象配置。
-- `Object.isSealed()`：判断一个对象是否可配置。
-- `Object.freeze()`：冻结一个对象。
-- `Object.isFrozen()`：判断一个对象是否被冻结。
+* `Object.preventExtensions()`：防止对象扩展。
+* `Object.isExtensible()`：判断对象是否可扩展。
+* `Object.seal()`：禁止对象配置。
+* `Object.isSealed()`：判断一个对象是否可配置。
+* `Object.freeze()`：冻结一个对象。
+* `Object.isFrozen()`：判断一个对象是否被冻结。
 
 **（3）原型链相关方法**
 
-- `Object.create()`：该方法可以指定原型对象和属性，返回一个新的对象。
-- `Object.getPrototypeOf()`：获取对象的`Prototype`对象。
+* `Object.create()`：该方法可以指定原型对象和属性，返回一个新的对象。
+* `Object.getPrototypeOf()`：获取对象的`Prototype`对象。
 
 ## Object 的实例方法
 
@@ -211,16 +211,16 @@ Object.getOwnPropertyNames(obj).length // 2
 
 `Object`实例对象的方法，主要有以下六个。
 
-- `Object.prototype.valueOf()`：返回当前对象对应的值。
-- `Object.prototype.toString()`：返回当前对象对应的字符串形式。
-- `Object.prototype.toLocaleString()`：返回当前对象对应的本地字符串形式。
-- `Object.prototype.hasOwnProperty()`：判断某个属性是否为当前对象自身的属性，还是继承自原型对象的属性。
-- `Object.prototype.isPrototypeOf()`：判断当前对象是否为另一个对象的原型。
-- `Object.prototype.propertyIsEnumerable()`：判断某个属性是否可枚举。
+* `Object.prototype.valueOf()`：返回当前对象对应的值。
+* `Object.prototype.toString()`：返回当前对象对应的字符串形式。
+* `Object.prototype.toLocaleString()`：返回当前对象对应的本地字符串形式。
+* `Object.prototype.hasOwnProperty()`：判断某个属性是否为当前对象自身的属性，还是继承自原型对象的属性。
+* `Object.prototype.isPrototypeOf()`：判断当前对象是否为另一个对象的原型。
+* `Object.prototype.propertyIsEnumerable()`：判断某个属性是否可枚举。
 
 本节介绍前四个方法，另外两个方法将在后文相关章节介绍。
 
-### Object.prototype.valueOf()
+### Object.prototype.valueOf\(\)
 
 `valueOf`方法的作用是返回一个对象的“值”，默认情况下返回对象本身。
 
@@ -251,7 +251,7 @@ obj.valueOf = function () {
 
 上面代码自定义了`obj`对象的`valueOf`方法，于是`1 + obj`就得到了`3`。这种方法就相当于用自定义的`obj.valueOf`，覆盖`Object.prototype.valueOf`。
 
-### Object.prototype.toString()
+### Object.prototype.toString\(\)
 
 `toString`方法的作用是返回一个对象的字符串形式，默认情况下返回类型字符串。
 
@@ -299,7 +299,7 @@ obj + ' ' + 'world' // "hello world"
 
 上面代码中，数组、字符串、函数、Date 对象调用`toString`方法，并不会返回`[object Object]`，因为它们都自定义了`toString`方法，覆盖原始方法。
 
-### toString() 的应用：判断数据类型
+### toString\(\) 的应用：判断数据类型
 
 `Object.prototype.toString`方法返回对象的类型字符串，因此可以用来判断一个值的类型。
 
@@ -320,18 +320,18 @@ Object.prototype.toString.call(value)
 
 不同数据类型的`Object.prototype.toString`方法返回值如下。
 
-- 数值：返回`[object Number]`。
-- 字符串：返回`[object String]`。
-- 布尔值：返回`[object Boolean]`。
-- undefined：返回`[object Undefined]`。
-- null：返回`[object Null]`。
-- 数组：返回`[object Array]`。
-- arguments 对象：返回`[object Arguments]`。
-- 函数：返回`[object Function]`。
-- Error 对象：返回`[object Error]`。
-- Date 对象：返回`[object Date]`。
-- RegExp 对象：返回`[object RegExp]`。
-- 其他对象：返回`[object Object]`。
+* 数值：返回`[object Number]`。
+* 字符串：返回`[object String]`。
+* 布尔值：返回`[object Boolean]`。
+* undefined：返回`[object Undefined]`。
+* null：返回`[object Null]`。
+* 数组：返回`[object Array]`。
+* arguments 对象：返回`[object Arguments]`。
+* 函数：返回`[object Function]`。
+* Error 对象：返回`[object Error]`。
+* Date 对象：返回`[object Date]`。
+* RegExp 对象：返回`[object RegExp]`。
+* 其他对象：返回`[object Object]`。
 
 这就是说，`Object.prototype.toString`可以看出一个值到底是什么类型。
 
@@ -391,7 +391,7 @@ type.isNumber(NaN) // true
 type.isRegExp(/abc/) // true
 ```
 
-### Object.prototype.toLocaleString()
+### Object.prototype.toLocaleString\(\)
 
 `Object.prototype.toLocaleString`方法与`toString`的返回结果相同，也是返回一个值的字符串形式。
 
@@ -421,9 +421,9 @@ person.toLocaleString() // 白求恩
 
 目前，主要有三个对象自定义了`toLocaleString`方法。
 
-- Array.prototype.toLocaleString()
-- Number.prototype.toLocaleString()
-- Date.prototype.toLocaleString()
+* Array.prototype.toLocaleString\(\)
+* Number.prototype.toLocaleString\(\)
+* Date.prototype.toLocaleString\(\)
 
 举例来说，日期的实例对象的`toString`和`toLocaleString`返回值就不一样，而且`toLocaleString`的返回值跟用户设定的所在地域相关。
 
@@ -433,7 +433,7 @@ date.toString() // "Tue Jan 01 2018 12:01:33 GMT+0800 (CST)"
 date.toLocaleString() // "1/01/2018, 12:01:33 PM"
 ```
 
-### Object.prototype.hasOwnProperty()
+### Object.prototype.hasOwnProperty\(\)
 
 `Object.prototype.hasOwnProperty`方法接受一个字符串作为参数，返回一个布尔值，表示该实例对象自身是否具有该属性。
 
@@ -450,11 +450,12 @@ obj.hasOwnProperty('toString') // false
 
 ## 参考链接
 
-- Axel Rauschmayer, [Protecting objects in JavaScript](http://www.2ality.com/2013/08/protecting-objects.html)
-- kangax, [Understanding delete](http://perfectionkills.com/understanding-delete/)
-- Jon Bretman, [Type Checking in JavaScript](http://techblog.badoo.com/blog/2013/11/01/type-checking-in-javascript/)
-- Cody Lindley, [Thinking About ECMAScript 5 Parts](http://tech.pro/tutorial/1671/thinking-about-ecmascript-5-parts)
-- Bjorn Tipling, [Advanced objects in JavaScript](http://bjorn.tipling.com/advanced-objects-in-javascript)
-- Javier Márquez, [JavaScript properties are enumerable, writable and configurable](http://arqex.com/967/javascript-properties-enumerable-writable-configurable)
-- Sella Rafaeli, [Native JavaScript Data-Binding](http://www.sellarafaeli.com/blog/native_javascript_data_binding): 使用存取函数实现model与view的双向绑定
-- Lea Verou, [Copying object properties, the robust way](http://lea.verou.me/2015/08/copying-properties-the-robust-way/)
+* Axel Rauschmayer, [Protecting objects in JavaScript](http://www.2ality.com/2013/08/protecting-objects.html)
+* kangax, [Understanding delete](http://perfectionkills.com/understanding-delete/)
+* Jon Bretman, [Type Checking in JavaScript](http://techblog.badoo.com/blog/2013/11/01/type-checking-in-javascript/)
+* Cody Lindley, [Thinking About ECMAScript 5 Parts](http://tech.pro/tutorial/1671/thinking-about-ecmascript-5-parts)
+* Bjorn Tipling, [Advanced objects in JavaScript](http://bjorn.tipling.com/advanced-objects-in-javascript)
+* Javier Márquez, [JavaScript properties are enumerable, writable and configurable](http://arqex.com/967/javascript-properties-enumerable-writable-configurable)
+* Sella Rafaeli, [Native JavaScript Data-Binding](http://www.sellarafaeli.com/blog/native_javascript_data_binding): 使用存取函数实现model与view的双向绑定
+* Lea Verou, [Copying object properties, the robust way](http://lea.verou.me/2015/08/copying-properties-the-robust-way/)
+

@@ -6,7 +6,7 @@
 
 拖拉的对象有好几种，包括元素节点、图片、链接、选中的文字等等。在网页中，除了元素节点默认不可以拖拉，其他（图片、链接、选中的文字）都是可以直接拖拉的。为了让元素节点可拖拉，可以将该节点的`draggable`属性设为`true`。
 
-```html
+```markup
 <div draggable="true">
   此区域可拖拉
 </div>
@@ -18,13 +18,13 @@
 
 当元素节点或选中的文本被拖拉时，就会持续触发拖拉事件，包括以下一些事件。
 
-- `drag`：拖拉过程中，在被拖拉的节点上持续触发（相隔几百毫秒）。
-- `dragstart`：用户开始拖拉时，在被拖拉的节点上触发，该事件的`target`属性是被拖拉的节点。通常应该在这个事件的监听函数中，指定拖拉的数据。
-- `dragend`：拖拉结束时（释放鼠标键或按下 ESC 键）在被拖拉的节点上触发，该事件的`target`属性是被拖拉的节点。它与`dragstart`事件，在同一个节点上触发。不管拖拉是否跨窗口，或者中途被取消，`dragend`事件总是会触发的。
-- `dragenter`：拖拉进入当前节点时，在当前节点上触发一次，该事件的`target`属性是当前节点。通常应该在这个事件的监听函数中，指定是否允许在当前节点放下（drop）拖拉的数据。如果当前节点没有该事件的监听函数，或者监听函数不执行任何操作，就意味着不允许在当前节点放下数据。在视觉上显示拖拉进入当前节点，也是在这个事件的监听函数中设置。
-- `dragover`：拖拉到当前节点上方时，在当前节点上持续触发（相隔几百毫秒），该事件的`target`属性是当前节点。该事件与`dragenter`事件的区别是，`dragenter`事件在进入该节点时触发，然后只要没有离开这个节点，`dragover`事件会持续触发。
-- `dragleave`：拖拉操作离开当前节点范围时，在当前节点上触发，该事件的`target`属性是当前节点。如果要在视觉上显示拖拉离开操作当前节点，就在这个事件的监听函数中设置。
-- `drop`：被拖拉的节点或选中的文本，释放到目标节点时，在目标节点上触发。注意，如果当前节点不允许`drop`，即使在该节点上方松开鼠标键，也不会触发该事件。如果用户按下 ESC 键，取消这个操作，也不会触发该事件。该事件的监听函数负责取出拖拉数据，并进行相关处理。
+* `drag`：拖拉过程中，在被拖拉的节点上持续触发（相隔几百毫秒）。
+* `dragstart`：用户开始拖拉时，在被拖拉的节点上触发，该事件的`target`属性是被拖拉的节点。通常应该在这个事件的监听函数中，指定拖拉的数据。
+* `dragend`：拖拉结束时（释放鼠标键或按下 ESC 键）在被拖拉的节点上触发，该事件的`target`属性是被拖拉的节点。它与`dragstart`事件，在同一个节点上触发。不管拖拉是否跨窗口，或者中途被取消，`dragend`事件总是会触发的。
+* `dragenter`：拖拉进入当前节点时，在当前节点上触发一次，该事件的`target`属性是当前节点。通常应该在这个事件的监听函数中，指定是否允许在当前节点放下（drop）拖拉的数据。如果当前节点没有该事件的监听函数，或者监听函数不执行任何操作，就意味着不允许在当前节点放下数据。在视觉上显示拖拉进入当前节点，也是在这个事件的监听函数中设置。
+* `dragover`：拖拉到当前节点上方时，在当前节点上持续触发（相隔几百毫秒），该事件的`target`属性是当前节点。该事件与`dragenter`事件的区别是，`dragenter`事件在进入该节点时触发，然后只要没有离开这个节点，`dragover`事件会持续触发。
+* `dragleave`：拖拉操作离开当前节点范围时，在当前节点上触发，该事件的`target`属性是当前节点。如果要在视觉上显示拖拉离开操作当前节点，就在这个事件的监听函数中设置。
+* `drop`：被拖拉的节点或选中的文本，释放到目标节点时，在目标节点上触发。注意，如果当前节点不允许`drop`，即使在该节点上方松开鼠标键，也不会触发该事件。如果用户按下 ESC 键，取消这个操作，也不会触发该事件。该事件的监听函数负责取出拖拉数据，并进行相关处理。
 
 下面的例子展示，如何动态改变被拖动节点的背景色。
 
@@ -104,11 +104,11 @@ document.addEventListener('drop', function( event ) {
 
 关于拖拉事件，有以下几个注意点。
 
-- 拖拉过程只触发以上这些拖拉事件，尽管鼠标在移动，但是鼠标事件不会触发。
-- 将文件从操作系统拖拉进浏览器，不会触发`dragstart`和`dragend`事件。
-- `dragenter`和`dragover`事件的监听函数，用来取出拖拉的数据（即允许放下被拖拉的元素）。由于网页的大部分区域不适合作为放下拖拉元素的目标节点，所以这两个事件的默认设置为当前节点不允许接受被拖拉的元素。如果想要在目标节点上放下的数据，首先必须阻止这两个事件的默认行为。
+* 拖拉过程只触发以上这些拖拉事件，尽管鼠标在移动，但是鼠标事件不会触发。
+* 将文件从操作系统拖拉进浏览器，不会触发`dragstart`和`dragend`事件。
+* `dragenter`和`dragover`事件的监听函数，用来取出拖拉的数据（即允许放下被拖拉的元素）。由于网页的大部分区域不适合作为放下拖拉元素的目标节点，所以这两个事件的默认设置为当前节点不允许接受被拖拉的元素。如果想要在目标节点上放下的数据，首先必须阻止这两个事件的默认行为。
 
-```html
+```markup
 <div ondragover="return false">
 <div ondragover="event.preventDefault()">
 ```
@@ -153,10 +153,10 @@ var dataTrans = new DataTransfer();
 
 `DataTransfer.dropEffect`属性用来设置放下（drop）被拖拉节点时的效果，会影响到拖拉经过相关区域时鼠标的形状。它可能取下面的值。
 
-- copy：复制被拖拉的节点
-- move：移动被拖拉的节点
-- link：创建指向被拖拉的节点的链接
-- none：无法放下被拖拉的节点
+* copy：复制被拖拉的节点
+* move：移动被拖拉的节点
+* link：创建指向被拖拉的节点的链接
+* none：无法放下被拖拉的节点
 
 除了上面这些值，设置其他的值都是无效的。
 
@@ -176,15 +176,15 @@ target.addEventListener('dragover', function (e) {
 
 `DataTransfer.effectAllowed`属性设置本次拖拉中允许的效果。它可能取下面的值。
 
-- copy：复制被拖拉的节点
-- move：移动被拖拉的节点
-- link：创建指向被拖拉节点的链接
-- copyLink：允许`copy`或`link`
-- copyMove：允许`copy`或`move`
-- linkMove：允许`link`或`move`
-- all：允许所有效果
-- none：无法放下被拖拉的节点
-- uninitialized：默认值，等同于`all`
+* copy：复制被拖拉的节点
+* move：移动被拖拉的节点
+* link：创建指向被拖拉节点的链接
+* copyLink：允许`copy`或`link`
+* copyMove：允许`copy`或`move`
+* linkMove：允许`link`或`move`
+* all：允许所有效果
+* none：无法放下被拖拉的节点
+* uninitialized：默认值，等同于`all`
 
 如果某种效果是不允许的，用户就无法在目标节点中达成这种效果。
 
@@ -289,18 +289,18 @@ function doDragOver(event) {
 
 DataTransferItemList 实例具有以下的属性和方法。
 
-- `length`：返回成员的数量
-- `add(data, type)`：增加一个指定内容和类型（比如`text/html`和`text/plain`）的字符串作为成员
-- `add(file)`：`add`方法的另一种用法，增加一个文件作为成员
-- `remove(index)`：移除指定位置的成员
-- `clear()`：移除所有的成员
+* `length`：返回成员的数量
+* `add(data, type)`：增加一个指定内容和类型（比如`text/html`和`text/plain`）的字符串作为成员
+* `add(file)`：`add`方法的另一种用法，增加一个文件作为成员
+* `remove(index)`：移除指定位置的成员
+* `clear()`：移除所有的成员
 
 DataTransferItem 实例具有以下的属性和方法。
 
-- `kind`：返回成员的种类（`string`还是`file`）。
-- `type`：返回成员的类型（通常是 MIME 值）。
-- `getAsFile()`：如果被拖拉是文件，返回该文件，否则返回`null`。
-- `getAsString(callback)`：如果被拖拉的是字符串，将该字符传入指定的回调函数处理。该方法是异步的，所以需要传入回调函数。
+* `kind`：返回成员的种类（`string`还是`file`）。
+* `type`：返回成员的类型（通常是 MIME 值）。
+* `getAsFile()`：如果被拖拉是文件，返回该文件，否则返回`null`。
+* `getAsString(callback)`：如果被拖拉的是字符串，将该字符传入指定的回调函数处理。该方法是异步的，所以需要传入回调函数。
 
 下面是一个例子。
 
@@ -317,7 +317,7 @@ div.addEventListener('drop', function (e) {
 
 ## DataTransfer 的实例方法
 
-### DataTransfer.setData()
+### DataTransfer.setData\(\)
 
 `DataTransfer.setData()`方法用来设置拖拉事件所带有的数据。该方法没有返回值。
 
@@ -331,7 +331,7 @@ event.dataTransfer.setData('text/plain', 'Text to drag');
 
 如果是拖拉文本框或者拖拉选中的文本，会默认将对应的文本数据，添加到`dataTransfer`属性，不用手动指定。
 
-```html
+```markup
 <div draggable="true">
   aaa
 </div>
@@ -341,7 +341,7 @@ event.dataTransfer.setData('text/plain', 'Text to drag');
 
 使用`setData`方法，可以替换到原有数据。
 
-```html
+```markup
 <div
   draggable="true"
   ondragstart="event.dataTransfer.setData('text/plain', 'bbb')"
@@ -381,7 +381,7 @@ dt.setData('text/plain', 'http://www.example.com');
 
 上面代码中，通过在同一个事件上面，存放三种类型的数据，使得拖拉事件可以在不同的对象上面，`drop`不同的值。注意，第一种格式是一个自定义格式，浏览器默认无法读取，这意味着，只有某个部署了特定代码的节点，才可能`drop`（读取到）这个数据。
 
-### DataTransfer.getData()
+### DataTransfer.getData\(\)
 
 `DataTransfer.getData()`方法接受一个字符串（表示数据类型）作为参数，返回事件所带的指定类型的数据（通常是用`setData`方法添加的数据）。如果指定类型的数据不存在，则返回空字符串。通常只有`drop`事件触发后，才能取出数据。
 
@@ -434,7 +434,7 @@ function doDrop(event) {
 }
 ```
 
-### DataTransfer.clearData()
+### DataTransfer.clearData\(\)
 
 `DataTransfer.clearData()`方法接受一个字符串（表示数据类型）作为参数，删除事件所带的指定类型的数据。如果没有指定类型，则删除所有数据。如果指定类型不存在，则调用该方法不会产生任何效果。
 
@@ -448,7 +448,7 @@ event.dataTransfer.clearData('text/uri-list');
 
 注意，该方法只能在`dragstart`事件的监听函数之中使用，因为这是拖拉操作的数据唯一可写的时机。
 
-### DataTransfer.setDragImage()
+### DataTransfer.setDragImage\(\)
 
 拖动过程中（`dragstart`事件触发后），浏览器会显示一张图片跟随鼠标一起移动，表示被拖动的节点。这张图片是自动创造的，通常显示为被拖动节点的外观，不需要自己动手设置。
 
@@ -470,3 +470,4 @@ div.addEventListener('dragstart', function (e) {
   e.dataTransfer.setDragImage(img, 0, 0);
 }, false);
 ```
+

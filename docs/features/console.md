@@ -6,8 +6,8 @@
 
 `console`的常见用途有两个。
 
-- 调试程序，显示网页代码运行时的错误信息。
-- 提供了一个命令行接口，用来与网页代码互动。
+* 调试程序，显示网页代码运行时的错误信息。
+* 提供了一个命令行接口，用来与网页代码互动。
 
 `console`对象的浏览器实现，包含在浏览器自带的开发工具之中。以 Chrome 浏览器的“开发者工具”（Developer Tools）为例，可以使用下面三种方法的打开它。
 
@@ -17,13 +17,13 @@
 
 打开开发者工具以后，顶端有多个面板。
 
-- **Elements**：查看网页的 HTML 源码和 CSS 代码。
-- **Resources**：查看网页加载的各种资源文件（比如代码文件、字体文件 CSS 文件等），以及在硬盘上创建的各种内容（比如本地缓存、Cookie、Local Storage等）。
-- **Network**：查看网页的 HTTP 通信情况。
-- **Sources**：查看网页加载的脚本源码。
-- **Timeline**：查看各种网页行为随时间变化的情况。
-- **Performance**：查看网页的性能情况，比如 CPU 和内存消耗。
-- **Console**：用来运行 JavaScript 命令。
+* **Elements**：查看网页的 HTML 源码和 CSS 代码。
+* **Resources**：查看网页加载的各种资源文件（比如代码文件、字体文件 CSS 文件等），以及在硬盘上创建的各种内容（比如本地缓存、Cookie、Local Storage等）。
+* **Network**：查看网页的 HTTP 通信情况。
+* **Sources**：查看网页加载的脚本源码。
+* **Timeline**：查看各种网页行为随时间变化的情况。
+* **Performance**：查看网页的性能情况，比如 CPU 和内存消耗。
+* **Console**：用来运行 JavaScript 命令。
 
 这些面板都有各自的用途，以下只介绍`Console`面板（又称为控制台）。
 
@@ -33,7 +33,7 @@
 
 `console`对象提供的各种静态方法，用来与控制台窗口互动。
 
-### console.log()，console.info()，console.debug()
+### console.log\(\)，console.info\(\)，console.debug\(\)
 
 `console.log`方法用于在控制台输出信息。它可以接受一个或多个参数，将它们连接起来输出。
 
@@ -66,12 +66,12 @@ console.log(' %s + %s = %s', 1, 1, 2)
 
 `console.log`方法支持以下占位符，不同类型的数据必须使用对应的占位符。
 
-- `%s` 字符串
-- `%d` 整数
-- `%i` 整数
-- `%f` 浮点数
-- `%o` 对象的链接
-- `%c` CSS 格式字符串
+* `%s` 字符串
+* `%d` 整数
+* `%i` 整数
+* `%f` 浮点数
+* `%o` 对象的链接
+* `%c` CSS 格式字符串
 
 ```javascript
 var number = 11 * 9;
@@ -132,7 +132,7 @@ console.log("出错了！");
 
 上面代码表示，使用自定义的`console.log`方法，可以在显示结果添加当前时间。
 
-### console.warn()，console.error()
+### console.warn\(\)，console.error\(\)
 
 `warn`方法和`error`方法也是在控制台输出信息，它们与`log`方法的不同之处在于，`warn`方法输出信息时，在最前面加一个黄色三角，表示警告；`error`方法输出信息时，在最前面加一个红色的叉，表示出错。同时，还会高亮显示输出文字和错误发生的堆栈。其他方面都一样。
 
@@ -145,7 +145,7 @@ console.warn('Warning! Too few nodes (%d)', document.childNodes.length)
 
 可以这样理解，`log`方法是写入标准输出（`stdout`），`warn`方法和`error`方法是写入标准错误（`stderr`）。
 
-### console.table()
+### console.table\(\)
 
 对于某些复合类型的数据，`console.table`方法可以将其转为表格显示。
 
@@ -161,11 +161,11 @@ console.table(languages);
 
 上面代码的`language`变量，转为表格显示如下。
 
-(index)|name|fileExtension
--------|----|-------------
-0|"JavaScript"|".js"
-1|"TypeScript"|".ts"
-2|"CoffeeScript"|".coffee"
+| \(index\) | name | fileExtension |
+| :--- | :--- | :--- |
+| 0 | "JavaScript" | ".js" |
+| 1 | "TypeScript" | ".ts" |
+| 2 | "CoffeeScript" | ".coffee" |
 
 下面是显示表格内容的例子。
 
@@ -180,12 +180,12 @@ console.table(languages);
 
 上面代码的`language`，转为表格显示如下。
 
-(index)|name|paradigm
--------|----|--------
-csharp|"C#"|"object-oriented"
-fsharp|"F#"|"functional"
+| \(index\) | name | paradigm |
+| :--- | :--- | :--- |
+| csharp | "C\#" | "object-oriented" |
+| fsharp | "F\#" | "functional" |
 
-### console.count()
+### console.count\(\)
 
 `count`方法用于计数，输出它被调用了多少次。
 
@@ -233,7 +233,7 @@ greet('bob')
 
 上面代码根据参数的不同，显示`bob`执行了两次，`alice`执行了一次。
 
-### console.dir()，console.dirxml()
+### console.dir\(\)，console.dirxml\(\)
 
 `dir`方法用来对一个对象进行检查（inspect），并以易于阅读和打印的格式显示。
 
@@ -276,7 +276,7 @@ console.dirxml([1, 2, 3])
 console.dir([1, 2, 3])
 ```
 
-### console.assert()
+### console.assert\(\)
 
 `console.assert`方法主要用于程序运行过程中，进行条件判断，如果不满足条件，就显示一个错误，但不会中断程序执行。这样就相当于提示用户，内部状态不正确。
 
@@ -304,7 +304,7 @@ console.assert(list.childNodes.length < 500, '节点个数大于等于500')
 
 上面代码中，如果符合条件的节点小于500个，不会有任何输出；只有大于等于500时，才会在控制台提示错误，并且显示指定文本。
 
-### console.time()，console.timeEnd()
+### console.time\(\)，console.timeEnd\(\)
 
 这两个方法用于计时，可以算出一个操作所花费的准确时间。
 
@@ -322,7 +322,7 @@ console.timeEnd('Array initialize');
 
 `time`方法表示计时开始，`timeEnd`方法表示计时结束。它们的参数是计时器的名称。调用`timeEnd`方法之后，控制台会显示“计时器名称: 所耗费的时间”。
 
-### console.group()，console.groupEnd()，console.groupCollapsed()
+### console.group\(\)，console.groupEnd\(\)，console.groupCollapsed\(\)
 
 `console.group`和`console.groupEnd`这两个方法用于将显示的信息分组。它只在输出大量信息时有用，分在一组的信息，可以用鼠标折叠/展开。
 
@@ -352,7 +352,7 @@ console.groupEnd();
 
 上面代码只显示一行”Fetching Data“，点击后才会展开，显示其中包含的两行。
 
-### console.trace()，console.clear()
+### console.trace\(\)，console.clear\(\)
 
 `console.trace`方法显示当前执行的代码在堆栈中的调用路径。
 
@@ -447,10 +447,10 @@ unmonitorEvents($0, 'mousemove');
 
 `monitorEvents`允许监听同一大类的事件。所有事件可以分成四个大类。
 
-- mouse："mousedown", "mouseup", "click", "dblclick", "mousemove", "mouseover", "mouseout", "mousewheel"
-- key："keydown", "keyup", "keypress", "textInput"
-- touch："touchstart", "touchmove", "touchend", "touchcancel"
-- control："resize", "scroll", "zoom", "focus", "blur", "select", "change", "submit", "reset"
+* mouse："mousedown", "mouseup", "click", "dblclick", "mousemove", "mouseover", "mouseout", "mousewheel"
+* key："keydown", "keyup", "keypress", "textInput"
+* touch："touchstart", "touchmove", "touchend", "touchcancel"
+* control："resize", "scroll", "zoom", "focus", "blur", "select", "change", "submit", "reset"
 
 ```javascript
 monitorEvents($("#msg"), "key");
@@ -462,10 +462,10 @@ monitorEvents($("#msg"), "key");
 
 命令行 API 还提供以下方法。
 
-- `clear()`：清除控制台的历史。
-- `copy(object)`：复制特定 DOM 元素到剪贴板。
-- `dir(object)`：显示特定对象的所有属性，是`console.dir`方法的别名。
-- `dirxml(object)`：显示特定对象的 XML 形式，是`console.dirxml`方法的别名。
+* `clear()`：清除控制台的历史。
+* `copy(object)`：复制特定 DOM 元素到剪贴板。
+* `dir(object)`：显示特定对象的所有属性，是`console.dir`方法的别名。
+* `dirxml(object)`：显示特定对象的 XML 形式，是`console.dirxml`方法的别名。
 
 ## debugger 语句
 
@@ -484,9 +484,10 @@ for(var i = 0; i < 5; i++){
 
 ## 参考链接
 
-- Chrome Developer Tools, [Using the Console](https://developers.google.com/chrome-developer-tools/docs/console)
-- Matt West, [Mastering The Developer Tools Console](http://blog.teamtreehouse.com/mastering-developer-tools-console)
-- Firebug Wiki, [Console API](https://getfirebug.com/wiki/index.php/Console_API)
-- Axel Rauschmayer, [The JavaScript console API](http://www.2ality.com/2013/10/console-api.html)
-- Marius Schulz, [Advanced JavaScript Debugging with console.table()](http://blog.mariusschulz.com/2013/11/13/advanced-javascript-debugging-with-consoletable)
-- Google Developer, [Command Line API Reference](https://developers.google.com/chrome-developer-tools/docs/commandline-api)
+* Chrome Developer Tools, [Using the Console](https://developers.google.com/chrome-developer-tools/docs/console)
+* Matt West, [Mastering The Developer Tools Console](http://blog.teamtreehouse.com/mastering-developer-tools-console)
+* Firebug Wiki, [Console API](https://getfirebug.com/wiki/index.php/Console_API)
+* Axel Rauschmayer, [The JavaScript console API](http://www.2ality.com/2013/10/console-api.html)
+* Marius Schulz, [Advanced JavaScript Debugging with console.table\(\)](http://blog.mariusschulz.com/2013/11/13/advanced-javascript-debugging-with-consoletable)
+* Google Developer, [Command Line API Reference](https://developers.google.com/chrome-developer-tools/docs/commandline-api)
+

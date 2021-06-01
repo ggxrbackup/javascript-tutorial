@@ -87,16 +87,16 @@ line 3
 
 需要用反斜杠转义的特殊字符，主要有下面这些。
 
-- `\0` ：null（`\u0000`）
-- `\b` ：后退键（`\u0008`）
-- `\f` ：换页符（`\u000C`）
-- `\n` ：换行符（`\u000A`）
-- `\r` ：回车键（`\u000D`）
-- `\t` ：制表符（`\u0009`）
-- `\v` ：垂直制表符（`\u000B`）
-- `\'` ：单引号（`\u0027`）
-- `\"` ：双引号（`\u0022`）
-- `\\` ：反斜杠（`\u005C`）
+* `\0` ：null（`\u0000`）
+* `\b` ：后退键（`\u0008`）
+* `\f` ：换页符（`\u000C`）
+* `\n` ：换行符（`\u000A`）
+* `\r` ：回车键（`\u000D`）
+* `\t` ：制表符（`\u0009`）
+* `\v` ：垂直制表符（`\u000B`）
+* `\'` ：单引号（`\u0027`）
+* `\"` ：双引号（`\u0022`）
+* `\\` ：反斜杠（`\u005C`）
 
 上面这些字符前面加上反斜杠，都表示特殊含义。
 
@@ -248,8 +248,8 @@ JavaScript 对 UTF-16 的支持是不完整的，由于历史原因，只支持�
 
 JavaScript 原生提供两个 Base64 相关的方法。
 
-- `btoa()`：任意值转为 Base64 编码
-- `atob()`：Base64 编码转为原来的值
+* `btoa()`：任意值转为 Base64 编码
+* `atob()`：Base64 编码转为原来的值
 
 ```javascript
 var string = 'Hello World!';
@@ -280,6 +280,7 @@ b64Decode('JUU0JUJEJUEwJUU1JUE1JUJE') // "你好"
 
 ## 参考链接
 
-- Mathias Bynens, [JavaScript’s internal character encoding: UCS-2 or UTF-16?](http://mathiasbynens.be/notes/javascript-encoding)
-- Mathias Bynens, [JavaScript has a Unicode problem](http://mathiasbynens.be/notes/javascript-unicode)
-- Mozilla Developer Network, [Window.btoa](https://developer.mozilla.org/en-US/docs/Web/API/Window.btoa)
+* Mathias Bynens, [JavaScript’s internal character encoding: UCS-2 or UTF-16?](http://mathiasbynens.be/notes/javascript-encoding)
+* Mathias Bynens, [JavaScript has a Unicode problem](http://mathiasbynens.be/notes/javascript-unicode)
+* Mozilla Developer Network, [Window.btoa](https://developer.mozilla.org/en-US/docs/Web/API/Window.btoa)
+

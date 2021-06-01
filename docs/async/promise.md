@@ -58,23 +58,23 @@ Promise 原本只是社区提出的一个构想，一些函数库率先实现了
 
 Promise 对象通过自身的状态，来控制异步操作。Promise 实例具有三种状态。
 
-- 异步操作未完成（pending）
-- 异步操作成功（fulfilled）
-- 异步操作失败（rejected）
+* 异步操作未完成（pending）
+* 异步操作成功（fulfilled）
+* 异步操作失败（rejected）
 
 上面三种状态里面，`fulfilled`和`rejected`合在一起称为`resolved`（已定型）。
 
 这三种的状态的变化途径只有两种。
 
-- 从“未完成”到“成功”
-- 从“未完成”到“失败”
+* 从“未完成”到“成功”
+* 从“未完成”到“失败”
 
 一旦状态发生变化，就凝固了，不会再有新的状态变化。这也是 Promise 这个名字的由来，它的英语意思是“承诺”，一旦承诺成效，就不得再改变了。这也意味着，Promise 实例的状态变化只可能发生一次。
 
 因此，Promise 的最终结果只有两种。
 
-- 异步操作成功，Promise 实例传回一个值（value），状态变为`fulfilled`。
-- 异步操作失败，Promise 实例抛出一个错误（error），状态变为`rejected`。
+* 异步操作成功，Promise 实例传回一个值（value），状态变为`fulfilled`。
+* 异步操作失败，Promise 实例抛出一个错误（error），状态变为`rejected`。
 
 ## Promise 构造函数
 
@@ -110,7 +110,7 @@ timeout(100)
 
 上面代码中，`timeout(100)`返回一个 Promise 实例。100毫秒以后，该实例的状态会变为`fulfilled`。
 
-## Promise.prototype.then()
+## Promise.prototype.then\(\)
 
 Promise 实例的`then`方法，用来添加回调函数。
 
@@ -149,7 +149,7 @@ p1
 
 最后一个`then`方法，回调函数是`console.log`和`console.error`，用法上有一点重要的区别。`console.log`只显示`step3`的返回值，而`console.error`可以显示`p1`、`step1`、`step2`、`step3`之中任意一个发生的错误。举例来说，如果`step1`的状态变为`rejected`，那么`step2`和`step3`都不会执行了（因为它们是`resolved`的回调函数）。Promise 开始寻找，接下来第一个为`rejected`的回调函数，在上面代码中是`console.error`。这就是说，Promise 对象的报错具有传递性。
 
-## then() 用法辨析
+## then\(\) 用法辨析
 
 Promise 的用法，简单说就是一句话：使用`then`方法添加回调函数。但是，不同的写法有一些细微的差别，请看下面四种写法，它们的差别在哪里？
 
@@ -274,10 +274,11 @@ console.log(3);
 
 ## 参考链接
 
-- Sebastian Porto, [Asynchronous JS: Callbacks, Listeners, Control Flow Libs and Promises](http://sporto.github.com/blog/2012/12/09/callbacks-listeners-promises/)
-- Rhys Brett-Bowen, [Promises/A+ - understanding the spec through implementation](http://modernjavascript.blogspot.com/2013/08/promisesa-understanding-by-doing.html)
-- Matt Podwysocki, Amanda Silver, [Asynchronous Programming in JavaScript with “Promises”](http://blogs.msdn.com/b/ie/archive/2011/09/11/asynchronous-programming-in-javascript-with-promises.aspx)
-- Marc Harter, [Promise A+ Implementation](https://gist.github.com//wavded/5692344)
-- Bryan Klimt, [What’s so great about JavaScript Promises?](http://blog.parse.com/2013/01/29/whats-so-great-about-javascript-promises/)
-- Jake Archibald, [JavaScript Promises There and back again](http://www.html5rocks.com/en/tutorials/es6/promises/)
-- Mikito Takada, [7. Control flow, Mixu's Node book](http://book.mixu.net/node/ch7.html)
+* Sebastian Porto, [Asynchronous JS: Callbacks, Listeners, Control Flow Libs and Promises](http://sporto.github.com/blog/2012/12/09/callbacks-listeners-promises/)
+* Rhys Brett-Bowen, [Promises/A+ - understanding the spec through implementation](http://modernjavascript.blogspot.com/2013/08/promisesa-understanding-by-doing.html)
+* Matt Podwysocki, Amanda Silver, [Asynchronous Programming in JavaScript with “Promises”](http://blogs.msdn.com/b/ie/archive/2011/09/11/asynchronous-programming-in-javascript-with-promises.aspx)
+* Marc Harter, [Promise A+ Implementation](https://gist.github.com//wavded/5692344)
+* Bryan Klimt, [What’s so great about JavaScript Promises?](http://blog.parse.com/2013/01/29/whats-so-great-about-javascript-promises/)
+* Jake Archibald, [JavaScript Promises There and back again](http://www.html5rocks.com/en/tutorials/es6/promises/)
+* Mikito Takada, [7. Control flow, Mixu's Node book](http://book.mixu.net/node/ch7.html)
+
